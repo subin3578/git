@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index.html</title>
    <!--
-        날짜 : 2024/08/01
+        날짜 : 2024/08/04
         이름 : 황수빈
-        내용 : 헤더 푸터를 제외한 메인페이지  HTML + CSS 완성
+        내용 : 메인 페이지 완성
     -->
     <style>
     
@@ -26,15 +26,12 @@
             margin : 0 auto;
         }
 
-        /***********/
-        /* header */
         header{
             width: 980px;
             height: 150px;
             margin : 0 auto;
         }
-
-        /*top line*/
+        /*top liine*/
         header .htop{
             position: absolute;
             width: 980px;
@@ -61,14 +58,13 @@
             display: flex;
             align-items: center;
             color: #111111;
-        }
+    }
         header .top > p{
             position: absolute;
             width: 237.15px;
      
         }
         
-        /*logospace 는 로고, 사이드로고, 로그인| 담고있음*/
         .logospace {
             width : 980px;
             height : 80px;
@@ -85,8 +81,6 @@
             right : 0px;
             top : 45px;
         }
-
-        /**nav**/
         header nav {
             width : 100%;
             height : 50px;
@@ -114,8 +108,7 @@
         /*안의 글자 a들을 중앙으로 배치하는 방법*/
         position : flex;
         text-align: center;
-        }
-        /*장보기 뱃지*/
+    }
         .badge {
             position : absolute;
             margin-top :-10px;
@@ -123,7 +116,7 @@
         }
 
 
-        /**********************/
+
         /*font 설정*/
         .shopping .price::after {
             content : '원';
@@ -181,26 +174,24 @@
 
         }
 
-        /******main*********/
-        /******************/
+        
+        /********************/
         /*banner section*/
-
         .banner {
             position : relative;
             width : 980px;
             height : 312px;
-            overflow :hidden;
+            overflow : hidden;
         }
         .banner img {
             position : absolute;
-            object-fit : cover;
         }
         .banner > .bannerbackground{
             width:100%;
             height :100%;
             z-index: 1;
         }
-
+       
         .banner > .bannertitle{
             width : 330px;
             height : 63px;
@@ -208,14 +199,35 @@
             left: 20px;
             top: 30px;
         }
-        .banner1right {
+
+        .bannerright {
             width : 230px;
             height :100%;
             z-index: 2;
             right: 0;
             top: -1px;
         }
-
+        .bannerrighttxt {
+            width : 50px;
+            height : 30px;
+            z-index : 3;
+            right : 8px;
+            top : 8px;
+        }
+        .bannerrightimg{
+            width : 200px;
+            height : 120px;
+            z-index : 3;
+            right :15px;
+            bottom : 15px;
+        }
+        .bannerrighttit {
+            width : 170px;
+            height : 140px;
+            z-index: 3;
+            right : 30px;
+            top : 35px;
+        }
         /********************/
         /*shopping section*/
         .shopping {
@@ -343,8 +355,6 @@
 
         /***************/
         /*info section*/
-        /*user account notice*/
-            /*user*/
         .info{
             width: 100%;
             height: auto;
@@ -354,7 +364,7 @@
             padding: 20px;
             border-top: 3px solid rgb(183, 181, 181);
         }
-             /*user*/
+   
         .info>.user{
             width: 386px;
         }
@@ -381,9 +391,13 @@
             margin-top: 20px;
         }
 
-            /*account*/
-        .account{ width: 230px;}
-        .account>div{ width: 100%; height: 90px;
+        /*account*/
+        .account{
+            width: 230px;
+        }
+        .account>div{
+            width: 100%;
+            height: 90px;
             
         }
         .account p{
@@ -408,7 +422,8 @@
             float: right;
             position: relative;
             top: 2px;
-        }
+}
+     
         /*info 구분선 추가*/
         .info > div:nth-child(1){border-right : 1px solid lightgray;}
         .info > div:nth-child(2){border-right : 1px solid lightgray;}
@@ -537,7 +552,12 @@
 
                 <img src="./img/main_slide_img1.jpg " alt = "배너배경이미지" class = "bannerbackground">
                 <img src="./img/main_slide_img_tit.png" alt ="배너배경제목" class ="bannertitle">
-                <img src="./img/popup.png" alt = "배너 왼쪽" class = "banner1right">
+            
+                <img src="./img/main_banner_bg.jpg" alt = "배너오른쪽사이드" class ="bannerright">
+                <img src ="./img/main_banner_img.png" class = "bannerrightimg">
+                <img src ="./img/main_banner_tit.png" class = "bannerrighttit">
+                <img src ="./img/main_banner_txt.png" class = "bannerrighttxt">                                                     " >
+         
             </section>
 
       
