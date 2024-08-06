@@ -57,6 +57,7 @@
         box-sizing: border-box;
         padding: 100px;
     }
+    
     section {
         width: 600px;
         height: 578px;
@@ -83,6 +84,9 @@
     .cancel{
         width: 42px;
         background-color: #fff;
+    }
+    .input{
+        width: 66px;
     }
     
 
@@ -126,12 +130,14 @@
         background-color: #F5F8F9;
         border-right: 1px solid #BEBEBE;
         box-sizing: border-box;
+        text-align: left;
+        text-indent: 10px;
     }
     td>*{
         margin-left: 10px;
     }
-    td>p{
-        font-weight: bold;
+    td>button,img {
+        margin-left: 0;
     }
     td>img{
         position: relative;
@@ -144,9 +150,17 @@
         box-sizing: border-box;
         background-color: #F7F7F7;
     }
-   
+    input::placeholder{
+        text-indent: 5px;
+    }
     
-
+    .pass{
+        width: 85px;
+        height: 27px;
+        background-color: #2E658A;
+        color: #fff;
+        border: 0;
+    }
     .idBox tr:nth-of-type(1){
         height: 30px;
     }
@@ -188,18 +202,19 @@
         width: 362px;
     }
 
-    .leave{
+    td>.leave{
         width: 58px;
         height: 27px;
         background-color: #ED2F2F;
         color: #fff;
         border: 0;
+        margin-left: 10px;
     }
 
 
     
     
-    
+
 </style>
 
 </head>
@@ -210,7 +225,7 @@
             <main>
                 <section>
                     <div class="form">
-                        <p>사이트 이용정보 입력</p>
+                        <p>회원정보 설정</p>
                         <div class="box idBox">
                             <table>
                                 <tr>
@@ -229,6 +244,7 @@
                                     <th>비밀번호 확인</th>
                                     <td>
                                         <input type="password" placeholder="비밀번호 입력 확인">
+                                        <button class="pass">비밀번호 수정</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -237,13 +253,13 @@
                                 </tr>
                             </table>
                         </div>
-                        <p>개인정보 입력</p>
+                        <p>개인정보 수정</p>
                         <div class="box infoBox">
                             <table>
                                 <tr>
                                     <th>이름</th>
                                     <td>
-                                        <input type="text" name="username" placeholder="이름 입력" required>
+                                        <input type="text" name="username" required>
                                     </td>
                                 </tr>
                                 <tr class="nickname">
