@@ -1,5 +1,0 @@
-#section 1
-content2 by main
-
-#section 2
-content by feature
