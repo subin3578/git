@@ -147,7 +147,6 @@
         main {
             width : 100%;
             height : auto;
-            border : 1px solid blue;
         }
        
         main>section{
@@ -204,11 +203,11 @@
             box-sizing: border-box;
             float: right;
             padding: 50px 20px 0 20px;
-        
         }
         nav>div:nth-of-type(1){
             display: block;
             border-bottom: 2px solid #eee;
+            margin-bottom: 40px;
         }
         nav>div{
             position: relative;
@@ -229,31 +228,111 @@
         }
         .home_box strong{
             font-weight: bolder;
-            color: lightgreen;
+            color: #91BA15;
         }
 
-        article>div{
-            margin-top: 40px;
-        }
 
         /* main ///////////////////////////////////////////////////////////////////*/
         
         
-        .table{
-            border: 1px solid black;
-            box-sizing: border-box;
-        }
        .default{
             width: 762px;
             height: 270px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
         }
+        .veiw h3{
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19.36px;
+            color: #000000;
+            margin: 15px 0; 
+        }
+        .prod_info_img{
+            width: 240px;
+            height: 240px;
+        }
+        .prod_box{
+            position: relative;
+        }
+        .prod_info_box{
+            width: 457.19px;
+            height: 200px;
+            border-top: 2px solid #E7E7E7;
+            border-bottom: 2px solid #E7E7E7;
+            box-sizing: border-box;
+            border-collapse: collapse;
+        }
+        .prod_info_box th{
+            text-align: left;
+        }
+        .prod_info_box>body>tr{
+            height: 29.75px;
+            box-sizing: border-box;
+        }
+        .prod_info_box span{
+            font-weight: 400;
+            color: #888888;
+        }
+        .prod_info_box input{
+            width: 64px;
+            height: 19px;
+            border: 1px solid #767676;
+            border-radius: 3px;
+        }
+        .prod_info_box .sum_color{
+            font-weight: 700;
+            color: #C20A0A;
+        }
+        .prod_btn_box{
+            box-sizing: border-box;
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+        }
+        .prod_btn{
+            width: 100px;
+            height: 40px;
+            display: inline-block;
+            color: #ffffff;
+            text-align: center;
+        }
+        .cart{
+            background-color:#769B0A;
+            position: relative;
+            left: 1px;
+        }
+        .buy{
+            background-color: #960D1A;
+        }
+        .prod_btn>p{
+            line-height: 40px;
+        }
+
         .detail{
             width: 750px;
             height: 1387px;
         }
-        .exchange{
+        .exchange_table{
             width: 762px;
             height: 150px;
+            border-collapse: collapse;
+            text-align: left;
+            text-indent: 20px;
+        }
+        .exchange_table th{
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+            border-bottom: 1px solid #CCCCCC;
+        }
+        .exchange_table td{
+            border-top: 1px solid #CCCCCC;
+            border-left: 1px solid #CCCCCC;
+            border-bottom: 1px solid #CCCCCC;
+        }
+        .exchange_table td p{
+         line-height: 18px;  
         }
 
 
@@ -365,44 +444,98 @@
             </section>
             <section class="content">
                 <aside>
-                    <img src="./img/sub_aside_cate4_tit.png" alt="">
+                    <img src="./img/sub_aside_cate2_tit.png" alt="">
                     <div>
                         <img src="./img/sub_aside_bg_lnb.png" alt="">
-                        <img src="./img/sub_cate4_lnb1_ov.png" alt="">
+                        <img src="./img/sub_cate2_lnb1_ov.png" alt="">
                     </div>
                 </aside>
                 <article class="veiw">
                     <nav>
                         <div>
-                            <img src="./img/sub_nav_tit_cate4_tit1.png" alt="">
+                            <img src="./img/sub_nav_tit_cate2_tit1.png" alt="">
                             <div class="home_box">
                                 <p>
                                     <img src="./img/sub_page_nav_ico.gif" alt="">
-                                    HOME > 이벤트 >
-                                    <strong>이벤트</strong>
+                                    HOME > 장보기 >
+                                    <strong>장보기</strong>
                                 </p>
                             </div>
                         </div>
-                        
                     </nav>
                     <div>
                         <h3>기본정보</h3>
-                        <div class="table default"></div>
+                        <div class="table default">
+                            <img src="./img/market_item_thumb.jpg" alt="" class="prod_info_img">
+                            <div class="prod_box">
+                                <table class="prod_info_box">
+                                    <body>
+                                        <tr>
+                                            <th>상품명</th>
+                                            <td>딸기 500g</td>
+                                        </tr>
+                                        <tr>
+                                            <th>상품코드</th>
+                                            <td>01</td>
+                                        </tr>
+                                        <tr>
+                                            <th>배송비</th>
+                                            <td>5,000원
+                                                <span>3만원 이상 무료배송</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>판매가격</th>
+                                            <td>4,000원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>구매수량</th>
+                                            <td>
+                                                <input type="number" value="1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>합계</th>
+                                            <td class="sum_color">4,000원</td>
+                                        </tr>
+                                    </body>
+                                </table>
+                                <div class="prod_btn_box">
+                                    <a href="#" class="prod_btn cart"><p>장바구니</p></a>
+                                    <a href="#" class="prod_btn buy"><p>바로 구매</p></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3>상품설명</h3>
-                        <div class="table detail"></div>
-                    </div>
+                    <h3>상품설명</h3>
+                    <img src="./img/market_detail_sample.jpg" alt="" class="detail">
                     <div>
                         <h3>배송정보</h3>
                         <p>입금하신 이후 택배송장번호는 SMS(문자서비스)를 통해 고객님께 안내해드립니다.</p>
                     </div>
                     <div>
                         <h3>교환/반품</h3>
-                        <div class="table exchange"></div>
+                        <table class="exchange_table" >
+                            <tr>
+                                <th>교환 반품이 가능한 경우</th>
+                                <td>
+                                    <p>팜스토리 상품에 하자가 있거나 불량인 경우</p>
+                                    <p>채소, 과일, 양곡등의 식품은 만1일 이내</p>
+                                    <p>기타 상품은 수령일로부터 영업일 기준 일주일 이내</p>
+                                    <p>받으신 상품이 표시사항과 다른 경우에는 받으신 날로부터 일주일 이내</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>교환 반품이 불가능한 경우</th>
+                                <td>
+                                    <p>신선 식품의 경우 단순히 마음에 들지 않는 경우</p>
+                                    <p>단순 변심으로 상품이 가치가 훼손돼서 판매가 어려운 경우</p>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </article>
-            </section>
+           
         </main>
         <footer>
             <div>
