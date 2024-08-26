@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품등록</title>
+    <title>회원목록</title>
     <style>
         * {
             margin: 0;
@@ -28,7 +28,7 @@
             height: 60px;
             left: 470px;
             top: 0px;
-            background: url(../img/admin/admin_bg.jpg);
+            background: url(/farmstory/img/admin/admin_bg.jpg);
         }
 
         header > a {
@@ -37,7 +37,7 @@
             height: 32px;
             left: 12px;
             top: 12px;
-            background: url(../img/admin/admin_logo.jpg) no-repeat;
+            background: url(/farmstory/img/admin/admin_logo.jpg) no-repeat;
         }
 
         header > span {
@@ -163,99 +163,60 @@
 
         section > article {
              width: 784px;
-             height: 193px;
+             height: auto;
              position: relative;
-             top: 45px;
-             left: 10px;
-            } 
-
-        .product_list {
+        } 
+        .user_reg {
             width: 68px;
-            height: 19px;
-            position: absolute;
-            top: 12px;
-            left: 10px;
+            height: 50px;
             font-size: 17px;
-            line-height: 21px;
+            line-height: 50px;
             font-weight: bold;
             color: #3f3f3f;
         }
             
         table {
             width: 784px;
-            height: 133px;
+            height: 86px;
             border-top: 2px solid black;
             border-collapse: collapse;
         }
-
-        th {
-            background-color: #fbfbfb;
+        th{
+            background-color: #FBFBFB;
             height: 42.5px;
         }
-
-        th:nth-child(1){width: 57.2px;}
-        th:nth-child(2){width: 129.89px;}
-        th:nth-child(3){width: 111.33px;}
-        th:nth-child(4){width: 115.97px;}
-        th:nth-child(5){width: 74.22px;}
-        th:nth-child(6){width: 97.41px;}
-        th:nth-child(7){width: 74.22px;}
-        th:nth-child(8){width: 123.77px;}
-
         td {
-            height: 89px;
-            border-bottom: 1px dotted;
-            font-weight: bold;
+            height: 42px;
+            border-bottom: 1px dotted #999999;
+        }
+        th:nth-child(1){width: 41.36px;}
+        
+        td{
             text-align: center;
         }
-
-        td > data > img {
-            width: 60px;
-            height: 60px;
+        .user_role{
+            width: 28px;
+            height: 18px;
+            background-color: #EFEFEF;
+            border: 1px solid #767676;
+            text-indent: 5px;
         }
-
-        #container {
-            width: 784px;
-            height: 51px;
-            position: relative;
-        }
-        .reg {
-            width: 74px;
-            height: 31px;
-            position: absolute;
-            top: 10px;
-            left: 700px;
-            background-color: white;
-            border: 1px solid #cccccc;
-            border-radius: 20px;
-            display: flex;
-            align-items:center;
-            justify-content:center;
-        }
-
-        .select_del{
-            width: 100%;
-            height: 37px;
-            line-height: 37px;
-            margin-left: 10px;
-            font-weight: bold;
-        }
-        
         .page_box{
             width: 100%;
             height: 35px;
             text-align: center;
             font-weight: bold;
+            margin-top: 15px;
         }
         .page_box span {
-            font-weight: bold;
+            font-weight: 500;
         }
         .page_box .underline{
             border-bottom: 1px solid #111;
+            font-weight: bold;
         }
-        .page_box::before{content: "<";}
         .page_box::after{content: ">";}
-          
+        .page_box::before{content: "<";}
 
         /************************ Footer ************************/
         footer{
@@ -305,51 +266,73 @@
                     </li>
                 </ul>
             </aside>
-
+            
             <section>
-                <h4 class="product_list">상품목록</h4>
+                <h3 class="user_reg">회원목록</h3>
                 <article class="h1">
                     <table>
-                        <tbody>      
+                        <thead>    
                             <tr>
                                 <th><input type="checkbox"></th>
-                                <th>사진</th>
-                                <th>상품번호</th>  
-                                <th>상품명</th>  
-                                <th>구분</th>
-                                <th>가격</th>
-                                <th>재고</th>
-                                <th>등록일</th>
+                                <th>아이디</th>
+                                <th>이름</th>
+                                <th>별명</th>  
+                                <th>이메일</th>  
+                                <th>휴대폰</th>
+                                <th>등급</th>
+                                <th>가입일</th>
+                                <th>확인</th>
+                            </tr> 
+                        </thead>    
+                        <tbody>      
+                            <tr> 
+                                <td><input type="checkbox"></td>
+                                <td>a101</td>
+                                <td>김유신</td>
+                                <td>유신101</td>
+                                <td>yusin101@naver.com</td>
+                                <td>010-1234-1001</td>
+                                <td><input type="text" value="2" class="user_role" readonly></td>
+                                <td>2023-01-01 13:06:14</td>
+                                <td>[상세확인]</td>
                             </tr>
-                            <tr>
-                                <td><data value=""><input type="checkbox"></data></td>
-                                <td><data value=""><img src="../img/admin/sample_item1.jpg"></data></td>
-                                <td><data value="">1011</data></td>
-                                <td><data value="">사과 500g</data></td>
-                                <td><data value="">과일</data></td>
-                                <td><data value="">4,000원</data></td>
-                                <td><data value="">100</data></td>
-                                <td><data value="">2023-01-01</data></td>
+                            <tr> 
+                                <td><input type="checkbox"></td>
+                                <td>a102</td>
+                                <td>김춘추</td>
+                                <td>춘추102</td>
+                                <td>chunchu102@naver.com</td>
+                                <td>010-1234-1002</td>
+                                <td><input type="text" value="2" class="user_role" readonly></td>
+                                <td>2023-01-01 13:06:14</td>
+                                <td>[상세확인]</td>
                             </tr>
-                        </tbody>
+                            <tr> 
+                                <td><input type="checkbox"></td>
+                                <td>a103</td>
+                                <td>장보고</td>
+                                <td>보고103</td>
+                                <td>bogo103@naver.com</td>
+                                <td>010-1234-1003</td>
+                                <td><input type="text" value="2" class="user_role" readonly></td>
+                                <td>2023-01-01 13:06:14</td>
+                                <td>[상세확인]</td>
+                            </tr>
+                        </tbody>    
                     </table>
-                    <div id="container">
-                        <p class="select_del">선택삭제</p>
-                        <a href="#" class="reg">상품등록</a>
-                    </div>
-                    <div class="page_box">
-                        <a href="#">
-                            <span class="underline">[1]</span>
-                            <span>[2]</span>
-                            <span>[3]</span>
-                            <span>[4]</span>
-                            <span>[5]</span>
-                        </a>
-                    </div>
-                </article>
+                 </article>
+                <div class="page_box">
+                    <a href="#">
+                        <span class="underline">[1]</span>
+                        <span>[2]</span>
+                        <span>[3]</span>
+                        <span>[4]</span>
+                        <span>[5]</span>
+                    </a>
+                </div>
             </section>
         </main>
-
+        
         <footer>
             <p class=copyright>
                 Copyright(C)Farmstory All rights reserved.FARMSTORY ADMINISTRATOR Version 1.0.1
