@@ -23,11 +23,9 @@ public class SQL{
 	public static final String WHERE_NICK = "WHERE `nick`=?";
 	public static final String WHERE_EMAIL = "WHERE `email`=?";
 	public static final String WHERE_HP = "WHERE `hp`=?";
-	
-	public static final String DELETE_USER = "delete from `user` where `uid`=?";
 	public static final String SELECT_USERS = "SELECT * FROM `user`";
-	public static final String SELECT_USER2 = "select * from `user` where `uid`=?";
-	public static final String SELECT_USER = "select * from `user` where `uid`=? and `pass`=SHA2(?, 256)";
+	public static final String DELETE_USER = "delete from `user` where `uid`=?";
+	public static final String SELECT_USER = "select * from `user` where `uid`=? and `pass`=?";
 	public static final String INSERT_USER = "insert into user set "
 											+ "`uid`=?,"
 											+ "`pass`=SHA2(?, 256),"
@@ -40,4 +38,30 @@ public class SQL{
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
+	public static final String DELETE_ARTICLE= "delete from `article` where `no`=?";
+	public static final String SELECT_COUNT_TOTAL= "SELECT COUNT(*) FROM `article`"
+													+" where `type` = ?";
+
+	public static final String SELECT_ARTICLE= "SELECT a.*, b.nick FROM `article` AS a "
+												+ "JOIN `user` AS b ON a.writer = b.uid "
+												+ "WHERE `no`=?";
+	
+	public static final String SELECT_ARTICLES= "SELECT a.*, b.nick  from `article` AS a "
+												+ "JOIN `user` AS b ON a.writer = b.uid "
+												+ "where a.type = ? " 
+												+ "ORDER BY `no` DESC "
+												+ "LIMIT ?, 10";
+												
+	
+	
+	public static final String SELECT_MAX_NO = "select MAX(`no`) from `article`";
+
+	public static final String INSERT_ARTICLE = "insert into `article` set "
+												+ "`title`=?,"
+												+ "`content`=?,"
+												+ "`type`=?, "
+												+ "`writer`=?,"
+												+ "`regip`=?,"
+												+ "`rdate`=NOW()";
+	
 }

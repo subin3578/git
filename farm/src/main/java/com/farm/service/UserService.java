@@ -79,10 +79,6 @@ public enum UserService {
 		return dao.selectUser(uid, pass);
 	}
 	
-	public UserDto selectUser(String uid) {
-		return dao.selectUser2(uid);
-	}
-	
 	public List<UserDto> selectUsers() {
 		return dao.selectUsers();
 	}
