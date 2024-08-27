@@ -22,6 +22,35 @@
             margin : 0 auto;
         }
 
+        /************************ Header ************************/
+        header{
+            position: relative;
+            width: 980px;
+            height: 60px;
+            left: 470px;
+            top: 0px;
+            background: url(../img/admin/admin_bg.jpg);
+        }
+
+        header > a {
+            position: absolute;
+            width: 170px;
+            height: 32px;
+            left: 12px;
+            top: 12px;
+            background: url(../img/admin/admin_logo.jpg) no-repeat;
+        }
+
+        header > span {
+            width: 149px;
+            height: 14px;
+            position: absolute;
+            top: 13px;
+            left: 819px;
+            font-size: 11px; /*원래는 12로 변경해야 함*/
+            color: white;
+            line-height: 14px;
+        }
 
         /************************ Main ************************/
         main{
@@ -156,11 +185,35 @@
             }
           
 
+        /************************ Footer ************************/
+        footer{
+            position: absolute;
+            width: 980px;
+            height: 39px;
+            left: 470px;
+            right: 470px;
+            top: 704px;
+
+            background: #353535;
+        }
+
+        .copyright{
+            float: left;
+            margin-top: 8px;
+            color: white;
+            font-size: 15px;
+            
+        }
+
     </style>
 </head>
 <body>
     <div id = "wrapper">
-       	<%@ include file="/WEB-INF/admin/_header.jsp" %>
+        <header>
+            <a href="#"></a>
+            <span>HOME | 로그아웃 | 고객센터</span>
+        </header>
+
         <main>
             <aside>
                 <h3 class="main_function"><p>주요기능</p></h3>
@@ -172,13 +225,11 @@
                     </li>
                     <li>
                         <p class="tit">주문관리</p>
-                        <a href="/farm/admin/order/order.do" class="contents">┗ 주문목록</a>
+                        <a href="#" class="contents">┗ 주문목록</a>
                     </li>
                     <li>
                         <p class="tit">회원관리</p>
-
                         <a href="/farm/admin/user/list.do" class="contents">┗ 회원목록</a>
-
                     </li>
                 </ul>
             </aside>
@@ -327,7 +378,12 @@
             </article>
             </section>
         </main>
-  		<%@ include file="/WEB-INF/admin/_footer.jsp" %>
+
+        <footer>
+            <p class=copyright>
+                Copyright(C)Farmstory All rights reserved.FARMSTORY ADMINISTRATOR Version 1.0.1
+            </p>
+        </footer>
     </div>
 </body>
 </html></html>

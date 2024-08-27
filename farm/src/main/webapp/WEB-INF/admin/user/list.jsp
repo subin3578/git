@@ -299,7 +299,6 @@
                                 <th>${user.regDate}</th>
                                 <th>[상세확인]</th>
                             </tr>
-<<<<<<< HEAD
                             </c:forEach>
                             <tr> 
                                 <td><input type="checkbox"></td>
@@ -312,9 +311,6 @@
                                 <td>2023-01-01 13:06:14</td>
                                 <td>[상세확인]</td>
                             </tr>
-=======
-                            </c:forEach>                  
->>>>>>> b1680bb051557f611e3c4e24871366830121e10c
                         </tbody>    
                     </table>
                  </article>
