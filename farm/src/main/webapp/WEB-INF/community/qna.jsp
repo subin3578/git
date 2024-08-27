@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>notice.html</title>
+    <title>qna.html</title>
 
     <style>
     
@@ -185,8 +185,8 @@
         }
         .hello > article > nav .navtit1{
             position: absolute;
-            width: 90px;
-            height: 26px;
+            width: 128px;
+            height: 25px;
             left: 0px;
             bottom: 5px;
 
@@ -208,7 +208,7 @@
             position: absolute;
             width: 169.07px;
             height: 14px;
-            left: 20px;
+            left: 3px;
             top: 1px;
 
             font-family: Arial, Helvetica, sans-serif; /* 폰트 패밀리 */
@@ -256,15 +256,14 @@
                     
 
         }
-       
+
 </style>
 
   
 </head>
 <body>
     <div id = "wrapper">
-        <%@ include file="/WEB-INF/_header.jsp" %>
-    
+    <%@ include file="/WEB-INF/_header.jsp" %>
     <div class="subtopbg1">
         <img src="../img/sub_top_bg.jpg" alt="subtopbg1">
         <div class="subtoptit1"><img src="../img/sub_top_tit5.png" alt="subtoptit1"></div>
@@ -274,16 +273,18 @@
         <div class="hello">
             <article>
                 <nav>
-                    <img src="../img/sub_nav_tit_cate5_tit1.png" class="navtit1" alt="">
+                    <img src="../img/sub_nav_tit_cate5_tit4.png" class="navtit1" alt="">
                     <div class="smallhello">                
                         <div class="smallhello2">
                             <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
-                          HOME > 커뮤니티 >&nbsp;<span class="highlight">공지사항</span>
+                          HOME > 커뮤니티 >&nbsp;<span class="highlight">1:1고객문의</span>
                        </div>
                 </nav>
                 <div>
                     <p class="boards">게시판 글목록/글쓰기/글보기/글수정 화면 출력</p>
                 </div>
+               
+                
             </div>
             <aside>
                 <div id="asidesize">
@@ -291,23 +292,20 @@
                     <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
                 <ul class="asidelnb">
                     <li>
-                        <li class="lnb1"><a href="/farm/community/notice.do"><img id="lnb1" src="../img/sub_cate5_lnb1_ov.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb1"><a href="/farm/community/notice.do"><img id="lnb1" src="../img/sub_cate5_lnb1.png" alt="cate_lnb1"></a></li>
                         <li class="lnb2"><a href="/farm/community/menu.do"><img id="lnb2" src="../img/sub_cate5_lnb2.png" alt="cate_lnb2"></a></li>
                         <li class="lnb3"><a href="/farm/community/chef.do"><img id="lnb2" src="../img/sub_cate5_lnb3.png" alt="cate_lnb2"></a></li>
-                        <li class="lnb4"><a href="/farm/community/qna.do"><img id="lnb2" src="../img/sub_cate5_lnb4.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb4"><a href="/farm/community/qna.do"><img id="lnb2" src="../img/sub_cate5_lnb4_ov.png" alt="cate_lnb2"></a></li>
                         <li class="lnb5"><a href="/farm/community/fnq.do"><img id="lnb2" src="../img/sub_cate5_lnb5.png" alt="cate_lnb2"></a></li>
-                        
+                       
                     </li>
                 </ul>
                 </div>
               </aside>
             </article>
         </div>
-
     </main>
-  
-          <%@ include file="/WEB-INF/_footer.jsp" %>
-      
+	<%@ include file="/WEB-INF/_footer.jsp" %>
   </div>
   </body>
   </html>
