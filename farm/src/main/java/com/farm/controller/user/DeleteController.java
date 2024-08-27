@@ -26,7 +26,7 @@ public class DeleteController extends HttpServlet {
 		service.deleteUser(uid);
 		
 		// 리다이렉트
-		resp.sendRedirect("/farm/user/login.do");
+		resp.sendRedirect("");
 	
 	}
 }

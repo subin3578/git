@@ -1,15 +1,13 @@
 package com.farm.dto;
 
-import java.util.List;
-
 public class ArticleDto {
 	
+	private int type;
 	private int no;
 	private String cate;
 	private String title;
 	private String content;
 	private int comment;
-	private int file;
 	private int hit;
 	private String writer;
 	private String regip;
@@ -18,16 +16,7 @@ public class ArticleDto {
 	
 	// Join 해서 결과가 나옴으로써 추가된 nickname
 	private String nick;
-	private List<FileDto> files;
-	
-	
-	public List<FileDto> getFiles() {
-		return files;
-	}
-	public void setFiles(List<FileDto> files) {
-		this.files = files;
-	}
-	
+
 	public String getNick() {
 		return nick;
 	}
@@ -70,11 +59,12 @@ public class ArticleDto {
 	public void setComment(int comment) {
 		this.comment = comment;
 	}
-	public int getFile() {
-		return file;
+
+	public int getType() {
+		return type;
 	}
-	public void setFile(int file) {
-		this.file = file;
+	public void setType(int type) {
+		this.type = type;
 	}
 	public int getHit() {
 		return hit;
@@ -106,9 +96,9 @@ public class ArticleDto {
 	@Override
 	public String toString() {
 		return "ArticleDto [no=" + no + ", cate=" + cate + ", title=" + title + ", content=" + content + ", comment="
-				+ comment + ", file=" + file + ", hit=" + hit + ", writer=" + writer + ", regip=" + regip + ", Rdate="
+				+ comment + ", type=" + type + ", hit=" + hit + ", writer=" + writer + ", regip=" + regip + ", Rdate="
 				+ rdate + ", getNo()=" + getNo() + ", getCate()=" + getCate() + ", getTitle()=" + getTitle()
-				+ ", getContent()=" + getContent() + ", getComment()=" + getComment() + ", getFile()=" + getFile()
+				+ ", getContent()=" + getContent() + ", getComment()=" + getComment() + ", getType()=" + getType()
 				+ ", getHit()=" + getHit() + ", getWriter()=" + getWriter() + ", getRegip()=" + getRegip()
 				+ ", getRdate()=" + getRdate() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
