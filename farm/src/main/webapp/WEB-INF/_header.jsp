@@ -9,7 +9,7 @@
                     <a href="#">로그인 | </a>
                     <a href="#"> 회원가입 | </a>
                     <a href="/farm/admin/index.do"> 관리자 | </a>
-                    <a href="#"> 고객센터 </a>
+                    <a href="/farm/community/qna.do"> 고객센터 </a>
                 </p>
             </div>
             <div class ="logospace">

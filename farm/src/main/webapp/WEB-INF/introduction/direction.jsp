@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>introduction.html</title>
+    <title>direction.html</title>
 
     <style>
     
@@ -72,6 +72,8 @@
             width: 237.15px;
         }
 
+
+
         .headlog {
             position : absolute;
             left : 40%;
@@ -127,9 +129,6 @@
             right: 470px;
             top: 145px;
 
-            background: url(.jpg);
-
-
         }
         .subtopbg1 .subtoptit1{
             position: absolute;
@@ -141,7 +140,7 @@
             background: url(.png);
 
         }
-
+    
 
         main {
             position: absolute;
@@ -242,9 +241,9 @@
             border-bottom: 1px solid #C2C2C2;
 
         }
-        .hello > article > nav .navtit1{
+        .hello > article > nav .navtit2{
             position: absolute;
-            width: 75px;
+            width: 131px;
             height: 26px;
             left: 0px;
             bottom: 5px;
@@ -252,13 +251,16 @@
             background: url(.png);
 
         }
+
         .hello > article > nav .smallhello{
             position: absolute;
-            height: 17px;
+            width: 180px;
+            height: 19px;
             left: 75.21%;
             right: 0%;
             bottom: 5px;
             white-space: nowrap;
+     
        
         }
        
@@ -267,7 +269,7 @@
             position: absolute;
             width: 169.07px;
             height: 14px;
-            left: 8px;
+            right: 40px;
             top: 1px;
 
             font-family: Arial, Helvetica, sans-serif; /* 폰트 패밀리 */
@@ -296,22 +298,12 @@
             
         }
 
-        .hello > article .subarticle{
-            position: absolute;
-            width: 759px;
-            height: 162px;
-            left: 40px;
-            top: 112px;
-
-            background: url(.png);
-
-        }
         .hello > article .content > p:nth-child(1){
             position: absolute;
             width: 477.2px;
             height: 40px;
             left: 40px;
-            top: 288px;
+            top: 100px;
                     
             font-family: 'Inter';
             font-style: normal;
@@ -322,16 +314,15 @@
             display: flex;
             align-items: center;
                     
-            color: #666666;
-
+            color: #91BA15;
 
         }
-        .hello > article .content > p:nth-child(2){ 
+        .hello > article .content > p:nth-child(2){
             position: absolute;
-            width: 759.2px;
-            height: 60px;
+            width: 477.2px;
+            height: 40px;
             left: 40px;
-            top: 348px;
+            top: 120px;
                     
             font-family: 'Inter';
             font-style: normal;
@@ -343,84 +334,59 @@
             align-items: center;
                     
             color: #666666;
-
 
         }
         .hello > article .content > p:nth-child(3){
             position: absolute;
-            width: 63.2px;
-            height: 14px;
+            width: 477.2px;
+            height: 40px;
             left: 40px;
-            top: 431px;
-
+            top: 140px;
+                    
             font-family: 'Inter';
             font-style: normal;
-            font-weight: 700;
+            font-weight: 400;
             font-size: 11.5px;
-            line-height: 15px;
+            line-height: 20px;
+            /* or 167% */
             display: flex;
             align-items: center;
+                    
+            color: #666666;
 
-            color: #91BA15;
         }
+
         .hello > article .content > p:nth-child(4){
             position: absolute;
-            width: 384.2px;
-            height: 20px;
+            width: 477.2px;
+            height: 40px;
             left: 40px;
-            top: 448px;
-
+            top: 170px;
+                    
             font-family: 'Inter';
             font-style: normal;
             font-weight: 400;
             font-size: 11.5px;
             line-height: 20px;
-            /* identical to box height, or 167% */
+            /* or 167% */
             display: flex;
             align-items: center;
-
-            color: #666666;
-        }
-        .hello > article .content > p:nth-child(5){
-            position: absolute;
-            width: 75.2px;
-            height: 14px;
-            left: 40px;
-            top: 491px;
-
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 11.5px;
-            line-height: 15px;
-            display: flex;
-            align-items: center;
-
+                    
             color: #91BA15;
+
         }
-        .hello > article .content > p:nth-child(6){
+        .hello > article .content >img{
             position: absolute;
-            width: 573.2px;
-            height: 20px;
+            width: 759px;
+            height: 400px;
             left: 40px;
-            top: 508px;
-
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 11.5px;
-            line-height: 20px;
-            /* identical to box height, or 167% */
-            display: flex;
-            align-items: center;
-
-            color: #666666;
-                
+            top: 200px;
         }
 
 
-        /***********/
-        /* footer */
+
+
+
         footer {
             box-sizing: border-box;
             position: absolute;
@@ -514,39 +480,40 @@
         align-items: center;
         color: #888888;
     }
+        
 </style>
 
   
 </head>
 <body>
     <div id = "wrapper">
-    <%@ include file="/WEB-INF/_header.jsp" %>
+   	<%@ include file="/WEB-INF/_header.jsp" %>
     <div class="subtopbg1">
         <img src="../img/sub_top_bg.jpg" alt="subtopbg1">
         <div class="subtoptit1"><img src="../img/sub_top_tit1.png" alt="subtoptit1"></div>
     </div>
-   
     <main>
         <div class="hello">
             <article>
                 <nav>
-                    <img src="../img/sub_nav_tit_cate1_tit1.png" class="navtit1" alt="">
-                    <div class="smallhello">                
+                    <img src="../img/sub_nav_tit_cate1_tit2.png" class="navtit2" alt="">
+                    <div class="smallhello">  
+                                     
                         <div class="smallhello2">
                             <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
-                          HOME > 팜스토리소개 >&nbsp;<span class="highlight">인사말</span>
+                          HOME > 팜스토리소개 >&nbsp;<span class="highlight">찾아오시는길</span>
                        </div>
                 </nav>
-                <div class="subarticle"><img src="../img/sub_page1_article_txt.png" alt="subarticle"></div>
                 <div class="content">
-                    <p>항상 저희 팜스토리를 성원해 주시고 관심을 가져주시는 모든 분들께 감사의 인사를 드리며 가정에 건강과 행복이 가득하시길 기원합니다.</p>
-                    <p>팜스토리는 신선하고 안전한 먹거리를 건강한 삶 만들기에 기여합니다.<br>
-                    보다 좋은 농산물을 공급하기 위해 화학비료를 쓰지 않는 건강한 흙에서 유기농업으로 정성을 다해 지은 농사를 통해 믿고 먹을 수 있는 먹거리 제공에 앞장섰습니다.</p>
-                    <p>친환경 농장<br></p>
-                    <p>팜스토리는 경기도 이천에 위치한 10만평 규모의 유기농 제배단지입니다.</p>
-                    <p>친환경 캠페인<br></p>
-                    <p>팜스토리는 각종 포장재 사용을 줄임으로써 친환경적인 포장재, 친환경적인 소비문화 정착을 위해 노력합니다.</p>
+                    <p>팜스토리</p>
+                    <p>주소: 경기도 이천시 잘한다구 신난다동123</p>
+                    <p>전화 01-234-5678</p>
+                    <p>찾아오시는길</p>
+                    <img src="../img/image.png" alt="">
+
                 </div>
+             
+            
                 
             </div>
             <aside>
@@ -555,8 +522,8 @@
                     <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
                 <ul class="asidelnb">
                     <li>
-                        <li class="lnb1"><a href="/farm/introduction/introduction.do"><img id="lnb1" src="../img/sub_cate1_lnb1_ov.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="/farm/introduction/direction.do"><img id="lnb2" src="../img/sub_cate1_lnb2.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb1"><a href="/farm/introduction/introduction.do"><img id="lnb1" src="../img/sub_cate1_lnb1.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb2"><a href="/farm/introduction/direction.do"><img id="lnb2" src="../img/sub_cate1_lnb2_ov.png" alt="cate_lnb2"></a></li>
                         
                     </li>
                 </ul>
@@ -566,8 +533,7 @@
         </div>
 
     </main>
-  
-      <%@ include file="/WEB-INF/_footer.jsp" %>
-  </div>
-  </body>
-  </html>
+   <%@ include file="/WEB-INF/_footer.jsp" %>
+</div>
+</body>
+</html>
