@@ -1,5 +1,6 @@
 package com.farm.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -110,7 +111,37 @@ public int selectCountUser(String type, String value) {
 	}
 	
 	public List<UserDto> selectUsers() {
-		return null;
+		
+		List<UserDto> users = new ArrayList<UserDto>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_USERS);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				UserDto dto = new UserDto();
+				dto.setUid(rs.getString(1));
+				dto.setPass(rs.getString(2));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRole(rs.getString(7));
+				dto.setZip(rs.getString(8));
+				dto.setAddr1(rs.getString(9));
+				dto.setAddr2(rs.getString(10));
+				dto.setRegip(rs.getString(11));
+				dto.setRegDate(rs.getString(12));
+				dto.setLeaveDate(rs.getString(13));
+				users.add(dto);
+			}
+			closeAll();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return users;
 	}
 	
 	public void updateUser(UserDto dto) {}

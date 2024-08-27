@@ -229,7 +229,7 @@
                     </li>
                     <li>
                         <p class="tit">회원관리</p>
-                        <a href="#" class="contents">┗ 회원목록</a>
+                        <a href="/farm/admin/user/list.do" class="contents">┗ 회원목록</a>
                     </li>
                 </ul>
             </aside>
