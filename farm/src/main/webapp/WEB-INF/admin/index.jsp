@@ -176,7 +176,11 @@
                     </li>
                     <li>
                         <p class="tit">회원관리</p>
+<<<<<<< HEAD
                         <a href="/farm/admin/user/user.do" class="contents">┗ 회원목록</a>
+=======
+                        <a href="/farm/admin/user/list.do" class="contents">┗ 회원목록</a>
+>>>>>>> 8293f397959d9a6c4c9f6a59fe21c8f69aa58b41
                     </li>
                 </ul>
             </aside>

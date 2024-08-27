@@ -1,17 +1,21 @@
-package com.farm.controller.user;
+package com.farm.controller.admin.user;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.farm.dto.UserDto;
 import com.farm.service.UserService;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/delete.do")
-public class DeleteController extends HttpServlet {
+@WebServlet("/admin/user/list.do")
+public class ListController extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	private UserService service = UserService.INSTANCE;
@@ -19,14 +23,16 @@ public class DeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		// 데이터 수신
-		String uid = req.getParameter("uid");
+		// 데이터 조회
+		List<UserDto> users = service.selectUsers();
 		
-		// 데이터 삭제
-		service.deleteUser(uid);
+		// 공유 참조
+		req.setAttribute("users", users);
 		
-		// 리다이렉트
-		resp.sendRedirect("/farm/user/login.do");
-	
+		
+		
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/admin/user/list.jsp");
+		dispatcher.forward(req, resp);
 	}
 }

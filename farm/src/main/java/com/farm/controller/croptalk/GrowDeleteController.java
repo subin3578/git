@@ -1,8 +1,8 @@
-package com.farm.controller.user;
+package com.farm.controller.croptalk;
 
 import java.io.IOException;
 
-import com.farm.service.UserService;
+import com.farm.service.ArticleService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,23 +10,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/user/delete.do")
-public class DeleteController extends HttpServlet {
+@WebServlet("/croptalk/growdelete.do")
+public class GrowDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private UserService service = UserService.INSTANCE;
 	
+	 private ArticleService service = ArticleService.INSTANCE;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String no = req.getParameter("no");
 		
-		// 데이터 수신
-		String uid = req.getParameter("uid");
+		service.deleteArticle(no);
 		
-		// 데이터 삭제
-		service.deleteUser(uid);
-		
-		// 리다이렉트
-		resp.sendRedirect("/farm/user/login.do");
-	
+		resp.sendRedirect("/farm/croptalk/grow.do");
 	}
+	
 }
+
