@@ -1,11 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<<<<<<< HEAD
 <link rel="stylesheet" href="/farm/css/_header.css">
+=======
+
+<link rel="stylesheet" href="/farm/css/_headercheck.css">
+>>>>>>> b1680bb051557f611e3c4e24871366830121e10c
 <header>
         <div>
             <div class="htop"></div>
             <div class="top">
                 <p>
+<<<<<<< HEAD
                     <a href="/farm/">HOME | </a>
                     
 						<c:if test="${sessUser.uid != null}">
@@ -22,6 +28,24 @@
 						</c:if>
                     <a href="/farm/admin/index.do"> 관리자 | </a>
                     <a href="/farm/community/qna.do"> 고객센터 </a>
+=======
+                    <a href="/farm/">HOME |</a>
+                    
+						<c:if test="${sessUser.uid != null}">
+							<a href="/farm/user/logout.do" class="logout">로그아웃 |</a>
+						</c:if>
+						<c:if test="${sessUser.uid == null}">
+							<a href="/farm/user/login.do">로그인 |</a>
+						</c:if>
+						<c:if test="${sessUser.uid != null}">
+							<a href="#" class="logout">나의정보 |</a>
+						</c:if>
+						<c:if test="${sessUser.uid == null}">
+							<a href="/farm/user/register.do">회원가입 |</a>
+						</c:if>
+                    <a href="/farm/admin/index.do">관리자 |</a>
+                    <a href="/farm/community/qna.do">고객센터</a>
+>>>>>>> b1680bb051557f611e3c4e24871366830121e10c
                 </p>
             </div>
             <div class ="logospace">
