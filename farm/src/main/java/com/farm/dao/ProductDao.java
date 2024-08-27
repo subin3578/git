@@ -36,46 +36,14 @@ public class ProductDao extends DBHelper{
 			psmt.setString(10, dto.getPro_img_desc());
 			psmt.setString(11, dto.getEtc());
 			psmt.executeUpdate();
-			
 			closeAll();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 	}
 	
-	public ProductDto selectProduct(String prodid) {
-		ProductDto dto = null;
-		try {
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
-			psmt.setString(1, prodid);
-	
-			rs = psmt.executeQuery();
-			
-			logger.debug("rs: "+ rs.toString());
-			
-			if(rs.next()) {
-				dto = new ProductDto();
-				dto.setProname(rs.getString(1));
-				dto.setProduct_id(rs.getInt(2));
-				dto.setCategory(rs.getString(3));
-				dto.setPrice(rs.getInt(4));
-				dto.setPoints(rs.getInt(5));
-				dto.setDiscount(rs.getString(6));
-				dto.setDelivery_cost(rs.getString(7));
-				dto.setStock(rs.getInt(1));
-				dto.setPro_img_list(rs.getString(1));
-				dto.setPro_img_inf(rs.getString(1));
-				dto.setPro_img_desc(rs.getString(1));
-				dto.setEtc(rs.getString(1));
-			}
-			
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}finally {
-			closeAll();
-		}
-		return dto;
+	public ProductDto selectProduct() {
+		return null;
 	}
 	
 	public List<ProductDto> selectProducts() {

@@ -299,7 +299,18 @@
                                 <th>${user.regDate}</th>
                                 <th>[상세확인]</th>
                             </tr>
-                            </c:forEach>                  
+                            </c:forEach>
+                            <tr> 
+                                <td><input type="checkbox"></td>
+                                <td>a102</td>
+                                <td>김춘추</td>
+                                <td>춘추102</td>
+                                <td>chunchu102@naver.com</td>
+                                <td>010-1234-1002</td>
+                                <td><input type="text" value="2" class="user_role" readonly></td>
+                                <td>2023-01-01 13:06:14</td>
+                                <td>[상세확인]</td>
+                            </tr>
                         </tbody>    
                     </table>
                  </article>

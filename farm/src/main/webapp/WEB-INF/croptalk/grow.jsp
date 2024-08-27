@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri ="jakarta.tags.core"%>
-    
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -374,36 +370,14 @@
         background-color: white;
         cursor: pointer;
     }
-    
-		.list > .paging {
-		    padding: 20px;
-		    text-align: center;            
-		}
-		.list > .paging > a {
-		    padding: 8px;
-		    background: #f2f2f2;
-		    border: 1px solid #d7d7d7;            
-		}
-		
-		.list > .paging > .current {
-		    border: 1px solid #6d6d6d;
-		    background: #888;
-		    color: #fff;
-		}
-	.btnWrite{
+        .btnWrite{
         width : 54px; 
         height: 35px; 
         background-color: #f3fbda; 
         border : 1px solid 91BA15;
+        float: right;
         margin-top : 10px;
-	    position: absolute;
-	    bottom: 0;
-	    right: 0;
-	    border: 1px solid #d7d7d7;
-	    text-align: center; 
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
+
         color : black;
     }
 
@@ -442,39 +416,25 @@
                                         <th>날짜</th>
                                         <th>조회</th>
                                     </tr>
-				    				<c:forEach var="article" items="${articles}">
-				                        <tr>
-				                        	<!-- 여기 순서번호 수정 해야함 -->
-				                            <td>${pageStartNum}</td>
-				                            <td><a href="/farm/croptalk/growview.do?no=${article.no}">${article.title}</a>&nbsp;[${article.comment}]</td>
-				                            <td>${article.nick}</td>
-				                            <td>${article.rdate}</td>
-				                            <td>${article.hit}</td>
-				                        </tr>
-				                         <c:set var="pageStartNum" value="${pageStartNum-1}"/>
-				                    </c:forEach>
+                                <c:forEach var="article" items="${articles}">
+                                    <tr>
+                                        <!-- 여기 순서번호 수정 해야함 -->
+                                        <td>1</td>
+                                        <td>제 텃밭을 소개합니다.</td>
+                                        <td>황소</td>
+                                        <td>2024/08/26</td>
+                                        <td>0</td>
+                                    </tr>
+                                </c:forEach>
                                 </table>
                             </article>
-                            <div class="paging">
-							    <c:if test="${pageGroup.start > 1}">
-							        <a href="/farm/croptalk/grow.do?pg=${pageGroup.start-1}" class="prev">이전</a>
-							    </c:if>
-							    <c:set var="endPage" value="${pageGroup.end > lastPageNum ? lastPageNum : pageGroup.end}" />
-							    <c:forEach var="i" begin="${pageGroup.start}" end="${endPage}">
-							        <a href="/farm/croptalk/grow.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
-							    </c:forEach>
-							    <c:if test="${endPage < lastPageNum}">
-							        <a href="/farm/croptalk/grow.do?pg=${endPage+1}" class="next">다음</a>
-							    </c:if>
-							</div>
+                            
                             <!-- 글쓰기 버튼 -->
- 							 <a href="/farm/croptalk/growwrite.do" class="btnWrite">글쓰기</a>
- 							
+                            <button type = "button" class = "btnWrite">글쓰기</button>
                         </section>
                    
-                </div> <!-- listcontainer -->
-            </div> <!-- hello -->
-            
+                </div>
+            </div>
             <aside>
                 <div id="asidesize">
                     <div class="asidegate1"><img src="../img/sub_aside_cate3_tit.png" alt=""></div>
@@ -484,12 +444,14 @@
                         <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
                         <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
                         <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
+
                     </li>
                 </ul>
                 </div>
               </aside>
             </article>
         </div>
+
     </main>
      <%@ include file="/WEB-INF/_footer.jsp" %>
   </div>
