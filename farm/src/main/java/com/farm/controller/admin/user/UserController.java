@@ -1,4 +1,4 @@
-package com.farm.controller.admin.product;
+package com.farm.controller.admin.user;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/product/list.do")
-public class ListController extends HttpServlet{
+@WebServlet("/admin/user/user.do")
+public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -18,10 +18,7 @@ public class ListController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/admin/product/list.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/admin/user/userList.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
-	
-	}
-	
+}

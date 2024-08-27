@@ -15,8 +15,8 @@ public enum ProductService {
 		dao.insertProduct(dto);
 	}
 	
-	public ProductDto selectProduct() {
-		return null;
+	public ProductDto selectProduct(String prodid) {
+		return dao.selectProduct(prodid);
 	}
 	
 	public List<ProductDto> selectProducts() {

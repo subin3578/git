@@ -1501,79 +1501,88 @@
                         <li><p class="point">포인트</p></li>
                         <li><p class="price">판매가격</p></li>
                     </ul>
-                    <div class="cartbody">
-                        <div class="cartbody2">
-                            <img src="/farm/img/market_item1.jpg" class="image1" alt="">
-                            <p class="kind1">과일</p>
-                            <p class="Productname1">사과 500g</p>
-                            <p class="discount1">10%</p>
-                            <p class="point1">400p</p>
-                            <div class="price1">
-                                <div><p class="price1_1">3,600원</p></div>
-                                <div>
-                                    <p class="price1_2">4,000 </p>
-                                    <p>원</p>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <div class="cartbody3">
-                            <img src="/farm/img/market_item2.jpg" class="image2" alt="">
-                            <p class="kind2">과일</p>
-                            <p class="Productname2">전남 완주 배 5kg</p>
-                            <p class="discount2">10%</p>
-                            <p class="point2">400p</p>
-                            <div class="price2">
-                                <div><p class="price2_1">3,600원</p></div>
-                                <div>
-                                    <p class="price2_2">4,000</p>
-                                    <p>원</p>
-                                </div>    
-                            
-                            </div>
-                        </div>
-                        <div class="cartbody4">
-                            <img src="/farm/img/market_item3.jpg" class="image3" alt="">
-                            <p class="kind3">과일</p>
-                            <p class="Productname3">방울토마토</p>
-                            <p class="discount3">10%</p>
-                            <p class="point3">400p</p>
-                            <div class="price3">
-                                <div><p class="price3_1">3,600원</p></div>
-                                <div>
-                                    <p class="price3_2">4,000</p>
-                                    <p>원</p>
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="cartbody5">
-                            <img src="/farm/img/market_item6.jpg" class="image4" >
-                            <p class="kind4">곡류</p>
-                            <p class="Productname4">무농약 현미</p>
-                            <p class="discount4">10%</p>
-                            <p class="point4">400p</p>
-                            <div class="price4">
-                                <div><p class="price4_1">3,600원</p></div>
-                                <div>
-                                    <p class="price4_2">4,000</p>
-                                    <p>원</p>
-                                </div>    
-                            </div>
-                        </div>
-                        <div class="cartbody6">
-                            <img src="/farm/img/market_item7.jpg" class="image5" alt="">
-                            <p class="kind5">야채</p>
-                            <p class="Productname5">팜스토리 하루야채 샐러드</p>
-                            <p class="discount5">10%</p>
-                            <p class="point5">400p</p>
-                            <div class="price5">
-                                <div><p class="price5_1">3,600원</p></div>
-                                <div>
-                                    <p class="price5_2">4,000</p>
-                                    <p>원</p>
-                                </div>    
-                            </div>
-                        </div>          
+                    <a href="/farm/market/view.do?prodid=3">
+	                    <div class="cartbody">
+	                        <div class="cartbody2">
+	                            <img src="/farm/img/market_item1.jpg" class="image1" alt="">
+	                            <p class="kind1">과일</p>
+	                            <p class="Productname1">사과 500g</p>
+	                            <p class="discount1">10%</p>
+	                            <p class="point1">400p</p>
+	                            <div class="price1">
+	                                <div><p class="price1_1">3,600원</p></div>
+	                                <div>
+	                                    <p class="price1_2">4,000 </p>
+	                                    <p>원</p>
+	                                </div>
+	                            </div>
+	                    </div>
+	                </a>
+	                <a href="#">
+	                    <div class="cartbody3">
+	                        <img src="/farm/img/market_item2.jpg" class="image2" alt="">
+	                        <p class="kind2">과일</p>
+	                        <p class="Productname2">전남 완주 배 5kg</p>
+	                        <p class="discount2">10%</p>
+	                        <p class="point2">400p</p>
+	                        <div class="price2">
+	                            <div><p class="price2_1">3,600원</p></div>
+	                            <div>
+	                                <p class="price2_2">4,000</p>
+	                                <p>원</p>
+	                            </div>    
+	                        
+	                        </div>
+	                    </div>
+                	</a>
+                	<a href="#">
+	                    <div class="cartbody4">
+	                        <img src="/farm/img/market_item3.jpg" class="image3" alt="">
+	                        <p class="kind3">과일</p>
+	                        <p class="Productname3">방울토마토</p>
+	                        <p class="discount3">10%</p>
+	                        <p class="point3">400p</p>
+	                        <div class="price3">
+	                            <div><p class="price3_1">3,600원</p></div>
+	                            <div>
+	                                <p class="price3_2">4,000</p>
+	                                <p>원</p>
+	                            </div>    
+	                        </div>
+	                    </div>
+	               	</a>
+	                <a href="#">
+	                    <div class="cartbody5">
+	                        <img src="/farm/img/market_item6.jpg" class="image4" >
+	                        <p class="kind4">곡류</p>
+	                        <p class="Productname4">무농약 현미</p>
+	                        <p class="discount4">10%</p>
+	                        <p class="point4">400p</p>
+	                        <div class="price4">
+	                            <div><p class="price4_1">3,600원</p></div>
+	                            <div>
+	                                <p class="price4_2">4,000</p>
+	                                <p>원</p>
+	                            </div>    
+	                        </div>
+	                    </div>
+	               	</a>
+	                <a href="#">	                    
+	                    <div class="cartbody6">
+	                        <img src="/farm/img/market_item7.jpg" class="image5" alt="">
+	                        <p class="kind5">야채</p>
+	                        <p class="Productname5">팜스토리 하루야채 샐러드</p>
+	                        <p class="discount5">10%</p>
+	                        <p class="point5">400p</p>
+	                        <div class="price5">
+	                            <div><p class="price5_1">3,600원</p></div>
+	                            <div>
+	                                <p class="price5_2">4,000</p>
+	                                <p>원</p>
+	                            </div>    
+	                        </div>
+	                    </div>  
+	               	</a>        
                 </section>
                 <a href="#" class="next"><&nbsp;<span style="text-decoration: underline;" class="highlight3" >[1]</span>&nbsp;[2] [3] [4] [5] ></a>
                

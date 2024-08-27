@@ -2,6 +2,8 @@ package com.farm.util;
 
 public class SQL{
 	
+	public static final String SELECT_PRODUCT = "SELECT * FROM `product` WHERE product_id = ?";
+	
 	public static final String INSERT_PRODUCT = "INSERT INTO product "
 	        + "(proname, category, price, points, discount, delivery_cost, stock, pro_img_list, pro_img_inf, pro_img_desc, etc) "
 	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -38,4 +40,8 @@ public class SQL{
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
+
+	//order
+	public static final String SELECT_ORDERS = "select * from `order`";
+	
 }
