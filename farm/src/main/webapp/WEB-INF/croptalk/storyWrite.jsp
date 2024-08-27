@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri ="jakarta.tags.core"%>
-    
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>croptalk/grow.html</title>
-
+    <title>storyWrite</title>
     <style>
     
     * {
@@ -71,7 +67,7 @@
             display: flex;
             align-items: center;
             color: #111111;
-        }
+            z-index : 2;        }
         .logospace > p{
             position: absolute;
             width: 237.15px;
@@ -149,12 +145,68 @@
 
 
         main {
-            position: absolute;
-            height: 650px;
+            display : flex;
+            height: 750px;
+            position : relative;
             left: 470px;
             right: 470px;
             top: 326px;
         }
+        /* 여기 추가함*/
+        
+    /* 글쓰기 */
+.write {
+
+}
+.write > article > p {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.write table {
+    width: 100%;
+    border-top: 2px solid #111;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 6px;
+}
+
+.write table th {
+    padding: 12px;
+    border-top: 1px solid #d1dee2;
+    border-bottom: 1px solid #d1dee2;
+    background: #e5ecef;
+    color: #383838;
+}
+.write table td {    
+    padding: 12px 6px;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;    
+}
+.write table td:nth-child(1) {
+    width: 100px;
+    background: #f5f8f9;
+    text-align: center;
+}
+.write table input {
+    width: 100%;
+    height: 24px;
+    border: 0;    
+}
+.write table textarea {
+    width: 100%;
+    height: 280px;
+    resize: none;    
+    border: 0;
+}
+.write form > div {
+    margin-top: 10px;
+    text-align: right;
+}
+    
+
+        
         main > aside{
             position: absolute;
             width: 176px;
@@ -374,46 +426,148 @@
         background-color: white;
         cursor: pointer;
     }
-    
-		.list > .paging {
-		    padding: 20px;
-		    text-align: center;            
-		}
-		.list > .paging > a {
-		    padding: 8px;
-		    background: #f2f2f2;
-		    border: 1px solid #d7d7d7;            
-		}
-		
-		.list > .paging > .current {
-		    border: 1px solid #6d6d6d;
-		    background: #888;
-		    color: #fff;
-		}
-	.btnWrite{
+        .btnWrite{
         width : 54px; 
         height: 35px; 
         background-color: #f3fbda; 
         border : 1px solid 91BA15;
+        float: right;
         margin-top : 10px;
-	    position: absolute;
-	    bottom: 0;
-	    right: 0;
-	    border: 1px solid #d7d7d7;
-	    text-align: center; 
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
+
         color : black;
     }
 
+        /***********/
+        /* footer */
+        footer {
+            box-sizing: border-box;
+            position: absolute;
+            margin : 0 auto;
+            width : 980px;
+            height: 130px;
+            top: 1100px;
+            left: 470px;
+            right: 470px;
+            background-color: #F8F9FA; /* 배경색 추가 */
+            
+            overflow :hidden
+        }/* Footer */
+
+
+        footer > div {
+            float :right;
+            width :100%;
+            height : 120px;
+            
+        }
+    
+        /*************************************************************************************************/
+        /*************************************************************************************************/
+        /********************************************** main  ********************************************/
+        /*************************************************************************************************/
+        /*************************************************************************************************/
+        
+
+    /*footer topline*/
+      footer .fline{
+        position: relative;
+        width: 980px;
+        background-repeat: repeat;
+        height: 10px;
+        background: url('../img/footer_top_line.png');
+      }
+      /*info3개 들음*/
+      #Paragraph {
+        float : right;
+        margin-top:10px;
+        position: relative;
+        height: 95px;
+        width : 75%;
+        overflow : hidden;
+       }
+        .info1{
+
+        position: absolute;
+        left : 0;
+        top : 0;
+         width: 709.68px;
+         height: 54px;
+         font-family: 'Inter', sans-serif;
+         font-style: normal;
+         font-weight: 300;
+         font-size: 10.6562px;
+         line-height: 18px;
+         display: flex;
+         align-items: center;
+         color: #585858;
+        }
+    
+         footer > div .info2{
+            position: absolute;
+            left : 0;
+            bottom : 25px;
+        width: 275.5px;
+        height: 14px;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 11.25px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        color: #888888;
+    }
+        footer > div .info3{
+            position: absolute;
+            right : 5px;
+            bottom : 0;
+        width: 89.18px;
+        height: 14px;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10.6875px;
+        line-height: 13px;
+        display: flex;
+        align-items: center;
+        color: #888888;
+    }
 </style>
 
-  
 </head>
 <body>
     <div id = "wrapper">
-    <%@ include file="/WEB-INF/_header.jsp" %>
+    <header>
+        <div>
+            <div class="htop"></div>
+            <div class="top">
+               
+            </div>
+            <div class ="logospace">
+                <a href="#" class="logo"> <img src="../img/logo.png" alt="logo" class = "headlog"></a>
+                <a href="#" class="sale"><img src="../img/head_txt_img.png" alt="htxt" class = "headlog2"></a>
+                <p>
+                    <a href="farmstory/user/index.do">HOME | </a>
+                    <a href="#">로그인 | </a>
+                    <a href="#"> 회원가입 | </a>
+                    <a href="#"> 고객센터 </a>
+                </p>
+            </div>
+        </div>
+        <div>
+            <nav>
+                <ul class = "navfont">
+            <div><img src="../img/head_menu_badge.png" class = "badge"></div>          
+                 
+                    <li><a href="#">팜스토리소개</a></li>
+                    <li><a href="#">장보기</a></li>
+                    <li><a href="#">농작물이야기</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div class="subtopbg1">
         <img src="../img/sub_top_bg.jpg" alt="subtopbg1">
         <div class="subtoptit1"><img src="../img/sub_top_tit3.png" alt="subtoptit1"></div>
@@ -423,75 +577,86 @@
         <div class="hello">
             <article>
                 <nav>
-                    <img src="../img/sub_nav_tit_cate3_tit2.png" class="navtit1" alt="">
+                    <img src="../img/sub_nav_tit_cate3_tit1.png" class="navtit1" alt="">
                     <div class="smallhello">                
                         <div class="smallhello2">
                             <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
-                          HOME > 농작물이야기 >&nbsp;<span class="highlight">텃밭가꾸기</span>
+                          HOME > 농작물이야기 >&nbsp;<span class="highlight">농작물이야기</span>
                        </div>
                 </nav>
-               
-                <div id="listcontainer">
-                        <section class="list">
-                            <article>
-                                <table border= "0">
-                                    <tr>
-                                        <th>번호</th>
-                                        <th>제목</th>
-                                        <th>글쓴이</th>
-                                        <th>날짜</th>
-                                        <th>조회</th>
-                                    </tr>
-				    				<c:forEach var="article" items="${articles}">
-				                        <tr>
-				                        	<!-- 여기 순서번호 수정 해야함 -->
-				                            <td>${pageStartNum}</td>
-				                            <td><a href="/farm/croptalk/growview.do?no=${article.no}">${article.title}</a>&nbsp;[${article.comment}]</td>
-				                            <td>${article.nick}</td>
-				                            <td>${article.rdate}</td>
-				                            <td>${article.hit}</td>
-				                        </tr>
-				                         <c:set var="pageStartNum" value="${pageStartNum-1}"/>
-				                    </c:forEach>
-                                </table>
-                            </article>
-                            <div class="paging">
-							    <c:if test="${pageGroup.start > 1}">
-							        <a href="/farm/croptalk/grow.do?pg=${pageGroup.start-1}" class="prev">이전</a>
-							    </c:if>
-							    <c:set var="endPage" value="${pageGroup.end > lastPageNum ? lastPageNum : pageGroup.end}" />
-							    <c:forEach var="i" begin="${pageGroup.start}" end="${endPage}">
-							        <a href="/farm/croptalk/grow.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
-							    </c:forEach>
-							    <c:if test="${endPage < lastPageNum}">
-							        <a href="/farm/croptalk/grow.do?pg=${endPage+1}" class="next">다음</a>
-							    </c:if>
-							</div>
-                            <!-- 글쓰기 버튼 -->
- 							 <a href="/farm/croptalk/growwrite.do" class="btnWrite">글쓰기</a>
- 							
-                        </section>
-                   
-                </div> <!-- listcontainer -->
-            </div> <!-- hello -->
-            
+             
+            </div>
             <aside>
                 <div id="asidesize">
                     <div class="asidegate1"><img src="../img/sub_aside_cate3_tit.png" alt=""></div>
                     <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
                 <ul class="asidelnb">
                     <li>
-                        <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1_ov.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2.png" alt="cate_lnb2"></a></li>
                         <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
+
                     </li>
                 </ul>
                 </div>
               </aside>
             </article>
         </div>
+          <section class="write">
+                <h3>글쓰기</h3>
+                <article>
+                    <form action="/farmstory/article/storywrite.do" method = "post" enctype = "multipart/form-data">
+                    	<input type ="hidden" name ="writer">
+                        <table>
+                            <tr>
+                                <td>제목</td>
+                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                            </tr>
+                            <tr>
+                                <td>내용</td>
+                                <td>
+                                    <textarea name="content"></textarea>                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>첨부
+								<p style="margin-bottom : 6px"> 
+									최대 2개 파일 첨부 가능, 각 파일당 최대 10MB 업로드
+								</p>
+                                </td>
+                                <td><input type="file" name="file1"/></td>
+                                <td><input type="file" name="file1"/></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <a href="#" class="btnCancel">취소</a>
+                            <input type="submit"  class="btnWrite" value="작성완료">
+                        </div>
+                    </form>
+                </article>
+            </section>
     </main>
-     <%@ include file="/WEB-INF/_footer.jsp" %>
+  
+      <footer>
+          <div>
+              <div class="fline"></div>
+              <img src="../img/footer_logo.png" class="logo" alt="farmstoryfootlogo">
+              <div id="Paragraph">
+                  <p class="info1">
+                      (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-부산진구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호
+                      등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br>
+                      대표 : 김철학 / 이메일 : chhak0503@gmail.com / 전화 : 01) 234-5678 / 부산광역시 부산진구 부전동 123
+                  </p>
+                  <p class="info2">
+                      copyrightⓒ 김철학(개발에반하다.) All rights reserved.
+                  </p>
+                  <p class="info3">
+                      farmstory ver1.0.1
+                  </p>
+              </div>
+          </div>
+        
+      </footer>
   </div>
   </body>
   </html>
