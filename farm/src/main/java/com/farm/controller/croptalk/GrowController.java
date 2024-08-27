@@ -24,11 +24,12 @@ public class GrowController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String pg = req.getParameter("pg");
+		String type = req.getParameter("type");
 		// 현재 페이지 번호 구하기
 		int currentPage = service.getCurrentPage(pg);
 		
 		// 전체 게시물 갯수 구하기
-		int total = service.selectCountTotal();
+		int total = service.selectCountTotal(2);
 		
 		// 마지막 페이지 번호 구하기
 		int lastPageNum = service.getLastPageNum(total);
@@ -43,7 +44,7 @@ public class GrowController extends HttpServlet {
 		int pageStartNum = service.getPageStartNum(total, currentPage);
 		
 		// 데이터 조회
-		List<ArticleDto> articles = service.selectArticles(start);
+		List<ArticleDto> articles = service.selectArticles(start,2);
 		
 		// 공유 참조
 		req.setAttribute("articles", articles);

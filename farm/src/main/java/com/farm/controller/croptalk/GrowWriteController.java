@@ -32,6 +32,7 @@ public class GrowWriteController extends HttpServlet {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String writer = req.getParameter("writer");
+		String type = req.getParameter("type");
 		String regip = req.getRemoteAddr();
 		
 
@@ -39,6 +40,7 @@ public class GrowWriteController extends HttpServlet {
 		dto.setTitle(title);
 		dto.setContent(content);
 		dto.setWriter(writer);
+		dto.setType(Integer.parseInt(type));
 		dto.setRegip(regip);
 		
 		// 글 등록

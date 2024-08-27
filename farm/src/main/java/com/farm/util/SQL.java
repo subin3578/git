@@ -38,22 +38,28 @@ public class SQL{
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
-	public static final String DELETE_ARTICLE_GROW = "delete from `articlegrow` where `no`=?";
-	public static final String SELECT_COUNT_TOTAL_GROW= "SELECT COUNT(*) FROM `articlegrow`";
-	public static final String SELECT_ARTICLE_GROW = "SELECT * FROM `articlegrow` "
+	public static final String DELETE_ARTICLE= "delete from `article` where `no`=?";
+	public static final String SELECT_COUNT_TOTAL= "SELECT COUNT(*) FROM `article`"
+													+" where `type` = ?";
+
+	public static final String SELECT_ARTICLE= "SELECT a.*, b.nick FROM `article` AS a "
+												+ "JOIN `user` AS b ON a.writer = b.uid "
 												+ "WHERE `no`=?";
 	
-	public static final String SELECT_ARTICLES_GROW = "SELECT a.*, b.nick  from `articlegrow` AS a "
+	public static final String SELECT_ARTICLES= "SELECT a.*, b.nick  from `article` AS a "
 												+ "JOIN `user` AS b ON a.writer = b.uid "
+												+ "where a.type = ? " 
 												+ "ORDER BY `no` DESC "
 												+ "LIMIT ?, 10";
+												
 	
 	
-	public static final String SELECT_MAX_NO_GROW = "select MAX(`no`) from `articlegrow`";
+	public static final String SELECT_MAX_NO = "select MAX(`no`) from `article`";
 
-	public static final String INSERT_ARTICLE_GROW = "insert into `articlegrow` set "
+	public static final String INSERT_ARTICLE = "insert into `article` set "
 												+ "`title`=?,"
 												+ "`content`=?,"
+												+ "`type`=?, "
 												+ "`writer`=?,"
 												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
