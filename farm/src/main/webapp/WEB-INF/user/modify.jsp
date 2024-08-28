@@ -311,6 +311,28 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!--  <script src="/farm/js/validation.js"></script> -->
 	<script src="/farm/js/postcode.js"></script>
+	<script>
+		window.onload = function() {
+			
+			const btnWithdraw = document.getElementsByClassName('btnWithdraw')[0];
+			
+			btnWithdraw.addEventListener('click', function() {
+				
+				console.log('click!');
+				
+				const result = confirm('정말 탈퇴하시겠습니까?');
+
+                if(result){
+                    alert('탈퇴 처리되었습니다.');
+                    return true;
+                }else{
+                    alert('탈퇴 처리가 실패했습니다.');
+                    return false;
+                }
+				
+			})
+		}
+	</script>
   
 </head>
 <body>
@@ -394,11 +416,11 @@
                 </table>
     
                 <div>
-                    <a href="/farm/user/index.do" class="btnCancel">취소</a>
+                    <a href="/farm/index.do" class="btnCancel">취소</a>
                     <input type="submit"   class="btnModify" value="수정"/>
                 </div>    
             </form>
-            <a href="#">탈퇴하기</a>
+            <a href="/farm/user/delete.do?uid=${user.uid}" class="btnWithdraw">탈퇴하기</a>
         </section>
     </main>
 	<%@ include file="/WEB-INF/_footer.jsp" %>
