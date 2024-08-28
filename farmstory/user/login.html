@@ -143,17 +143,14 @@
 
         }
 
-        main > section{
-            position: absolute;
-            width: 980px;
-            height: 400px;
-            left: 470px;
-            right: 470px;
-            top: 142px;
-
-            background: #EFEFEF;
-
+        main {
+            height: 585px;
+            border: 1px solid red;
         }
+
+        /*main > section {
+            background-color: #efefef;
+        }*/
 
         main > section .loginform{
             position: absolute;
@@ -173,25 +170,75 @@
             text-align: center;
                     
             color: #000000;
-
-
         }
 
+        /* 로그인 */
+    .login {
+        width: 360px;
+        height: auto;
+        border: 1px solid #cfded8;
+        box-sizing: border-box;
+        margin: 187.5px auto;
+    }
+
+    .login > form {
+        
+    }
+    .login table {
+        margin-left: 52px;
+        margin-top: 30px;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    .login table tr {}
+    .login table tr > td {}
+    .login table img {width: 20px;}
+    .login table input {
+        width: 162px;
+        height: 22px;
+        margin-left: 6px;
+        margin-bottom: 4px;
+        border: 1px solid #e4eaec;
+        background-color: #f7f7f7;
+    }
+
+    .login .btnLogin {
+        position: absolute;
+        right: 50px;
+        top: 30px;
+        width: 60px;
+        height: 52px;
+        background-color: #fdfdfd;
+        border: 1px solid #bebebe;
+    }
+
+    .login > div {
+        width: 100%;
+        height: 104px;
+        background: #f5f6fa;
+        border-top: 1px solid #cfded8;
+        margin-top: 20px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .login > div > p {
+        margin: 10px 0;
+    }
+
+    .login > div > a {
+        float: right;
+    }
 
         /***********/
         /* footer */
         footer {
-         /* Footer */
-
-        box-sizing: border-box;
-                
-        position: absolute;
-        height: 120px;
-        left: 470px;
-        right: 470px;
-        top: 552px;
-
-
+            box-sizing: border-box;
+            margin : 0 auto;
+            width : 980px;
+            height: auto;
+            background-color: #F8F9FA; /* 배경색 추가 */
+            overflow :hidden
         }
 
         footer > div {
@@ -304,10 +351,30 @@
     </header>
    
     <main>
-        <section>
-            <div><p class="loginform">로그인 폼 화면 출력 예정</p></div>
+       
+        <section class="login">
+            <form action="/jboard/user/login.do" method="POST">
+                <table border="0">
+                    <tr>
+                        <td><img src="/jboard/images/login_ico_id.png" alt="아이디"></td>
+                        <td><input type="text" name="uid" placeholder="아이디 입력"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/jboard/images/login_ico_pw.png" alt="비밀번호"></td>
+                        <td><input type="password" name="pass" placeholder="비밀번호 입력"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="로그인" class="btnLogin">
+            </form>
+            <div>
+                <h3>회원 로그인 안내</h3>
+                <p>
+                    아직 회원이 아니시면 회원으로 가입하세요.
+                </p>
+                <a href="/jboard/user/terms.do">회원가입</a>
+            </div>
         </section>
-
+       
     </main>
   
       <footer>
