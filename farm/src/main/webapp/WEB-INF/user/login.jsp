@@ -154,63 +154,63 @@
 
         }
 
-        .login {
-    position: relative;
-    width: 360px;
-    height: auto;
-    border: 1px solid #cfded8;
-    box-sizing: border-box;
-    margin: 220px auto;
-}
-
-.login > form {
-    
-}
-.login table {
-    margin-left: 52px;
-    margin-top: 30px;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-.login table tr {}
-.login table tr > td {}
-.login table img {width: 20px;}
-.login table input {
-    width: 162px;
-    height: 22px;
-    margin-left: 6px;
-    margin-bottom: 4px;
-    border: 1px solid #e4eaec;
-    background-color: #f7f7f7;
-}
-
-.login .btnLogin {
-    position: absolute;
-    right: 50px;
-    top: 30px;
-    width: 60px;
-    height: 52px;
-    background-color: #fdfdfd;
-    border: 1px solid #bebebe;
-}
-
-.login > div {
-    width: 100%;
-    height: 104px;
-    background: #f5f6fa;
-    border-top: 1px solid #cfded8;
-    margin-top: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.login > div > p {
-    margin: 10px 0;
-}
-
-.login > div > a {
-    float: right;
-}
+		.login {
+		    position: relative;
+		    width: 360px;
+		    height: auto;
+		    border: 1px solid #cfded8;
+		    box-sizing: border-box;
+		    margin: 220px auto;
+		}
+		
+		.login > form {
+		    
+		}
+		.login table {
+		    margin-left: 52px;
+		    margin-top: 30px;
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		}
+		.login table tr {}
+		.login table tr > td {}
+		.login table img {width: 20px;}
+		.login table input {
+		    width: 162px;
+		    height: 22px;
+		    margin-left: 6px;
+		    margin-bottom: 4px;
+		    border: 1px solid #e4eaec;
+		    background-color: #f7f7f7;
+		}
+		
+		.login .btnLogin {
+		    position: absolute;
+		    right: 50px;
+		    top: 30px;
+		    width: 60px;
+		    height: 52px;
+		    background-color: #fdfdfd;
+		    border: 1px solid #bebebe;
+		}
+		
+		.login > div {
+		    width: 100%;
+		    height: 104px;
+		    background: #f5f6fa;
+		    border-top: 1px solid #cfded8;
+		    margin-top: 20px;
+		    padding: 20px;
+		    box-sizing: border-box;
+		}
+		
+		.login > div > p {
+		    margin: 10px 0;
+		}
+		
+		.login > div > a {
+		    float: right;
+		}
 
 
         /***********/
@@ -370,6 +370,8 @@
                 아직 회원이 아니시면 회원으로 가입하세요.
             </p>
             <a href="/farm/user/terms.do">회원가입</a>
+            <a href="#">비밀번호 찾기 |&nbsp;</a>
+            <a href="/farm/user/findID.do">아이디 찾기 |&nbsp;</a>
         </div>
     </section>
     </main>
