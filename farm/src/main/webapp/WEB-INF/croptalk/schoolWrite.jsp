@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +68,7 @@
             display: flex;
             align-items: center;
             color: #111111;
-        }
+            z-index : 2;        }
         .logospace > p{
             position: absolute;
             width: 237.15px;
@@ -145,64 +146,328 @@
 
 
         main {
-            position: absolute;
-            height: 650px;
+            display : flex;
+            height: 750px;
+            position : relative;
             left: 470px;
             right: 470px;
             top: 326px;
         }
-        .write {
-		    position: relative;
-		    width: 720px;
-		    margin: 130px auto;
-		}
-		
-		.write > article > p {
-		    position: absolute;
-		    right: 0;
-		    top: 0;
-		}
-		
-		.write table {
-		    width: 100%;
-		    border-top: 2px solid #111;
-		    border-collapse: collapse;
-		    border-spacing: 0;
-		    margin-top: 6px;
-		}
-		
-		.write table th {
-		    padding: 12px;
-		    border-top: 1px solid #d1dee2;
-		    border-bottom: 1px solid #d1dee2;
-		    background: #e5ecef;
-		    color: #383838;
-		}
-		.write table td {    
-		    padding: 12px 6px;
-		    border-top: 1px solid #e9e9e9;
-		    border-bottom: 1px solid #e9e9e9;    
-		}
-		.write table td:nth-child(1) {
-		    width: 100px;
-		    background: #f5f8f9;
-		    text-align: center;
-		}
-		.write table input {
-		    width: 100%;
-		    height: 24px;
-		    border: 0;    
-		}
-		.write table textarea {
-		    width: 100%;
-		    height: 280px;
-		    resize: none;    
-		    border: 0;
-		}
-		.write form > div {
-		    margin-top: 10px;
-		    text-align: right;
-		}
+        /* 여기 추가함*/
+        
+    .middle {
+        display :flex;
+        position : relative;
+        
+        left : 680px;
+        bottom : 325px;
+    }
+        .write{
+        position: absolute;
+        height: 47px;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        }
+        .write div{
+        position: absolute;
+        width: 36.2px;
+        height: 14px;
+        left: 0px;
+        top: 21px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+
+        color: #000000;
+
+
+        }
+
+        .middle > article{
+        position: absolute;
+        width: 780px;
+        height: 407.5px;
+        left: 0px;
+        top: calc(50% - 407.5px/2 + 0.25px);
+        border-top: 1px solid #000000;
+
+        }
+
+        .middle > article > .row1{
+            position: absolute;
+            width: 780px;
+            height: 51.5px;
+            left: 0px;
+            top: calc(50% - 51.5px/2 - 178px);
+
+        }
+        .middle > article > .row2{
+            position: absolute;
+            width: 780px;
+            height: 305px;
+            left: 0px;
+            top: calc(50% - 305px/2 + 0.25px);
+
+        }
+        .middle > article > .row3{
+            position: absolute;
+            width: 780px;
+            height: 51px;
+            left: 0px;
+            top: calc(50% - 51px/2 + 178.25px);
+
+
+
+        }
+        .middle > article > .row1 > .label1{
+            box-sizing: border-box;
+            position: absolute;
+            width: 112px;
+            height: 51.5px;
+            left: 0px;
+            top: calc(50% - 51.5px/2);
+            background: #F5F8F9;
+            border-bottom: 1px solid #E9E9E9;
+            
+        }
+
+        .middle > article > .row2 > .label2{
+            box-sizing: border-box;
+            position: absolute;
+            width: 112px;
+            height: 305px;
+            left: 0px;
+            top: calc(50% - 305px/2);
+            background: #F5F8F9;
+            border-bottom: 1px solid #E9E9E9;
+
+        }
+        .middle > article > .row3 > .label3{
+            box-sizing: border-box;
+            position: absolute;
+            width: 112px;
+            height: 51px;
+            left: 0px;
+            top: calc(50% - 51px/2);
+            background: #F5F8F9;
+            border-bottom: 1px solid #E9E9E9;
+
+
+        }
+        .middle > article > .row1 > .label1 > div{
+            position: absolute;
+            width: 24.2px;
+            height: 14px;
+            left: 44px;
+            top: calc(50% - 14px/2 - 0.25px);
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            color: #000000;
+
+        }
+
+        .middle > article > .row2 > .label2 > div{
+            position: absolute;
+            width: 24.2px;
+            height: 14px;
+            left: 44px;
+            top: calc(50% - 14px/2 - 0.25px);
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            color: #000000;
+
+            
+        }
+
+        .middle > article > .row3 > .label3 > div{
+            position: absolute;
+            width: 24.2px;
+            height: 14px;
+            left: 44px;
+            top: calc(50% - 14px/2 - 0.25px);
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            color: #000000;
+
+        }
+
+        .middle > article > .row1 > .label1-1 {
+            box-sizing: border-box;
+            position: absolute;
+            width: 688px;
+            height: 51.5px;
+            left: 112px;
+            top: calc(50% - 51.5px/2);
+        
+            border-bottom: 1px solid #E9E9E9;
+        }
+        .middle > article > .row2 > .label2-1{
+            box-sizing: border-box;
+            position: absolute;
+            width: 688px;
+            height: 305px;
+            left: 112px;
+            top: calc(50% - 305px/2);
+
+            border-bottom: 1px solid #E9E9E9;
+
+        }
+        .middle > article > .row2 > .label2-1 > textarea {
+            resize: none;
+        }
+        .middle > article > .row3 > .label3-1{
+            box-sizing: border-box;
+                    
+            position: absolute;
+            width: 688px;
+            height: 51px;
+            left: 112px;
+            top: calc(50% - 51px/2);
+                    
+            border-bottom: 1px solid #E9E9E9;
+
+
+        }
+        
+
+        .middle > article > .row1 > .label1-1 input[type="text"] {
+            position: absolute;
+            width: 400px;
+            height: 24px;
+            left: 10px;
+            top: 14px;  
+            border: white;
+            background: #FFFFFF;
+        }
+
+        .middle > article > .row2 > .label2-1 textarea{
+            position: absolute;
+            height: 280px;
+            left: 10px;
+            right: 10px;
+            top: 10.5px;
+            background: #FFFFFF;
+            border: white;
+        }
+
+        .middle > article > .row3 > .label3-1 input[type="file"]{
+            position: absolute;
+            width: 400px;
+            height: 24px;
+            left: 10px;
+            top: 13.5px;
+
+        }
+
+
+
+
+
+
+
+
+
+
+        .buttons button {
+        border: none;
+         cursor: pointer;
+        }
+
+        .buttons .cancel {
+        box-sizing: border-box;
+        position: absolute;
+        width: 42px;
+        height: 35px;
+        left: 652px;
+        top: 240px;
+        border: 1px solid #BEBEBE;
+
+        }
+        .buttons .cancel > div{
+        position: absolute;
+        width: 24.2px;
+        height: 14px;
+        left: 9px;
+        top: 10px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #111111;
+
+
+        }
+
+        .buttons .submit {
+        box-sizing: border-box;
+                
+        position: absolute;
+        width: 66px;
+        height: 35px;
+        left: 700px;
+        top: 240px;
+                
+        background: #4B545E;
+        border: 1px solid #3B3C3F;
+        }
+        .buttons .submit > div{
+        position: absolute;
+        width: 48.2px;
+        height: 14px;
+        left: 9px;
+        top: 10px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #FFFFFF;
+
+
+        }
+
+        
         main > aside{
             position: absolute;
             width: 176px;
@@ -312,7 +577,7 @@
 
         .hello > article > nav .navtit1{
             position: absolute;
-            width: 131px;
+            width: 87px;
             height: 24px;
             left: 0px;
             bottom: 5px;
@@ -384,7 +649,54 @@
             color: #000000;
                     
         }
+        #listcontainer{
+            width : 100%;
+            height: 500px;
+            position : absolute;
+            top : 80px;
+        }
+        .list table {
+            width: 95%;
+            border-top: 2px solid #111;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin-top:10px;
+            margin-left : 40px 
+        }
 
+        .list table th {
+            padding: 12px;
+            border-top: 1px solid #d1dee2;
+            border-bottom: 1px solid #d1dee2;
+            background: #dae9ad;
+            color: #383838;
+        }
+        .list table td {    
+            padding: 12px 6px;
+            border-top: 1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;    
+        }
+        .list table tr > td:nth-child(1) {width:  50px; text-align: center; background: #fff;}
+        .list table tr > td:nth-child(2) {width:  auto; text-align: left;}
+        .list table tr > td:nth-child(3) {width: 100px; text-align: center;}
+        .list table tr > td:nth-child(4) {width: 100px; text-align: center;}
+        .list table tr > td:nth-child(5) {width:  50px; text-align: center;}
+        button {
+        justify-content: center;
+        border: 1px solid #BEBEBE;
+        background-color: white;
+        cursor: pointer;
+    }
+        .btnWrite{
+        width : 54px; 
+        height: 35px; 
+        background-color: #f3fbda; 
+        border : 1px solid 91BA15;
+        float: right;
+        margin-top : 10px;
+
+        color : black;
+    }
 
         /***********/
         /* footer */
@@ -394,7 +706,7 @@
             margin : 0 auto;
             width : 980px;
             height: 130px;
-            top: 1010px;
+            top: 1100px;
             left: 470px;
             right: 470px;
             background-color: #F8F9FA; /* 배경색 추가 */
@@ -481,44 +793,43 @@
         align-items: center;
         color: #888888;
     }
-
-    
-    	.btnCancel{
-        width : 53px; 
-        height: 34px; 
-        background-color: #f3fbda; 
-        margin-top : 10px;
-	    position: absolute;
-	    bottom: -50px;
-	    right: 85px;
-	    border: 1px solid #d7d7d7;
-	    text-align: center; 
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-        color : black;
-    }
-        .btnWrite {
-   		 width : 55px; 
-        height: 36px; 
-        background-color: #f3fbda; 
-        margin-top : 10px;
-	    position: absolute;
-	    bottom: -50px;
-	    right: 20px;
-	    border: 1px solid #d7d7d7;
-	    text-align: center; 
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-        color : black;
 </style>
 
   
 </head>
 <body>
     <div id = "wrapper">
-    <%@ include file="/WEB-INF/_header.jsp" %>
+    <header>
+        <div>
+            <div class="htop"></div>
+            <div class="top">
+               
+            </div>
+            <div class ="logospace">
+                <a href="#" class="logo"> <img src="../img/logo.png" alt="logo" class = "headlog"></a>
+                <a href="#" class="sale"><img src="../img/head_txt_img.png" alt="htxt" class = "headlog2"></a>
+                <p>
+                    <a href="farmstory/user/index.do">HOME | </a>
+                    <a href="#">로그인 | </a>
+                    <a href="#"> 회원가입 | </a>
+                    <a href="#"> 고객센터 </a>
+                </p>
+            </div>
+        </div>
+        <div>
+            <nav>
+                <ul class = "navfont">
+            <div><img src="../img/head_menu_badge.png" class = "badge"></div>          
+                 
+                    <li><a href="#">팜스토리소개</a></li>
+                    <li><a href="#">장보기</a></li>
+                    <li><a href="#">농작물이야기</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <div class="subtopbg1">
         <img src="../img/sub_top_bg.jpg" alt="subtopbg1">
         <div class="subtoptit1"><img src="../img/sub_top_tit3.png" alt="subtoptit1"></div>
@@ -535,32 +846,7 @@
                           HOME > 농작물이야기 >&nbsp;<span class="highlight">귀농학교</span>
                        </div>
                 </nav>
-                <section class="write">
-                    <article>
-                        <form action="/farm/croptalk/schoolwrite.do" method ="post">
-                        	<input type ="hidden" name ="writer" value="${sessUser.uid}">
-                        	<input type ="hidden" name ="type" value="3">
-                        <table>
-                            <tr>
-                                <td>제목</td>
-                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
-                            </tr>
-                            <tr>
-                                <td>내용</td>
-                                <td>
-                                    <textarea name="content"></textarea>                                
-                                </td>
-                            </tr>
-                        </table>
-                        <div>
-                            <a href="/farm/croptalk/schoolWrite.do" class="btnCancel">취소</a>
-                            <input type="submit"  class="btnWrite" value="작성완료">
-                        </div>
-                    </form>
-                    </article>
-                </section>
-               
-                
+             
             </div>
             <aside>
                 <div id="asidesize">
@@ -568,9 +854,9 @@
                     <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
                 <ul class="asidelnb">
                     <li>
-                      <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
-                       <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2.png" alt="cate_lnb2"></a></li>
-                       <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3_ov.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3_ov.png" alt="cate_lnb2"></a></li>
 
                     </li>
                 </ul>
@@ -578,7 +864,27 @@
               </aside>
             </article>
         </div>
-
+        <section class="middle">
+            <div class="write"><div>글쓰기</div></div>
+            <article>
+                <div class="row1">
+                    <div class="label1"><div>제목</div></div>
+                    <div class="label1-1"><input type="text" placeholder="제목을 입력하세요."></div>
+                </div>
+                <div class="row2">
+                    <div class="label2"><div>내용</div></div>
+                    <div class="label2-1"><textarea placeholder=""></textarea></div>
+                </div>
+                <div class="row3">
+                    <div class="label3"><div>파일</div></div>
+                    <div class="label3-1"><input type="file"></div>
+                </div>
+            </article>
+            <div class="buttons">
+                <button class="cancel"><div>취소</div></button>
+                <button class="submit"><div>작성완료</div></button>
+            </div>
+        </section>
     </main>
   
       <footer>
