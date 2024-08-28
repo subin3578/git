@@ -79,6 +79,10 @@ public enum UserService {
 		return dao.selectUser(uid, pass);
 	}
 	
+	public UserDto findID(String name, String hp) {
+		return dao.findID(name, hp);
+	}
+	
 	public UserDto selectUser(String uid) {
 		return dao.selectUser2(uid);
 	}

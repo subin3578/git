@@ -18,7 +18,7 @@
 							<a href="/farm/user/modify.do?uid=${sessUser.uid}" class="logout" >나의정보 | </a>
 						</c:if>
 						<c:if test="${sessUser.uid == null}">
-							<a href="/farm/user/register.do"> 회원가입 | </a>
+							<a href="/farm/user/terms.do"> 회원가입 | </a>
 						</c:if>
                     <a href="/farm/admin/index.do"> 관리자 | </a>
                     <a href="/farm/community/qna.do"> 고객센터 </a>
