@@ -1,9 +1,11 @@
 package com.farm.dto;
 
+import java.util.List;
+
 public class ProductDto {
 
-	private int product_id;
     private String proname;
+    private int prodid;
     private String category;
     private int price;
     private int points;
@@ -14,13 +16,37 @@ public class ProductDto {
     private String pro_img_inf;
     private String pro_img_desc;
     private String etc;
+    private String rdate;
 
-    public int getProduct_id() {
-		return product_id;
+    private List<FileDto> files;
+    
+    
+    
+    
+    public List<FileDto> getFiles() {
+		return files;
 	}
 
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setFiles(List<FileDto> files) {
+		this.files = files;
+	}
+
+	public String getRdate() {
+		return rdate;
+	}
+
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
+	}
+
+
+
+	public int getProdid() {
+		return prodid;
+	}
+
+	public void setProdid(int prodid) {
+		this.prodid = prodid;
 	}
 
 	public String getProname() {
@@ -125,14 +151,15 @@ public class ProductDto {
         this.etc = etc;
     }
 
-   
+    
 
-    @Override
+
+	@Override
 	public String toString() {
-		return "ProductDto [product_id=" + product_id + ", proname=" + proname + ", category=" + category + ", price="
-				+ price + ", points=" + points + ", discount=" + discount + ", delivery_cost=" + delivery_cost
-				+ ", stock=" + stock + ", pro_img_list=" + pro_img_list + ", pro_img_inf=" + pro_img_inf
-				+ ", pro_img_desc=" + pro_img_desc + ", etc=" + etc + "]";
+		return "ProductDto [proname=" + proname + ", prodid=" + prodid + ", category=" + category + ", price=" + price
+				+ ", points=" + points + ", discount=" + discount + ", delivery_cost=" + delivery_cost + ", stock="
+				+ stock + ", pro_img_list=" + pro_img_list + ", pro_img_inf=" + pro_img_inf + ", pro_img_desc="
+				+ pro_img_desc + ", etc=" + etc + ", rdate=" + rdate + ", files=" + files + "]";
 	}
 
 	// 숫자 변환과 null 체크를 위한 메서드

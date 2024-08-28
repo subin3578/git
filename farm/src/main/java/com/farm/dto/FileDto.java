@@ -3,7 +3,7 @@ package com.farm.dto;
 public class FileDto {
 	
 	private int id;
-	private int product_id;
+	private int prodid;
 	private int fno;
 	private String oName;
 	private String sName;
@@ -15,11 +15,12 @@ public class FileDto {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getProduct_id() {
-		return product_id;
+
+	public int getProdid() {
+		return prodid;
 	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProdid(int prodid) {
+		this.prodid = prodid;
 	}
 	public int getFno() {
 		return fno;
@@ -45,14 +46,13 @@ public class FileDto {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	
 	@Override
 	public String toString() {
-		return "FileDto [id=" + id + ", product_id=" + product_id + ", fno=" + fno + ", oName=" + oName + ", sName="
-				+ sName + ", rdate=" + rdate + "]";
+		return "FileDto [id=" + id + ", prodid=" + prodid + ", fno=" + fno + ", oName=" + oName + ", sName=" + sName
+				+ ", rdate=" + rdate + "]";
 	}
 	
-	
+
 	
 	
 
