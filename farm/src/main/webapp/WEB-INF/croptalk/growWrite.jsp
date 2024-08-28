@@ -539,7 +539,6 @@
                     <article>
                         <form action="/farm/croptalk/growwrite.do" method ="post">
                         	<input type ="hidden" name ="writer" value="${sessUser.uid}">
-                        	<input type ="hidden" name ="type" value="2">
                         <table>
                             <tr>
                                 <td>제목</td>
@@ -568,9 +567,9 @@
                     <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
                 <ul class="asidelnb">
                     <li>
-                         <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
-                        <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb1"><a href="#"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb2"><a href="#"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb3"><a href="#"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
 
                     </li>
                 </ul>
