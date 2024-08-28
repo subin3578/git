@@ -8,6 +8,9 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
+<<<<<<< HEAD
     
+=======
+>>>>>>> 6423f48e3e2dd37aa3388a379a5b5eacaefb5edf
   </welcome-file-list>
 </web-app>

@@ -528,7 +528,11 @@
                                 </table>
                                 <div>
       							 <c:if test="${sessUser.uid == articleDto.writer}">            
+<<<<<<< HEAD
                                     <a href="/farm/croptalk/schooldelete.do?no=${articleDto.no}" class="btnDelete">삭제</a>
+=======
+                                    <a href="/farm/croptalk/growdelete.do?no=${articleDto.no}" class="btnDelete">삭제</a>
+>>>>>>> 6423f48e3e2dd37aa3388a379a5b5eacaefb5edf
                                     <a href="#" class="btnModify">수정</a>
                                   </c:if>
                                     <a href="/farm/croptalk/school.do"class="btnList">목록</a>
