@@ -317,7 +317,38 @@
 </head>
 <body>
     <div id = "wrapper">
-   	<%@ include file="/WEB-INF/_header.jsp" %>
+    <header>
+        <div>
+            <div class="htop"></div>
+            <div class="top">
+               
+            </div>
+            <div class ="logospace">
+                <a href="#" class="logo"> <img src="/farm/img/logo.png" alt="logo" class = "headlog"></a>
+                <a href="#" class="sale"><img src="/farm/img/head_txt_img.png" alt="htxt" class = "headlog2"></a>
+                <p>
+                    <a href="#">HOME | </a>
+                    <a href="#">로그인 | </a>
+                    <a href="#"> 회원가입 | </a>
+                    <a href="#"> 고객센터 </a>
+                </p>
+            </div>
+        </div>
+        <div>
+            <nav>
+                <ul class = "navfont">
+            <div><img src="/farm/img/head_menu_badge.png" class = "badge"></div>          
+                 
+                    <li><a href="#">팜스토리소개</a></li>
+                    <li><a href="#">장보기</a></li>
+                    <li><a href="#">농작물이야기</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+   
     <main>
         <section class="login">
         <form action="/farm/user/login.do" method="post">

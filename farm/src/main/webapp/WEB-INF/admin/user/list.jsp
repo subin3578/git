@@ -286,20 +286,20 @@
                                 <th>확인</th>
                             </tr>
                         </thead>    
-                        <tbody>      
-                            <c:forEach var="user" items="${users}">    
-                            <tr>
-                                <th><input type="checkbox"></th>
-                                <th>${user.uid}</th>
-                                <th>${user.name}</th>
-                                <th>${user.nick}</th>  
-                                <th>${user.email}</th>  
-                                <th>${user.hp}</th>
-                                <th>${user.role}</th>
-                                <th>${user.regDate}</th>
-                                <th>[상세확인]</th>
+                        <tbody>
+                        <c:forEach var="user" items="${users}">
+                            <tr> 
+                                <td><input type="checkbox"></td>
+                                <td>${user.uid}</td>
+                                <td>${user.name}</td>
+                                <td>${user.nick}</td>
+                                <td>${user.email}</td>
+                                <td>${user.hp}</td>
+                                <td><input type="text" value="${user.role}" class="user_role" readonly></td>
+                                <td>${user.regDate}</td>
+                                <td>[상세확인]</td>
                             </tr>
-                            </c:forEach>                  
+                            </c:forEach>
                         </tbody>    
                     </table>
                  </article>

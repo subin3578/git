@@ -509,15 +509,12 @@
                 <section class="write">
                     <article>
                            <form action="/farm/article/write.do" method = "post" enctype = "multipart/form-data">
-                               
+                                <input type ="hidden" name ="writer" value="ghkdtnqls95">
                                 <table>
                                     <tr>
                                         <td>제목</td>
                                         <td><input type="text" name="title" value="${articleDto.title}" readonly/></td>
                                     </tr>
-                                    <tr>
-                                    	<td>작성자</td>
-                                    	 <td><input type ="text" name ="nick" value="${articleDto.nick}" readonly></td>
                                     <tr>
                                         <td>내용</td>
                                         <td>
@@ -544,9 +541,9 @@
                     <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
                 <ul class="asidelnb">
                     <li>
-                        <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
-                        <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb1"><a href="#"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb2"><a href="#"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb3"><a href="#"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
 
                     </li>
                 </ul>
