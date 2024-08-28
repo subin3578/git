@@ -63,7 +63,7 @@ public class ProductDao extends DBHelper{
 		try {
 			conn = getConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_COUNT_TOTAL);
+			rs = stmt.executeQuery(SQL.SELECT_COUNT_TOTAL_PRO);
 			if(rs.next()) {
 				total = rs.getInt(1);
 			}
