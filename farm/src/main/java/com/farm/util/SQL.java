@@ -37,19 +37,6 @@ public class SQL{
 											+ "where `uid`=?";
 	
 	public static final String SELECT_USERS = "SELECT * FROM `user`";
-	public static final String DELETE_USER = "delete from `user` where `uid`=?";
-	public static final String UPDATE_USER = "update `user` set "
-											+ "`pass`=?,"
-											+ "`name`=?,"
-											+ "`nick`=?,"
-											+ "`email`=?,"
-											+ "`hp`=?,"
-											+ "`zip`=?,"
-											+ "`addr1`=?,"
-											+ "`addr2`=? "
-											+ "where `uid`=?";
-	
-	public static final String SELECT_USERS = "SELECT * FROM `user`";
 	public static final String SELECT_USER2 = "select * from `user` where `uid`=?";
 	public static final String SELECT_USER = "select * from `user` where `uid`=? and `pass`=SHA2(?, 256)";
 	public static final String INSERT_USER = "insert into user set "
