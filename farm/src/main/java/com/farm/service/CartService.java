@@ -31,8 +31,8 @@ public enum CartService {
 	public void updateCart(CartDto dto) {
 		
 	}
-	public void deleteCart(String uid){
-		
+	public int deleteCart(String cartNo){
+		return dao.deleteCart(cartNo);
 	}
 	
 	

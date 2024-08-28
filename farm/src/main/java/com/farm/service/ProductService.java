@@ -68,12 +68,15 @@ public enum ProductService {
 		return dao.selectCountTotal();
 	}
 	
-	public ProductDto selectProduct(int prodid) {
+	public ProductDto selectProduct(String prodid) {
 		return dao.selectProduct(prodid);
 	}
 	
 	public List<ProductDto> selectProducts(int start) {
-		return dao.selectProducts(start);
+		return dao.selectProducts(start );
+	}
+	public List<ProductDto> selectProducts2() {
+		return dao.selectProducts2();
 	}
 	public void updateProduct(ProductDto dto) {
 		

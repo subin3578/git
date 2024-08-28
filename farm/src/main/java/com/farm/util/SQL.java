@@ -11,6 +11,9 @@ public class SQL{
 	public static final String SELECT_PRODUCTS = "select * from `product`"
 			+ "order by product_id desc "
 			+ "limit ?, 5";
+	
+	public static final String SELECT_PRODUCTS2 = "select * from `product`";
+			
 	public static final String SELECT_MAX_PRODUCT_ID ="select MAX(`product_id`) from `product`";	
 	
 	public static final String DELETE_PRODUCT = "DELETE FROM `product` WHERE product_id = ?";
@@ -74,8 +77,9 @@ public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = 
 	public static final String INSERT_CART = "INSERT INTO `cart` "
 			+ "(`prodId`,`uid`,`quantity`,`price`) "
 			+ "values (?,?,?,?)";
-	
+	public static final String DELETE_CART= "delete from `cart` where `cartNo`=?";
 
+	
 	//order
 	public static final String SELECT_ORDERS = "select * from `order`";
 

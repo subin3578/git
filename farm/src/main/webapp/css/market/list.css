@@ -18,64 +18,29 @@
         margin: 0 auto;
 
         }
-  /*top line*/
-        header .htop{
+
+
+        .subtopbg1{
             position: absolute;
             width: 980px;
-            height: 14px;
-            top: 1px;
-            background-repeat: repeat;
-            height: 10px;
-            background-image: url('../img/head_top_line.png')
-        }
-        
+            height: 184px;
+            left: 470px;
+            right: 470px;
+            top: 145px;
 
-        /**********************/
-        /*font 설정*/
-        .shopping .price::after {
-            content : '원';
-            color : black; font-size : 15px;
-        }
-        .shopping .category {
-            font-size : 15px;
-        }
-        .shopping .itemname {
-            font-size : 15px;
-        }
-        .shopping .price {
-            font-size : 15px;
-            font-weight : bold;
-        }
-        
-        /**할인 전 가격 10%↓ 앞 뒤 다르게 설정**/
-        .shopping article > .originprice {
-            bottom : 37px;
-            left :28%;
-            font-size : 12px;
-        }
+            background: url(.jpg);
 
-        .originprice::before {
-            content: '4,000'; /* 4000 표시 */
-            color: black; /* 검은색 */
-            text-decoration: line-through; /* 4000 위에 줄 긋기 */
-            margin-right: 5px; /* 10%↓와의 간격 */
-        }
 
-        .originprice::after {
-            content: '10%↓'; /* 10%↓ 표시 */
-            color: red; /* 빨간색 */
         }
-       .banner{
-        width: 980px;
-        height: 184px;
-        background-image: url("/farm/img/sub_top_bg.jpg");
-        position: relative;
-        }
-        
-        .banner>img{
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
+        .subtopbg1 .subtoptit1{
+            position: absolute;
+            width: 326px;
+            height: 37px;
+            left: 10px;
+            bottom: 10px;
+                    
+            background: url(.png);
+
         }
 
 
@@ -86,7 +51,6 @@
             left: 470px;
             right: 470px;
             top: 326px;
-            border: 1px solid red;
         }
         main > aside{
             position: absolute;
@@ -1477,4 +1441,8 @@
 
         }
 
-
+		.page_box{
+			width: 300px;
+            height: 130px;
+			border: 1px solid red;
+		}

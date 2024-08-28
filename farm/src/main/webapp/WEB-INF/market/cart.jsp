@@ -1,5 +1,13 @@
+<%@page import="com.farm.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<% 
+    UserDto sessUser = (UserDto) session.getAttribute("sessUser"); 
+    if (sessUser == null) {
+        response.sendRedirect("/farm/user/login.do");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +17,85 @@
     <link rel="stylesheet" href="/farm/css/market/cart.css">
     <script>
     
+    function deleteSelected() {
+        // 선택된 체크박스들 가져오기
+        var checkboxes = document.querySelectorAll('input[name="prodid"]:checked');
+        var ids = [];
+        checkboxes.forEach(function(checkbox) {
+            ids.push(checkbox.value);
+        });
+        if (ids.length > 0) {
+            // IDs를 쿼리 문자열로 변환
+            var query = ids.join(',');
+            // 삭제 요청을 서버로 전송
+            window.location.href = '/farm/admin/product/delete.do?ids=' + encodeURIComponent(query);
+        } else {
+            alert('삭제할 항목을 선택하세요.');
+        }
+    }
     function toggleCheckboxes(source) {
-        var checkboxes = document.querySelectorAll('input[name="product_id"]');
+        var checkboxes = document.querySelectorAll('input[name="prodid"]');
         checkboxes.forEach(function(checkbox) {
             checkbox.checked = source.checked;
         });
     }
     
+ 
+    function updateTotalQuantity() {
+        const quantities = document.querySelectorAll('.quantity1');
+        let totalQuantity = 0;
+
+        quantities.forEach(function(quantity) {
+            totalQuantity += parseInt(quantity.textContent, 10);
+        });
+
+        document.querySelector('.bdquantity1_2').textContent = totalQuantity;
+    }
+    
+    function subTotalPrice() {
+    	const quantities = document.querySelectorAll('.quantity1'); // 모든 수량 요소 가져오기
+        const prices = document.querySelectorAll('.price1'); // 모든 가격 요소 가져오기
+        let totalSubtotalPrice = 0;
+
+        quantities.forEach(function(quantity, index) {
+            const price = prices[index].textContent.replace(/,/g, ''); // 해당하는 가격 요소 가져오기
+            const quantityValue = parseInt(quantity.textContent, 10);
+            const priceValue = parseInt(price, 10);
+
+            totalSubtotalPrice += priceValue * quantityValue; // 모든 항목의 소계를 더함
+        });
+        
+        document.querySelector('.subtotal1_1').textContent = totalSubtotalPrice.toLocaleString() + "원";
+    }
+
+    window.onload = function() {
+        updateTotalQuantity();
+        subTotalPrice();
+        
+        const deleteselect = document.getElementsByClassName('deleteselect')[0];
+        
+        deleteselect.addEventListener('click', function(e){
+        	
+        	alert('');
+        	fetch('/farm/market/cartdelete.do?cartno='+no)
+				.then(resp => resp.json())
+				.then(data => {
+					console.log(data);
+					
+					if(data.result > 0){
+						// 동적 삭제 처리
+						article.remove();
+						
+					}else{
+						alert('장바구니 삭제 실패');
+					}
+					
+				})
+				.catch(err => {
+					console.log(err);
+				});
+        });
+    };
     </script>
 </head>
 <body>
