@@ -309,7 +309,7 @@
 </style>
 	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="/farm/js/validation.js"></script>
+	<!--  <script src="/farm/js/validation.js"></script> -->
 	<script src="/farm/js/postcode.js"></script>
   
 </head>
@@ -324,21 +324,21 @@
                     <tr>
                         <td>아이디</td>
                         <td>
-                            <input type="text" name="uid" value="${user.uid}"/>
-                            <button type="button" id="btnCheckUid"><img src="../img/chk_id.gif" alt=""></button>
+                            <input type="text" name="uid" value="${user.uid}" readonly/>
+                            <button type="button" id="btnCheckUid"></button>
                             <span class="resultId"></span>
                         </td>
                     </tr>
                     <tr>
                         <td>비밀번호</td>
                         <td>
-                            <input type="password" name="pass1" placeholder="비밀번호 입력"/>                            
+                            <input type="password" name="pass1" value="${user.pass}"/>                            
                         </td>
                     </tr>
                     <tr>
                         <td>비밀번호 확인</td>
                         <td>
-                            <input type="password" name="pass2" placeholder="비밀번호 확인 입력"/>
+                            <input type="password" name="pass2" value="${user.pass}"/>
                             <span class="resultPass"></span>
                         </td>
                     </tr>
@@ -391,15 +391,14 @@
                             </div>
                         </td>
                     </tr>
-                    
                 </table>
     
                 <div>
                     <a href="/farm/user/index.do" class="btnCancel">취소</a>
                     <input type="submit"   class="btnModify" value="수정"/>
-                    <input type="submit"   class="btnSubmit" value="탈퇴하기"/>
                 </div>    
             </form>
+            <a href="#">탈퇴하기</a>
         </section>
     </main>
 	<%@ include file="/WEB-INF/_footer.jsp" %>

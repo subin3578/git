@@ -42,7 +42,7 @@ public class ModifyController extends HttpServlet {
 		
 		// 데이터 수신
 		String uid = req.getParameter("uid");
-		String pass = req.getParameter("pass");
+		String pass = req.getParameter("pass1");
 		String name = req.getParameter("name");
 		String nick = req.getParameter("nick");
 		String email = req.getParameter("email");
@@ -67,7 +67,7 @@ public class ModifyController extends HttpServlet {
 		service.updateUser(dto);
 		
 		// 리다이렉트
-		resp.sendRedirect("/farm/login.do");
+		resp.sendRedirect("/farm/index.do");
 	
 	}
 	
