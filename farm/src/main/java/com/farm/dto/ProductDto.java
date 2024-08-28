@@ -2,6 +2,7 @@ package com.farm.dto;
 
 public class ProductDto {
 
+	private int product_id;
     private String proname;
     private String category;
     private int price;
@@ -14,7 +15,15 @@ public class ProductDto {
     private String pro_img_desc;
     private String etc;
 
-    public String getProname() {
+    public int getProduct_id() {
+		return product_id;
+	}
+
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+
+	public String getProname() {
         return proname;
     }
 
@@ -116,15 +125,17 @@ public class ProductDto {
         this.etc = etc;
     }
 
-    @Override
-    public String toString() {
-        return "ProductsDto [proname=" + proname + ", category=" + category + ", price=" + price + ", points=" + points
-                + ", discount=" + discount + ", delivery_cost=" + delivery_cost + ", stock=" + stock + ", pro_img_list="
-                + pro_img_list + ", pro_img_inf=" + pro_img_inf + ", pro_img_desc=" + pro_img_desc + ", etc=" + etc
-                + "]";
-    }
+   
 
-    // 숫자 변환과 null 체크를 위한 메서드
+    @Override
+	public String toString() {
+		return "ProductDto [product_id=" + product_id + ", proname=" + proname + ", category=" + category + ", price="
+				+ price + ", points=" + points + ", discount=" + discount + ", delivery_cost=" + delivery_cost
+				+ ", stock=" + stock + ", pro_img_list=" + pro_img_list + ", pro_img_inf=" + pro_img_inf
+				+ ", pro_img_desc=" + pro_img_desc + ", etc=" + etc + "]";
+	}
+
+	// 숫자 변환과 null 체크를 위한 메서드
     private int parseIntOrDefault(String value, int defaultValue) {
         if (value == null || value.isEmpty()) {
             return defaultValue;

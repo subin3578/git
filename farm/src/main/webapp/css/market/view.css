@@ -49,7 +49,7 @@
         aside{
         width: 176px;
         height: 650px;
-        background-image: url("../img/sub_aside_bg_line.png");
+        background-image: url("/farm/img/sub_aside_bg_line.png");
         background-repeat: no-repeat;
         background-position: right;
         box-sizing: border-box;
@@ -173,11 +173,13 @@
             display: inline-block;
             color: #ffffff;
             text-align: center;
+            border: none;
         }
         .cart{
             background-color:#769B0A;
             position: relative;
             left: 1px;
+           
         }
         .buy{
             background-color: #960D1A;

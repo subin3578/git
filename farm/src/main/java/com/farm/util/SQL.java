@@ -2,6 +2,8 @@ package com.farm.util;
 
 public class SQL{
 	
+	public static final String SELECT_PRODUCT = "SELECT * FROM `product` WHERE product_id = ?";
+	
 	public static final String INSERT_PRODUCT = "INSERT INTO product "
 	        + "(proname, category, price, points, discount, delivery_cost, stock, pro_img_list, pro_img_inf, pro_img_desc, etc) "
 	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -51,4 +53,48 @@ public class SQL{
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
+
+
+	//cart
+	
+	public static final String SELECT_CART = "SELECT b.category , b.proname, a.quantity, a.discount, a.`point`, a.price "
+			+ "from `cart` AS a "
+			+ "JOIN `product` AS b ON a.prodId = b.product_id "
+			+ "where `uid` =?";
+	
+	public static final String INSERT_CART = "INSERT INTO `cart` "
+			+ "(`prodId`,`uid`,`quantity`,`price`) "
+			+ "values (?,?,?,?)";
+	
+
+	//order
+	public static final String SELECT_ORDERS = "select * from `order`";
+
+	public static final String DELETE_ARTICLE= "delete from `article` where `no`=?";
+	public static final String SELECT_COUNT_TOTAL= "SELECT COUNT(*) FROM `article`"
+													+" where `type` = ?";
+
+	public static final String SELECT_ARTICLE= "SELECT a.*, b.nick FROM `article` AS a "
+												+ "JOIN `user` AS b ON a.writer = b.uid "
+												+ "WHERE `no`=?";
+	
+	public static final String SELECT_ARTICLES= "SELECT a.*, b.nick  from `article` AS a "
+												+ "JOIN `user` AS b ON a.writer = b.uid "
+												+ "where a.type = ? " 
+												+ "ORDER BY `no` DESC "
+												+ "LIMIT ?, 10";
+												
+	
+	
+	public static final String SELECT_MAX_NO = "select MAX(`no`) from `article`";
+
+	public static final String INSERT_ARTICLE = "insert into `article` set "
+												+ "`title`=?,"
+												+ "`content`=?,"
+												+ "`type`=?, "
+												+ "`writer`=?,"
+												+ "`regip`=?,"
+												+ "`rdate`=NOW()";
+
+	
 }

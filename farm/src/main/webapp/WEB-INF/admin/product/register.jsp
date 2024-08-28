@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../_header.jsp" %>
+<%@ include file="/WEB-INF/admin/_header.jsp" %>
 <script src="/farm/js/validation.js"></script>
 
 <style>
@@ -322,16 +322,16 @@
         <ul class="aside-list">
             <li>
                 <p class="tit">상품관리</p>
-                <a href="#" class="contents1">┗ 상품목록</a><br>
-                <a href="#" class="contents2">┗ 상품등록</a>
+                <a href="/farm/admin/product/list.do" class="contents1">┗ 상품목록</a><br>
+                <a href="/farm/admin/product/register.do" class="contents2">┗ 상품등록</a>
             </li>
             <li>
                 <p class="tit">주문관리</p>
-                <a href="#" class="contents">┗ 주문목록</a>
+                <a href="/farm/admin/order/order.do" class="contents">┗ 주문목록</a>
             </li>
             <li>
                 <p class="tit">회원관리</p>
-                <a href="#" class="contents">┗ 회원목록</a>
+                <a href="/farm/admin/user/user.do" class="contents">┗ 회원목록</a>
             </li>
         </ul>
     </aside>
@@ -422,5 +422,4 @@
         </article>
     </section>
 </main>
-
-<%@ include file="../_footer.jsp" %>
+<%@ include file="/WEB-INF/admin/_footer.jsp" %>

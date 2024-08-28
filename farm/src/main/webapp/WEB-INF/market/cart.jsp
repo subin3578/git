@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>market/cart.html</title>
     <link rel="stylesheet" href="/farm/css/market/cart.css">
+    <script>
+    
+    function toggleCheckboxes(source) {
+        var checkboxes = document.querySelectorAll('input[name="product_id"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = source.checked;
+        });
+    }
+    
+    </script>
 </head>
 <body>
     <div id = "wrapper">
@@ -28,61 +39,37 @@
                     </div>
                 </nav>
                 <p>장바구니 전체(10)</p>
-                <section class="cart">
-                    <ul class="carthead">
-                        <li>
-                            <input type="checkbox" id="selectAll">
-                        </li>
-                        <li><p class="image">이미지</p></li>
-                        <li><p class="kind">종류</p></li>
-                        <li><p class="Productname">상품명</p></li>
-                        <li><p class="quantity">수량</p></li>
-                        <li><p class="discount">할인</p></li>
-                        <li><p class="point">포인트</p></li>
-                        <li><p class="price">가격</p></li>
-                        <li><p class="subtotal">소계</p></li>
-                    </ul>
-                    <div class="cartbody">
-                        <div class="cartbody1">
-                            <p>장바구니에 상품이 없습니다</p>
-                        </div>
-                        <div class="cartbody2">
-                            <input type="checkbox" id="select1">
-                            <img src="../img/market_item1.jpg" class="image1" alt="apple">
-                            <p class="kind1">과일</p>
-                            <p class="Productname1">사과 500g</p>
-                            <p class="quantity1">1</p>
-                            <p class="discount1">10%</p>
-                            <p class="point1">40p</p>
-                            <p class="price1">4,000</p>
-                            <div class="subtotal1"><p class="subtotal1_1">3,600원</p></div>
-                        </div>
-                        <div class="cartbody3">
-                            <input type="checkbox" id="select2">
-                            <img src="../img/market_item1.jpg" class="image2" alt="apple">
-                            <p class="kind2">과일</p>
-                            <p class="Productname2">사과 500g</p>
-                            <p class="quantity2">1</p>
-                            <p class="discount2">10%</p>
-                            <p class="point2">40p</p>
-                            <p class="price2">4,000</p>
-                            <div class="subtotal2"><p class="subtotal2_1">3,600원</p></div>
-                        </div>
-                        <div class="cartbody4">
-                            <input type="checkbox" id="select3">
-                            <img src="../img/market_item1.jpg" class="image3" alt="apple">
-                            <p class="kind3">과일</p>
-                            <p class="Productname3">사과 500g</p>
-                            <p class="quantity3">1</p>
-                            <p class="discount3">10%</p>
-                            <p class="point3">40p</p>
-                            <p class="price3">4,000</p>
-                            <div class="subtotal3"><p class="subtotal3_1">3,600원</p></div>
-                        </div>
-
-                        
-                  
-                </section>
+                <table class="cart">
+                    <tr class="carthead">
+                        <th>
+                            <input type="checkbox" id="selectAll" onclick="toggleCheckboxes(this)">
+                        </th>
+                        <th><p class="image">이미지</p></th>
+                        <th><p class="kind">종류</p></th>
+                        <th><p class="Productname">상품명</p></th>
+                        <th><p class="quantity">수량</p></th>
+                        <th><p class="discount">할인</p></th>
+                        <th><p class="point">포인트</p></th>
+                        <th><p class="price">가격</p></th>
+                        <th><p class="subtotal">소계</p></th>
+                    </tr>
+                    <tr class="cartbody1">
+                        <p>장바구니에 상품이 없습니다</p>
+                    </tr>
+                    <c:forEach var="cart" items="${carts}">
+                     <tr class="cartbody2">
+                         <td><input type="checkbox" id="select1"></td>
+                         <td><img src="../img/market_item1.jpg" class="image1" alt="apple"></td>
+                         <td><p class="kind1">${cart.category}</p></td>
+                         <td><p class="Productname1">${cart.proname}</p></td>
+                         <td><p class="quantity1">${cart.quantity}</p></td>
+                         <td><p class="discount1">${cart.discount}</p></td>
+                         <td><p class="point1">${cart.point}</p></td>
+                         <td><p class="price1">${cart.price}</p></td>
+                         <td><p class="subtotal1_1">3,600원</p></td>
+                     </tr>
+                    </c:forEach>
+                </table>
                 <div class="button">
                     <button class="deleteselect"><p>선택삭제</p></button>
                 </div>
