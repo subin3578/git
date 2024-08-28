@@ -83,9 +83,26 @@ public class CartDao extends DBHelper{
 	public void updateCart(CartDto dto) {
 		
 	}
-	public void deleteCart(String uid){
+	
+	public int deleteCart(String cartNo){
 		
+		int result = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_CART);
+			psmt.setString(1, cartNo);
+			
+			result = psmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			closeAll();
+		}
+		return result;
 	}
+	
 	
 
 }
