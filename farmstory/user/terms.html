@@ -176,6 +176,50 @@
 
         }
 
+    /* 약관 */
+    .terms {
+        width: 600px;
+        height: auto;            
+        margin: 60px auto;
+    }
+    .terms > table {
+        width: 100%;
+        height: auto;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-top: 2px solid #111;
+    }
+    .terms > table > caption {
+        text-align: left;
+        font-weight: bold;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+    .terms > table tr {}
+    .terms > table td {
+        padding: 6px;
+        border: 1px solid #e9e9e9;
+        box-sizing: border-box;
+    }
+    .terms > table td > textarea {
+        width: 100%;
+        height: 200px;
+        resize: none;
+        background: #f7f7f7;
+        border: 1px solid #e4eaec;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+    .terms > table td > label {float: right;}
+    .terms > table td > label > input[type=checkbox] {}
+    .terms > table p {
+        float: right;
+    }
+
+    .terms > div {
+        float: right;
+        margin-top: 10px;
+    }
 
         /***********/
         /* footer */
@@ -303,8 +347,33 @@
     </header>
    
     <main>
-        <section>
-            <div><p class="loginform">동의 이용약관 폼 화면 출력 예정</p></div>
+        <section class="terms">
+            <table>
+                <caption>사이트 이용약관</caption>
+                <tr>
+                    <td>
+                        <textarea readonly>약관내용</textarea>
+                        <p>
+                            <label><input type="checkbox" name="chk1"/>동의합니다.</label>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <caption>개인정보 취급방침</caption>
+                <tr>
+                    <td>
+                        <textarea readonly>개인정보 내용</textarea>
+                        <p>
+                            <label><input type="checkbox" name="chk2"/>동의합니다.</label>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <a href="#" class="btnCancel">취소</a>
+                <a href="#" class="btnNext">다음</a>
+            </div>
         </section>
 
     </main>
