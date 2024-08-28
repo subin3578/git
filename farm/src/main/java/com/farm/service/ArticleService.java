@@ -65,15 +65,15 @@ public enum ArticleService {
 	public int insertArticle(ArticleDto dto) {
 		return dao.insertArticle(dto);
 	}
-	public int selectCountTotal() {
-		return dao.selectCountTotal();
+	public int selectCountTotal(int type) {
+		return dao.selectCountTotal(type);
 	}
 	public ArticleDto selectArticle(String no) {
 		return dao.selectArticle(no);
 	}
 	
-	public List<ArticleDto> selectArticles(int start) {
-		return dao.selectArticles(start);
+	public List<ArticleDto> selectArticles(int start, int type) {
+		return dao.selectArticles(start, type);
 	}
 	
 	public void updateArticle(ArticleDto dto) {
