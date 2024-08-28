@@ -1,4 +1,4 @@
-package com.farm.dao;
+package com.farm.dto;
 
 public class PageGroupDto {
 	private int start;

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/admin/_header.jsp" %>
+<%@ include file="../_header.jsp" %>
 <script src="/farm/js/validation.js"></script>
 
 <style>
@@ -240,21 +240,10 @@
         }
 
         input[type="file"] {
-            display: none;
+            
         }
 
-        label[for="product_image_list"],  label[for="product_image_info"], label[for="product_image_desc"]{
-            width: 80px;
-            height: 20px;
-            background-color: #efefef;
-            border: 1px solid #767676;
-            border-radius: 2.5px;
-            cursor: pointer;
-            
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+      
 
         .etc {
             width: 157px;
@@ -327,11 +316,11 @@
             </li>
             <li>
                 <p class="tit">주문관리</p>
-                <a href="/farm/admin/order/order.do" class="contents">┗ 주문목록</a>
+                <a href="#" class="contents">┗ 주문목록</a>
             </li>
             <li>
                 <p class="tit">회원관리</p>
-                <a href="/farm/admin/user/user.do" class="contents">┗ 회원목록</a>
+                <a href="#" class="contents">┗ 회원목록</a>
             </li>
         </ul>
     </aside>
@@ -391,23 +380,18 @@
                             <td class="tdAll">상품이미지</td>
                             <td class="td-file">
                               <p>상품목록 이미지(약 120 x 120)</p>
-                                <label for="product_image_list">
-                                    <input type="file" name="product_image_list" id="product_image_list">
-                                    <span>Choose File</span>
-                                    <input type="text" value="No file chosen" id="input-text">
-                                </label>
+                               
+                                    <input type="file" name="product_image_list" >
+                                  
+                              
                                 <p>기본정보 이미지(약 240 x 240)</p>
-                                <label for="product_image_info">
-                                    <input type="file" name="product_image_info" id="product_image_info">
-                                    <span>Choose File</span>
-                                    <input type="text" value="No file chosen" id="input-text">
-                                </label>
+                               
+                                    <input type="file" name="product_image_info" >
+                                 
                                 <p>상품설명 이미지(약 750 x Auto)</p>
-                                <label for="product_image_desc">
-                                    <input type="file" name="product_image_desc" id="product_image_desc">
-                                    <span>Choose File</span>
-                                    <input type="text" value="No file chosen" id="input-text">
-                                </label>
+                               
+                                    <input type="file" name="product_image_desc" >
+                                  	
                             </td>
                         </tr>
                         <tr>
@@ -422,4 +406,5 @@
         </article>
     </section>
 </main>
-<%@ include file="/WEB-INF/admin/_footer.jsp" %>
+
+<%@ include file="../_footer.jsp" %>
