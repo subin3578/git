@@ -1,1 +1,0 @@
-INDEX VERSION 1.134+C:\Users\lotte4\Desktop\git_team\farm\.metadata\.plugins\org.eclipse.jdt.core
