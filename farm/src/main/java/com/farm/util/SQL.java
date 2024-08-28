@@ -55,6 +55,18 @@ public class SQL{
 											+ "`regDate`=NOW()";
 
 
+	//cart
+	
+	public static final String SELECT_CART = "SELECT b.category , b.proname, a.quantity, a.discount, a.`point`, a.price "
+			+ "from `cart` AS a "
+			+ "JOIN `product` AS b ON a.prodId = b.product_id "
+			+ "where `uid` =?";
+	
+	public static final String INSERT_CART = "INSERT INTO `cart` "
+			+ "(`prodId`,`uid`,`quantity`,`price`) "
+			+ "values (?,?,?,?)";
+	
+
 	//order
 	public static final String SELECT_ORDERS = "select * from `order`";
 

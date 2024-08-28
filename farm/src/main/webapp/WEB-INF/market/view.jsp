@@ -1,5 +1,13 @@
+<%@page import="com.farm.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<% 
+    UserDto sessUser = (UserDto) session.getAttribute("sessUser"); 
+    if (sessUser == null) {
+        response.sendRedirect("/farm/user/login.do");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +16,7 @@
     <title>index.html</title>
     <link rel="stylesheet" href="/farm/css/market/view.css">
 <script>
+
 	function calculateTotal() {
 	    const price = ${product.price}; // 서버에서 렌더링된 상품 가격
 	    const quantity = document.getElementById('quantity').value;
@@ -16,8 +25,43 @@
 	}
 	
 	window.onload = function() {
-	    calculateTotal();  // 초기 로드 시 총액 계산
-	}
+	    calculateTotal();  
+	    
+		const cart = document.getElementsByClassName('cart')[0];
+	
+		cart.onclick = function(e){
+	    	
+	    	
+	    	const prodId = ${product.product_id};
+	    	const uid = "${sessionScope.sessUser.uid}"; 
+	    	const quantity = document.getElementById('quantity').value;
+	    	const price = ${product.price};
+	    	
+	    	console.log("uid "+uid);
+	    	
+	    	
+	    	const formData = new FormData();
+	        formData.append("prodId", prodId); 
+	        formData.append("uid", uid);
+	        formData.append("quantity", quantity);
+	        formData.append("price", price);
+	      
+	
+	        fetch('/farm/market/cart.do', {
+	            method: 'post',
+	            body: formData
+	        })
+	        .then(resp => resp.json())
+	        .then(data => {
+	            console.log(data);
+	            
+	        })
+	        .catch(err => {
+	            console.log(err);
+	        });
+		}
+	   
+	}//onload
 
 </script>
 </head>
@@ -26,23 +70,23 @@
        	<%@ include file="/WEB-INF/_header.jsp" %>
         <main>
             <section class="banner">
-                <img src="../img/sub_top_tit4.png" alt="">
+                <img src="/farm/img/sub_top_tit4.png" alt="">
             </section>
             <section class="content">
                 <aside>
-                    <img src="../img/sub_aside_cate2_tit.png" alt="">
+                    <img src="/farm/img/sub_aside_cate2_tit.png" alt="">
                     <div>
-                        <img src="../img/sub_aside_bg_lnb.png" alt="">
-                        <img src="../img/sub_cate2_lnb1_ov.png" alt="">
+                        <img src="/farm/img/sub_aside_bg_lnb.png" alt="">
+                        <img src="/farm/img/sub_cate2_lnb1_ov.png" alt="">
                     </div>
                 </aside>
                 <article class="veiw">
                     <nav>
                         <div>
-                            <img src="../img/sub_nav_tit_cate2_tit1.png" alt="">
+                            <img src="/farm/img/sub_nav_tit_cate2_tit1.png" alt="">
                             <div class="home_box">
                                 <p>
-                                    <img src="../img/sub_page_nav_ico.gif" alt="">
+                                    <img src="/farm/img/sub_page_nav_ico.gif" alt="">
                                     HOME > 장보기 >
                                     <strong>장보기</strong>
                                 </p>
@@ -52,17 +96,17 @@
                     <div>
                         <h3>기본정보</h3>
                         <div class="table default">
-                            <img src="../img/market_item_thumb.jpg" alt="" class="prod_info_img">
+                            <img src="/farm/img/market_item_thumb.jpg" alt="" class="prod_info_img">
                             <form class="prod_box" name="prod">
                                 <table class="prod_info_box">
-                                    <tbody>
+                                    <tbody></tbody>
                                         <tr>
                                             <th>상품명</th>
                                             <td>${product.proname}</td>
                                         </tr>
                                         <tr>
                                             <th>상품코드</th>
-                                            <td>${product.product_id}</td>
+                                            <td class="prodId">${product.product_id}</td>
                                         </tr>
                                         <tr>
                                             <th>배송비</th>
@@ -72,7 +116,7 @@
                                         </tr>
                                         <tr>
                                             <th>판매가격</th>
-                                            <td>${product.price} 원</td>
+                                            <td class="price">${product.price} 원</td>
                                         </tr>
                                         <tr>
                                             <th>구매수량</th>
@@ -84,17 +128,17 @@
                                             <th>합계</th>
                                             <td class="sum_color" id="total">${product.price} 원</td>
                                         </tr>
-                                    </body>
+                                    </tbody>
                                 </table>
                                 <div class="prod_btn_box">
-                                    <a href="/farm/market/cart.do" class="prod_btn cart" id="btnCart"><p>장바구니</p></a>
+                                    <a href="/farm/market/cart.do?uid=${sessUser.uid}" class="prod_btn cart"><p>장바구니</p></a>
                                     <a href="#" class="prod_btn buy"><p>바로 구매</p></a>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <h3>상품설명</h3>
-                    <img src="../img/market_detail_sample.jpg" alt="" class="detail">
+                    <img src="/farm/img/market_detail_sample.jpg" alt="" class="detail">
                     <div>
                         <h3>배송정보</h3>
                         <p>입금하신 이후 택배송장번호는 SMS(문자서비스)를 통해 고객님께 안내해드립니다.</p>
@@ -121,7 +165,7 @@
                         </table>
                     </div>
                 </article>
-           
+           </section>
         </main>
    <%@ include file="/WEB-INF/_footer.jsp" %>
     </div>

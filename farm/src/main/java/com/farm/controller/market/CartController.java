@@ -1,7 +1,13 @@
 package com.farm.controller.market;
 
 import java.io.IOException;
+import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.farm.dto.CartDto;
+import com.farm.service.CartService;
 import com.farm.service.ProductService;
 
 import jakarta.servlet.RequestDispatcher;
@@ -15,12 +21,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private ProductService service = ProductService.INSTANCE;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private CartService cartService = CartService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		String uid = req.getParameter("uid");
+		List<CartDto> carts = cartService.selectCart(uid);
 		
+		req.setAttribute("carts", carts);
+		logger.debug("carts : "+ carts.toString());
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/market/cart.jsp");
 		dispatcher.forward(req, resp);
@@ -29,6 +40,20 @@ public class CartController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String prodId = req.getParameter("prodId");
+		String uid = req.getParameter("uid");
+		String quantity = req.getParameter("quantity");
+		String price = req.getParameter("price");
+		
+		CartDto dto = new CartDto();
+		dto.setProdId(prodId);
+		dto.setUid(uid);
+		dto.setQuantity(quantity);
+		dto.setPrice(price);
+		
+		cartService.insertCart(dto);
+		
 		
 	
 	}
