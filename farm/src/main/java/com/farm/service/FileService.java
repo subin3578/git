@@ -26,36 +26,62 @@ public enum FileService {
         dao.insertFile(dto);
     }
 
-    public List<FileDto> fileUpload(HttpServletRequest req) {
-        List<FileDto> files = new ArrayList<>();
-        ServletContext ctx = req.getServletContext();
-        String uploadPath = ctx.getRealPath("/uploads");
-        logger.debug("uploadPath : " + uploadPath);
-
-        try {
-            Collection<Part> parts = req.getParts();
-
-            for (Part part : parts) {
-                String ofileName = part.getSubmittedFileName();
-                if (ofileName != null && !ofileName.isEmpty()) {
-                    logger.debug("ofileName : " + ofileName);
-
-                    int idx = ofileName.lastIndexOf(".");
-                    String ext = ofileName.substring(idx);
-                    String sfileName = UUID.randomUUID().toString() + ext;
-                    logger.debug("sfileName : " + sfileName);
-
-                    part.write(uploadPath + File.separator + sfileName);
-
-                    FileDto fileDto = new FileDto();
-                    fileDto.setoName(ofileName);
-                    fileDto.setsName(sfileName);
-                    files.add(fileDto);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return files;
+    public FileDto selectFile(String fno) {
+    	return dao.selectFile(fno);
     }
+    
+    public List<FileDto> selectFiles(){
+    	return dao.selectFiles();
+    }
+    public void updateFile(FileDto dto) {
+    	dao.updateFile(dto);;
+    }
+    public void deleteFile(int fno) {
+    	dao.deleteFile(fno);
+    }
+    public List<FileDto> fileUpload(HttpServletRequest req) {
+		
+		List<FileDto> files = new ArrayList<>();
+		
+		ServletContext ctx = req.getServletContext();
+		String uploadPath = ctx.getRealPath("/upload");
+		logger.debug("uploadPath : " + uploadPath);
+		
+		try {
+			// 첨부 파일 정보객체 가져오기
+			Collection<Part> parts = req.getParts();
+			
+			for(Part part : parts) {
+				// 파일명 추출
+				String ofileName = part.getSubmittedFileName();
+				
+				// 파일을 첨부했으면
+				if(ofileName != null && !ofileName.isEmpty()) {
+					logger.debug("ofileName : " + ofileName);
+					
+					// 고유 파일명 생성
+					int idx = ofileName.lastIndexOf(".");
+					String ext = ofileName.substring(idx);
+					
+					String sfileName = UUID.randomUUID().toString() + ext;
+					logger.debug("sfileName : " + sfileName);
+					
+					// 파일 저장
+					part.write(uploadPath + File.separator + sfileName);
+					
+					// fileDTO 생성 후 리스트 저장
+					FileDto fileDto = new FileDto();
+					fileDto.setoName(ofileName);
+					fileDto.setsName(sfileName);
+					files.add(fileDto);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return files;
+	}
+    
 }

@@ -5,17 +5,26 @@ public class SQL{
 	public static final String SELECT_PRODUCT = "SELECT * FROM `product` WHERE product_id = ?";
 	
 	public static final String INSERT_PRODUCT = "INSERT INTO product "
-	        + "(proname, category, price, points, discount, delivery_cost, stock, pro_img_list, pro_img_inf, pro_img_desc, etc) "
-	        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ "(proname, category, price, points, discount, delivery_cost, stock, pro_img_list, pro_img_inf, pro_img_desc, etc, rdate) "
+			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
+	
+	public static final String SELECT_PRODUCTS = "select * from `product`"
+			+ "order by product_id desc "
+			+ "limit ?, 5";
+	public static final String SELECT_MAX_PRODUCT_ID ="select MAX(`product_id`) from `product`";	
+	
+	public static final String DELETE_PRODUCT = "DELETE FROM `product` WHERE product_id = ?";
+	
+	public static final String SELECT_COUNT_TOTAL_PRO = "select count(*) from `product`";
 	
 	
-	
-	
-	
-	public static final String INSERT_FILE = "insert into file set"
-											+ "`oName`=?,"
-											+ "`sName`=?,"
-											+ "`rdate`=NOW()";
+	public static final String INSERT_FILE = "insert into file set "
+			+ "product_id=?,"
+			+ "`oName`=?,"
+			+ "`sName`=?,"
+			+ "`rdate`=NOW()";
+
+public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = ?";
 	
 	// user
 	public static final String SELECT_TERMS = "select * from terms";
