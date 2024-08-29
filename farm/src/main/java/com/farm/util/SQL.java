@@ -30,6 +30,7 @@ public class SQL{
 public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = ?";
 	
 	// user
+	public static final String SELECT_FINDID = "SELECT * FROM `user` WHERE `name`=? AND `hp`=?";
 	public static final String SELECT_TERMS = "select * from terms";
 	
 	public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user` ";
@@ -50,8 +51,11 @@ public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = 
 											+ "`addr2`=? "
 											+ "where `uid`=?";
 	
-	public static final String SELECT_USERS = "SELECT * FROM `user`";
+	// 관리자 페이지 유저 목록
+	public static final String SELECT_USERS = "SELECT * FROM `user` WHERE `role` != '99'";
+	
 	public static final String SELECT_USER2 = "select * from `user` where `uid`=?";
+	// 로그인 때 로그인, 비번 일치하는지 확인용
 	public static final String SELECT_USER = "select * from `user` where `uid`=? and `pass`=SHA2(?, 256)";
 	public static final String INSERT_USER = "insert into user set "
 											+ "`uid`=?,"
@@ -65,7 +69,6 @@ public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = 
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
-
 
 	//cart
 	
