@@ -1,4 +1,3 @@
-
 package com.farm.dao;
 
 import java.sql.SQLException;
@@ -14,10 +13,12 @@ import com.farm.util.SQL;
 
 public class ArticleDao extends DBHelper {
 
+
 	private static ArticleDao instance = new ArticleDao();
 	public static ArticleDao getInstance() {
 		return instance;
 	}
+	
 	private ArticleDao() {}
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -30,14 +31,16 @@ public class ArticleDao extends DBHelper {
 			conn.setAutoCommit(false);
 			
 			stmt = conn.createStatement();
-			psmt = conn.prepareStatement(SQL.INSERT_ARTICLE_GROW);
+			psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getWriter());
-			psmt.setString(4, dto.getRegip());
-			psmt.executeUpdate();
+			psmt.setInt(3, dto.getType());
+			psmt.setString(4, dto.getCate());
+			psmt.setString(5, dto.getWriter());
+			psmt.setString(6, dto.getRegip());
+			no = psmt.executeUpdate();
 			
-			rs = stmt.executeQuery(SQL.SELECT_MAX_NO_GROW);
+			rs = stmt.executeQuery(SQL.SELECT_MAX_NO);
 			if(rs.next()) {
 				no = rs.getInt(1);
 			}
@@ -60,14 +63,17 @@ public class ArticleDao extends DBHelper {
 		
 		return no;
 	}
-	public int selectCountTotal() {
+	public int selectCountTotal(int type) {
 		int total = 0;
 		try {
 			conn = getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_COUNT_TOTAL_GROW);
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			psmt.setInt(1,type);
+			rs = psmt.executeQuery();
+		
 			if(rs.next()) {
 				total = rs.getInt(1);
+				
 			}
 		}catch (Exception e) {
 			logger.error(e.getMessage());
@@ -84,7 +90,7 @@ public class ArticleDao extends DBHelper {
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_ARTICLE_GROW);
+			psmt = conn.prepareStatement(SQL.SELECT_ARTICLE);
 			psmt.setString(1,no);
 			
 			rs = psmt.executeQuery();
@@ -99,11 +105,12 @@ public class ArticleDao extends DBHelper {
 					dto.setTitle(rs.getString(3));
 					dto.setContent(rs.getString(4));
 					dto.setComment(rs.getInt(5));
-					dto.setFile(rs.getInt(6));
+					dto.setType(rs.getInt(6));
 					dto.setHit(rs.getInt(7));
 					dto.setWriter(rs.getString(8));
 					dto.setRegip(rs.getString(9));
 					dto.setRdate(rs.getString(10));
+					dto.setNick(rs.getString(11));
 				}	
 			}
 						
@@ -118,14 +125,16 @@ public class ArticleDao extends DBHelper {
 		return dto;
 	}
 	// 첫교시 Let's 기릿!
-	public List<ArticleDto> selectArticles(int start) {
+	public List<ArticleDto> selectArticles(int start,int type) {
 		
 		List<ArticleDto> articles = new ArrayList<>();
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_ARTICLES_GROW);
-			psmt.setInt(1, start);
+			psmt = conn.prepareStatement(SQL.SELECT_ARTICLES);
+			psmt.setInt(1, type);
+			psmt.setInt(2, start);
+
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -135,7 +144,7 @@ public class ArticleDao extends DBHelper {
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
 				dto.setComment(rs.getInt(5));
-				dto.setFile(rs.getInt(6));
+				dto.setType(rs.getInt(6));
 				dto.setHit(rs.getInt(7));
 				dto.setWriter(rs.getString(8));
 				dto.setRegip(rs.getString(9));
@@ -158,15 +167,32 @@ public class ArticleDao extends DBHelper {
 	
 	}
 	
-	public void updateArticle(ArticleDto dto) {
-		
+	public int updateArticle(ArticleDto dto) {
+		int no = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE);
+			psmt.setString(1, dto.getTitle());	
+			psmt.setString(2, dto.getContent());	
+			psmt.setInt(3, dto.getNo());	
+			
+			no = psmt.executeUpdate();
+		}catch(Exception e) {
+			
+			logger.error(e.getMessage());
+			
+		}finally {
+			
+			closeAll();
+		}
+		return no;
 	}	
 	
 	public void deleteArticle(String no) {
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE_GROW);
+			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE);
 			psmt.setString(1, no);
 			psmt.executeUpdate();	
 			
@@ -180,4 +206,8 @@ public class ArticleDao extends DBHelper {
 		}
 		
 }
+	public int seectCountTotal(int type) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

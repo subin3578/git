@@ -1,237 +1,497 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri ="jakarta.tags.core"%>
+    
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index.html</title>
-    <link rel="stylesheet" href="/farm/css/index.css">
+    <title>croptalk/grow.html</title>
+
+    <style>
+    
+    * {
+            margin: 0;
+            padding: 0;
+            font: normal 12px '고딕';
+        }
+        ul, ol {list-style: none;}
+        a {text-decoration: none; color: #111;}
+        input, textarea {outline: none;}
+        
+        #wrapper {
+       position: relative;
+       width: 1920px;
+       height: 1106px;
+        background: #FFFFFF;
+        margin: 0 auto;
+
+        }
+
+        /***********/
+        /* header */
+        header{
+            width: 980px;
+            height: 150px;
+            margin : 0 auto;
+        }
+
+        /*top line*/
+        header .htop{
+            position: absolute;
+            width: 980px;
+            height: 14px;
+            top: 1px;
+            background-repeat: repeat;
+            height: 10px;
+            background-image: url('../img/head_top_line.png')
+        }
+        
+        /*logospace 는 로고, 사이드로고, 로그인| 담고있음*/
+        .logospace {
+            width : 980px;
+            height : 80px;
+            position : relative;
+        } 
+
+        .logospace > p{
+            position : absolute;
+            height: 14px;
+            right : 0;
+            left: 787.45px;
+            top: 15px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+            color: #111111;
+        }
+        .logospace > p{
+            position: absolute;
+            width: 237.15px;
+        }
+
+        .headlog {
+            position : absolute;
+            left : 40%;
+            top : 15px;
+        }
+        .headlog2 {
+            position : absolute;
+            right : 0px;
+            top : 45px;
+        }
+
+        /**nav**/
+        header nav {
+            width : 100%;
+            height : 50px;
+            position :relative;
+        }
+        .navfont> li a {
+            font-size :15px;
+            font-weight: bolder;
+        }
+       header nav > ul {
+            width :100%;
+            height : 50px;
+            display: inline-block;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        
+       header nav > ul > li {
+        margin-left : 5px;
+        float : left;
+        min-width : 190px;
+        height: 30px;
+        margin-top :5px;
+        border-top: 5px solid rgb(145, 142, 142);
+        /*안의 글자 a들을 중앙으로 배치하는 방법*/
+        position : flex;
+        text-align: center;
+        }
+        /*장보기 뱃지*/
+        .badge {
+            position : absolute;
+            margin-top :-10px;
+            margin-left  : 310px;
+        }
+
+        .subtopbg1{
+            position: absolute;
+            width: 980px;
+            height: 184px;
+            left: 470px;
+            right: 470px;
+            top: 145px;
+
+            background: url(.jpg);
+
+
+        }
+        .subtopbg1 .subtoptit1{
+            position: absolute;
+            width: 326px;
+            height: 37px;
+            left: 10px;
+            bottom: 10px;
+                    
+            background: url(.png);
+
+        }
+
+
+        main {
+            position: absolute;
+            height: 650px;
+            left: 470px;
+            right: 470px;
+            top: 326px;
+        }
+        main > aside{
+            position: absolute;
+            width: 176px;
+            height: 650px;
+            left: 0px;
+            top: 0px;
+
+            background: url(.png);
+
+        }
+
+        main > #asidesize{
+            position: absolute;
+            width: 176px;
+            height: 650px;
+            left: 470px;
+            top: 340px;
+
+            background: url(.png);
+            
+        }
+        
+        .asidegate1{
+            position: absolute;
+            width: 129px;
+            height: 44px;
+            left: 16px;
+            top: 16px;
+
+            background: url(.png);
+
+
+        }
+
+        main #asidesize .asidebgline{
+            position: relative;
+            top: 37px;
+            float: right;
+            
+        }
+
+        .asidelnb{
+            position: absolute;
+            width: 175px;
+            height: 233px;
+            left: 0px;
+            top: 81px;
+
+            background: url('img/sub_aside_bg_lnb.png');
+
+        }
+
+        .asidelnb .lnb1{
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 26px;
+            bottom: 178px;
+
+            background: url(.png);
+
+
+        }
+        .asidelnb .lnb2{
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 61px;
+            bottom: 143px;
+
+            background: url(.png);
+
+
+        }
+        .asidelnb .lnb3{
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 96px;
+            bottom: 108px;
+
+            background: url(.png);
+
+        }
+
+
+        .hello{
+            position: absolute;
+            width: 802px;
+            height: 650px;
+            left: 176px;
+            top: 0px;
+        }
+
+        .hello > article > nav{
+            box-sizing: border-box;
+            position: absolute;
+            width: 762px;
+            height: 72px;
+            left: 40px;
+            right: 0px;
+            top: 0px;
+
+            border-bottom: 1px solid #C2C2C2;
+
+        }
+
+        .hello > article > nav .navtit1{
+            position: absolute;
+            width: 131px;
+            height: 24px;
+            left: 0px;
+            bottom: 5px;
+
+            background: url(.png);
+
+        }
+
+        .hello > article > nav .smallhello{
+            position: absolute;
+            height: 17px;
+            left: 75.21%;
+            right: 0%;
+            bottom: 5px;
+            white-space: nowrap;
+       
+        }
+       
+        .hello > article > nav .smallhello .smallhello2{
+            position: absolute;
+            height: 14px;
+            height: 14px;
+            left: -16px;
+            top: 1px;
+
+            font-family: Arial, Helvetica, sans-serif; /* 폰트 패밀리 */
+            font-style: normal; /* 폰트 스타일 */
+            font-weight: 400; /* 폰트 굵기 */
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+
+            color: #8C8C8C;
+
+        }
+
+        .hello > article > nav .smallhello .smallhello2 > div{
+            position: relative;
+            right: 3px;
+            bottom: 2px;
+
+        }
+
+        .hello > article > nav .smallhello .smallhello2 .highlight{
+            position: relative;
+            bottom: 1.5px;
+            font-weight: bold;
+            color: #91BA15;
+            
+        }
+
+        .hello > article > div .boards{
+            position: absolute;
+            width: 247.22px;
+            height: 14px;
+            left: 40px;
+            top: 113px;
+                    
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+                    
+            color: #000000;
+                    
+        }
+        #listcontainer{
+            width : 100%;
+            height: 500px;
+            position : absolute;
+            top : 80px;
+        }
+        .list table {
+            width: 95%;
+            border-top: 2px solid #111;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin-top:10px;
+            margin-left : 40px 
+        }
+
+        .list table th {
+            padding: 12px;
+            border-top: 1px solid #d1dee2;
+            border-bottom: 1px solid #d1dee2;
+            background: #dae9ad;
+            color: #383838;
+        }
+        .list table td {    
+            padding: 12px 6px;
+            border-top: 1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;    
+        }
+        .list table tr > td:nth-child(1) {width:  50px; text-align: center; background: #fff;}
+        .list table tr > td:nth-child(2) {width:  auto; text-align: left;}
+        .list table tr > td:nth-child(3) {width: 100px; text-align: center;}
+        .list table tr > td:nth-child(4) {width: 100px; text-align: center;}
+        .list table tr > td:nth-child(5) {width:  50px; text-align: center;}
+        button {
+        justify-content: center;
+        border: 1px solid #BEBEBE;
+        background-color: white;
+        cursor: pointer;
+    }
+    
+		.list > .paging {
+		    padding: 20px;
+		    text-align: center;            
+		}
+		.list > .paging > a {
+		    padding: 8px;
+		    background: #f2f2f2;
+		    border: 1px solid #d7d7d7;            
+		}
+		
+		.list > .paging > .current {
+		    border: 1px solid #6d6d6d;
+		    background: #888;
+		    color: #fff;
+		}
+	.btnWrite{
+        width : 54px; 
+        height: 35px; 
+        background-color: #f3fbda; 
+        border : 1px solid 91BA15;
+        margin-top : 10px;
+	    position: absolute;
+	    bottom: 0;
+	    right: 0;
+	    border: 1px solid #d7d7d7;
+	    text-align: center; 
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+        color : black;
+    }
+
+</style>
+
+  
 </head>
 <body>
-<div id = "wrapper">
-	<%@ include file="/WEB-INF/_header.jsp" %>
+    <div id = "wrapper">
+    <%@ include file="/WEB-INF/_header.jsp" %>
+    <div class="subtopbg1">
+        <img src="../img/sub_top_bg.jpg" alt="subtopbg1">
+        <div class="subtoptit1"><img src="../img/sub_top_tit3.png" alt="subtoptit1"></div>
+    </div>
+   
     <main>
-        <section class="main">
-            <section class="banner">
+        <div class="hello">
+            <article>
+                <nav>
+                    <img src="../img/sub_nav_tit_cate3_tit2.png" class="navtit1" alt="">
+                    <div class="smallhello">                
+                        <div class="smallhello2">
+                            <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
+                          HOME > 농작물이야기 >&nbsp;<span class="highlight">텃밭가꾸기</span>
+                       </div>
+                </nav>
+               
+                <div id="listcontainer">
+                        <section class="list">
+                            <article>
+                                <table border= "0">
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>제목</th>
+                                        <th>글쓴이</th>
+                                        <th>날짜</th>
+                                        <th>조회</th>
+                                    </tr>
+				    				<c:forEach var="article" items="${articles}">
+				                        <tr>
+				                        	<!-- 여기 순서번호 수정 해야함 -->
+				                            <td>${pageStartNum}</td>
+				                            <td><a href="/farm/croptalk/growView.do?no=${article.no}">${article.title}</a>&nbsp;[${article.comment}]</td>
+				                            <td>${article.nick}</td>
+				                            <td>${article.rdate}</td>
+				                            <td>${article.hit}</td>
+				                        </tr>
+				                         <c:set var="pageStartNum" value="${pageStartNum-1}"/>
+				                    </c:forEach>
+                                </table>
+                            </article>
+                            <div class="paging">
+							    <c:if test="${pageGroup.start > 1}">
+							        <a href="/farm/croptalk/grow.do?pg=${pageGroup.start-1}" class="prev">이전</a>
+							    </c:if>
+							    <c:set var="endPage" value="${pageGroup.end > lastPageNum ? lastPageNum : pageGroup.end}" />
+							    <c:forEach var="i" begin="${pageGroup.start}" end="${endPage}">
+							        <a href="/farm/croptalk/grow.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
+							    </c:forEach>
+							    <c:if test="${endPage < lastPageNum}">
+							        <a href="/farm/croptalk/grow.do?pg=${endPage+1}" class="next">다음</a>
+							    </c:if>
+							</div>
+                            <!-- 글쓰기 버튼 -->
+ 							 <a href="/farm/croptalk/growwrite.do" class="btnWrite">글쓰기</a>
+ 							
+                        </section>
+                   
+                </div> <!-- listcontainer -->
+            </div> <!-- hello -->
+                        </article>
+            <aside>
+                <div id="asidesize">
+                    <div class="asidegate1"><img src="../img/sub_aside_cate3_tit.png" alt=""></div>
+                    <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
+                <ul class="asidelnb">
+                    <li>
+                        <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
+                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
+                        <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
+                    </li>
+                </ul>
+                </div>
+              </aside>
 
-                <img src="./img/main_slide_img1.jpg " alt = "배너배경이미지" class = "bannerbackground">
-                <img src="./img/main_slide_img_tit.png" alt ="배너배경제목" class ="bannertitle">
-                <img src="./img/popup.png" alt = "배너 왼쪽" class = "banner1right">
-            </section>
-            <section class = "shopping">
-                <img src="./img/main_market_tit.png"></img>
-                
-                <article>
-                    <img src="./img/market_item1.jpg">
-                    <span class = "category">과일</span>      
-                    <span class = "itemname">사과 500g</span>
-                    <span class = "originprice"></span>
-                    <h3><span class = "price">3,600</span></h3>
-                </article>
-                <article>
-                    <img src="./img/market_item2.jpg">
-                    <span class = "category">과일</span>
-                    <span class = "itemname">배 500g</span>
-                    <span class = "originprice"></span>
-                    <h3><span class = "price">3,600</span></h3>
-                </article>
-                <article>
-                    <img src="./img/market_item3.jpg">
-                    <span class = "category">과일</span>
-                    <span class = "itemname">토마토 500g</span>
-                    <span class = "originprice"></span>
-                    <h3><span class = "price">3,600</span></h3>
-                </article>
-                <article>
-                    <img src="./img/market_item4.jpg">
-                    <span class = "category">과일</span>
-                    <span class = "itemname">딸기 500g</span>
-                    <span class = "originprice"></span>
-                    <h3><span class = "price">3,600</span></h3>
-                </article>
-                <article>
-                    <img src="./img/market_item5.jpg">
-                    <span class = "category">과일</span>
-                    <span class = "itemname">귤 500g</span>
-                    <span class = "originprice"></span>
-                    <h3><span class = "price">3,600</span></h3>
-                </article>
-                <article>
-                    <img src="./img/market_item6.jpg">
-                    <span class = "category">과일</span>
-                    <span class = "itemname">사과 500g</span>
-                    <span class = "originprice"></span>
-                    <h3><span class = "price">3,600</span></h3>
-                </article>
-            </section>
-
-            <section class ="secondbanner">
-                <img src = "./img/main_banner_sub1_bg.jpg" class = "left">
-                <img src = "./img/main_banner_sub1_tit.png" class = "lefttit">
-                <img src = "./img/main_banner_sub2_bg.jpg" class="right">
-                <img src = "./img/main_banner_sub2_tit.png" class = "righttit">
-            </section>
-
-            <section class="news">
-                <div class="news_box garden">
-                    <img src="./img/main_latest1_tit.png" alt="" class = >
-                    <div >
-                        <img src="./img/main_latest1_img.jpg" alt="">
-                        <div class = "textbox">
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news_box school">
-                    <img src="./img/main_latest2_tit.png" alt="">
-                    <div >
-                        <img src="./img/main_latest2_img.jpg" alt="">
-                        <div class ="textbox">
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="news_box crops">
-                    <img src="./img/main_latest3_tit.png" alt="">
-                    <div >
-                        <img src="./img/main_latest3_img.jpg" alt="">
-                        <div class = "textbox">
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                            <div>
-                                <img src="./img/main_latest_icon.gif" alt="">
-                                <a href="#">토마토! 건강하게 길러...</a>
-                                <span>20-12-22</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="info">
-                <div class="info_box user">
-                    <img src="./img/main_sub2_cs_tit.png" alt="">
-                    <div class="info_user_cs">
-                        <img src="./img/main_sub2_cs_img.png" alt="">
-                        <img src="./img/main_sub2_cs_txt.png" alt="">
-                        <div>
-                            <p>평일: AM 09:00 ~ PM 06:00</p>
-                            <p>점심: PM 12:00 ~ PM 01:00</p>
-                            <p>토, 일요일, 공휴일 휴무</p>
-                        </div>
-                    </div>
-                    <div class="info_user_btn">
-                        <a href="#"><img src="./img/main_sub2_cs_bt1.png" alt=""></a>
-                        <a href="#"><img src="./img/main_sub2_cs_bt2.png" alt=""></a>
-                        <a href="#"><img src="./img/main_sub2_cs_bt3.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="info_box account">
-                    <img src="./img/main_sub2_account_tit.png" alt="">
-                    <div class = "this">
-                        <p>기업은행 123-456789-01-01-012</p>
-                        <p>기업은행 01-1234-56789</p>
-                        <p>기업은행 123-456789-01-01-012</p>
-                        <p>기업은행 123-456789-01-01</p>
-                        <p>예금주 (주)팜스토리</p>
-                    </div>
-                </div>
-                <div class="info_box notice">
-                    <img src="./img/main_sub2_notice_tit.png" alt="">
-                    <div class="info_notice_table">
-                        <div>
-                            <a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a>
-                            <span>20-12-22</span>
-                        </div>
-                        <div>
-                            <a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a>
-                            <span>20-12-22</span>
-                        </div>
-                        <div>
-                            <a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a>
-                            <span>20-12-22</span>
-                        </div>
-                        <div>
-                            <a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a>
-                            <span>20-12-22</span>
-                        </div>
-                        <div>
-                            <a href="#">안녕하세요. 홈페이지 오픈 기념 이벤트를 ...</a>
-                            <span>20-12-22</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-
+        </div>
     </main>
-   <%@ include file="/WEB-INF/_footer.jsp" %>
-</div>
-</body>
-</html>
+     <%@ include file="/WEB-INF/_footer.jsp" %>
+  </div>
+  </body>
+  </html>
