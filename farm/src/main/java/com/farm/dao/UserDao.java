@@ -112,15 +112,16 @@ public class UserDao extends DBHelper {
 		return user;
 	}
 	
-	
+	// 로그인 때 로그인, 비번 일치하는지 확인용
 	public UserDto selectUser(String uid, String pass) {
 		
 		UserDto user = null;
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_USER2);
+			psmt = conn.prepareStatement(SQL.SELECT_USER);
 			psmt.setString(1, uid);
+			psmt.setString(2, pass);
 			
 			rs = psmt.executeQuery();
 			

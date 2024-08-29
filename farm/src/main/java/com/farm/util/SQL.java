@@ -2,29 +2,34 @@ package com.farm.util;
 
 public class SQL{
 
+
 	// USER(김보경) //////////////////////////////////////////////////////////////////////
+	public static final String SELECT_FINDID = "SELECT * FROM `user` WHERE `name`=? AND `hp`=?";
 	public static final String SELECT_TERMS = "select * from terms";
-	public static final String SELECT_FINDID = "select * from `user` where `name`=? and `hp`=?";
 	public static final String SELECT_COUNT_USER = "SELECT COUNT(*) FROM `user` ";
 	public static final String WHERE_UID  = "WHERE `uid`=?";
 	public static final String WHERE_NICK = "WHERE `nick`=?";
 	public static final String WHERE_EMAIL = "WHERE `email`=?";
 	public static final String WHERE_HP = "WHERE `hp`=?";
-	public static final String UPDATE_USER = "update `user` set "
-												+ "`pass`=?,"
-												+ "`name`=?,"
-												+ "`nick`=?,"
-												+ "`email`=?,"
-												+ "`hp`=?,"
-												+ "`zip`=?,"
-												+ "`addr1`=?,"
-												+ "`addr2`=? "
-												+ "where `uid`=?";
-		
-	public static final String SELECT_USER2 = "select * from `user` where `uid`=?";
-	public static final String SELECT_USERS = "SELECT * FROM `user`";
+
 	public static final String DELETE_USER = "delete from `user` where `uid`=?";
-	public static final String SELECT_USER = "select * from `user` where `uid`=? and `pass`=SHA2(?,256)";
+	public static final String UPDATE_USER = "update `user` set "
+											+ "`pass`=?,"
+											+ "`name`=?,"
+											+ "`nick`=?,"
+											+ "`email`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=? "
+											+ "where `uid`=?";
+	
+	// 관리자 페이지 유저 목록
+	public static final String SELECT_USERS = "SELECT * FROM `user` WHERE `role` != '99'";
+	
+	public static final String SELECT_USER2 = "select * from `user` where `uid`=?";
+	// 로그인 때 로그인, 비번 일치하는지 확인용
+	public static final String SELECT_USER = "select * from `user` where `uid`=? and `pass`=SHA2(?, 256)";
 	public static final String INSERT_USER = "insert into user set "
 											+ "`uid`=?,"
 											+ "`pass`=SHA2(?, 256),"
@@ -37,8 +42,7 @@ public class SQL{
 											+ "`addr2`=?,"
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
-	/////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// ARTICLE (황수빈) //////////////////////////////////////////////////////////////////
 	public static final String INSERT_ARTICLE = "insert into `article` set "
 											+ "`title`=?,"

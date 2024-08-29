@@ -309,11 +309,218 @@
 </style>
 	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<!--  <script src="/farm/js/validation.js"></script> -->
 	<script src="/farm/js/postcode.js"></script>
 	<script>
+		// 유효성 검사에 사용할 정규표현식
+		const reUid   = /^[a-z]+[a-z0-9]{4,19}$/g;
+		const rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{5,16}$/;
+		const reName  = /^[가-힣]{2,10}$/ 
+		const reNick  = /^[a-zA-Zㄱ-힣0-9][a-zA-Zㄱ-힣0-9]*$/;
+		const reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		const reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
+	
+		// 유효성 검사에 사용할 상태변수
+		let isPassOk  = false;
+		let isNameOk  = false;
+		let isNickOk  = false;
+		let isEmailOk = false;
+		let isHpOk    = false;
+	
+	
 		window.onload = function() {
 			
+			const btnCheckUid = document.getElementById('btnCheckUid');
+			const btnSendEmail = document.getElementById('btnSendEmail');
+			const btnAuthEmail = document.getElementById('btnAuthEmail');
+			const registerForm = document.getElementsByTagName('form')[0];
+			const resultId = document.getElementsByClassName('resultId')[0];
+			const resultPass = document.getElementsByClassName('resultPass')[0];
+			const resultName = document.getElementsByClassName('resultName')[0];
+			const resultNick = document.getElementsByClassName('resultNick')[0];
+			const resultHp = document.getElementsByClassName('resultHp')[0];
+			const resultEmail = document.getElementsByClassName('resultEmail')[0];
+			const auth = document.getElementsByClassName('auth')[0];
+			
+			// 비밀번호 유효성 검사
+			registerForm.pass2.addEventListener('focusout', function() {
+				
+				const pass1 = registerForm.pass1.value;
+				const pass2 = registerForm.pass2.value;
+				
+				if(!pass1.match(rePass)){
+					resultPass.innerText = "비밀번호가 유효하지 않습니다.";
+					resultPass.style.color = 'red';
+					return;
+				}
+				
+				if(pass1 == pass2){
+					resultPass.innerText = "비밀번호가 일치합니다.";
+					resultPass.style.color = 'green';
+					isPassOk = true;
+
+				}else{
+					resultPass.innerText = "비밀번호가 일치하지 않습니다.";
+					resultPass.style.color = 'red';
+					isPassOk = false;
+				}
+			
+			});
+			
+			// 이름 유효성 검사
+			registerForm.name.addEventListener('focusout', function() {
+				
+				const name = registerForm.name.value;
+				
+				if(!name.match(reName)){
+					resultName.innerText = "이름이 유효하지 않습니다.";
+					resultName.style.color = 'red';
+					isNameOk = false;
+				}else{
+					resultName.innerText = "";
+					isNameOk = true;;
+				}
+			})
+			
+			// 별명 유효성 검사
+			registerForm.nick.addEventListener('focusout', function(){
+				
+				const nick = registerForm.nick.value;
+				
+				if(!nick.match(reNick)){
+					resultNick.innerText = '별명이 유효하지 않습니다.';
+					resultNick.style.color = 'red';
+					
+				}
+				
+				fetch('/farm/user/checkUser.do?type=nick&value='+nick)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						if(data.result > 0){
+							resultNick.innerText = '이미 사용중인 별명입니다.';
+							resultNick.style.color = 'red';
+							isNickOk = false;
+
+						}else{
+							resultNick.innerText = '사용 가능한 별명입니다.';
+							resultNick.style.color = 'green';
+							isNickOk = true;
+
+						}
+					})
+					.catch(err => {
+						console.log(err);
+					});
+			});
+			
+			// 이메일 유효성 검사
+			
+			let preventDblClick = false;
+			
+			btnSendEmail.onclick = async function() {
+				
+				const email = registerForm.email.value;
+				console.log('here1');
+				
+				// 이중 클릭 방지
+				if(preventDblClick){
+					console.log('here2');
+					return;
+				}
+				
+				// 이메일 유효성 검사
+				if(!email.match(reEmail)){
+					resultEmail.innerText = '유효한 이메일이 아닙니다.';
+					resultEmail.style.color = 'red';
+					return;
+				}
+				
+				try{
+					preventDblClick = true;
+					console.log('here3');
+					
+					const response = await fetch('/farm/user/checkUser.do?type=email&value='+email);
+					const data = await response.json();
+					console.log(data);
+					
+					if(data.result > 0){
+						resultEmail.innerText = '이미 사용중인 이메일 입니다.';
+						resultEmail.style.color = 'red';
+						isEmailOk = false;
+
+					}else{
+						resultEmail.innerText = '이메일 인증코드를 확인 하세요.';
+						resultEmail.style.color = 'green';
+						
+						auth.style.display = 'block';
+
+					}
+					
+					
+				}catch(e){
+					console.log(e);
+				}
+			}
+			
+			btnAuthEmail.onclick = function() {
+				
+				const code = registerForm.auth.value;
+				
+				fetch('/farm/user/checkUser.do', {
+					method: 'POST',
+					body: JSON.stringify({"code":code})
+				})
+					.then(resp => resp.json())
+					.then(data => {
+						console.log(data);
+						
+						if(data.result > 0){
+							resultEmail.innerText = '이메일이 인증되었습니다.';
+							resultEmail.style.color = 'green';
+							isEmailOk = true;
+						}else{
+							resultEmail.innerText = '유효한 인증코드이지 않습니다.';
+							resultEmail.style.color = 'red';
+							isEmailOk = false;
+						}
+					})
+					.catch(err => {
+						console.log(err);
+					});
+			}
+			
+			// 휴대폰 유효성 검사
+			registerForm.hp.addEventListener('focusout', function(){
+				
+				const hp = registerForm.hp.value;
+				
+				if(!hp.match(reHp)){
+					resultHp.innerText = '번호가 유효하지 않습니다.';
+					resultHp.style.color = 'red';
+					return;
+				}
+				
+				fetch('/farm/user/checkUser.do?type=hp&value='+hp)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+						if(data.result > 0){
+							resultHp.innerText = '이미 사용중인 휴대폰 번호입니다.';
+							resultHp.style.color = 'red';
+							isHpOk = false;
+
+						}else{
+							resultHp.innerText = '';
+							isHpOk = true;
+
+						}
+					})
+					.catch(err => {
+						console.log(err);
+					});
+			});
+			
+			// 탈퇴하기
 			const btnWithdraw = document.getElementsByClassName('btnWithdraw')[0];
 			
 			btnWithdraw.addEventListener('click', function() {
@@ -331,6 +538,76 @@
                 }
 				
 			})
+			
+			// 수정버튼
+			const btnModify = document.getElementsByClassName('btnModify')[0];
+			
+			
+			// 유효성 검사를 위한 fetch 함수
+		    function checkDuplicate(type, value) {
+		        return fetch('/farm/user/checkUser.do?type=${type}&value=${value}')
+		            .then(response => response.json())
+		            .then(data => data.result > 0);
+		    }
+
+		    btnModify.addEventListener('click', function(e) {
+		        e.preventDefault(); // 기본 폼 제출 막기
+		        
+		        const nick = registerForm.nick.value;
+		        const email = registerForm.email.value;
+		        const hp = registerForm.hp.value;
+
+		        // 닉네임 유효성 검사 및 중복 체크
+		        if (!nick.match(reNick)) {
+		            alert('별명이 유효하지 않습니다.');
+		            return;
+		        }
+		        checkDuplicate('nick', nick).then(isDuplicate => {
+		            if (isDuplicate) {
+		                alert('이미 사용 중인 별명입니다.');
+		                return;
+		            }
+
+		            // 이메일 유효성 검사 및 중복 체크
+		            if (!email.match(reEmail)) {
+		                alert('이메일이 유효하지 않습니다.');
+		                return;
+		            }
+		            checkDuplicate('email', email).then(isDuplicate => {
+		                if (isDuplicate) {
+		                    alert('이미 사용 중인 이메일입니다.');
+		                    return;
+		                }
+
+		                // 휴대폰 번호 유효성 검사 및 중복 체크
+		                if (!hp.match(reHp)) {
+		                    alert('휴대폰 번호가 유효하지 않습니다.');
+		                    return;
+		                }
+		                checkDuplicate('hp', hp).then(isDuplicate => {
+		                    if (isDuplicate) {
+		                        alert('이미 사용 중인 휴대폰 번호입니다.');
+		                        return;
+		                    }
+
+		                    // 모든 유효성 검사를 통과한 경우
+		                    const resultMo = confirm('수정하시겠습니까?');
+
+		                    if (resultMo) {
+		                        alert('수정되었습니다.');
+		                        registerForm.submit(); // 폼 제출
+		                    } else {
+		                        alert('수정이 취소되었습니다.');
+		                    }
+		                });
+		            });
+		        });
+		    });
+			
+			
+			
+			
+			
 		}
 	</script>
   
@@ -402,11 +679,11 @@
                         <td>주소</td>
                         <td>
                             <div>
-                                <input type="text" name="zip" id="zip" value="${user.zip}" readonly/>                                
+                                <input type="text" name="zip" id="zip" value="${user.zip}"/>                                
                                 <button type="button" class="btnZip" onclick="postcode()"><img src="../img/chk_post.gif" alt=""></button>
                             </div>                            
                             <div>
-                                <input type="text" name="addr1" id="addr1" value="${user.addr1}" readonly/>
+                                <input type="text" name="addr1" id="addr1" value="${user.addr1}"/>
                             </div>
                             <div>
                                 <input type="text" name="addr2" id="addr2" value="${user.addr2}"/>
