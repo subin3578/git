@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>user/login.html</title>
+    <title>user/findID.html</title>
 
     <style>
     
@@ -303,6 +303,39 @@
     }
 	</style>
 
+	<script>
+	
+	window.onload = function() {
+		
+		const btnLogin = document.getElementsByClassName('btnLogin')[0];
+		const btnFindID = document.getElementsByClassName('btnFindID')[0];
+		//const errorMessage = '${errorMessage}';
+		
+		
+		btnLogin.addEventListener('click', function(e) {
+			e.preventDefault();
+			//alert('dsfdasf');
+			
+			fetch('', {
+				method: 'POST',
+				body: formData
+				})
+				.then(resp => resp.json())
+				.then(data => {
+					console.log(data);
+					
+					uid문서객체.value = data.result;
+					
+				})
+				.catch(err => {
+					console.log(err);
+				});
+			
+		});
+
+	}
+	
+	</script>
 
 </head>
 <body>
@@ -353,15 +386,16 @@
 	            </tr>
 	            <tr>
 	                <td></td>
-	                <td><input type="text" name="uid" value="${uid}"></td>
+	                <td><input type="text" name="uid" class="btnFindID"></td>
 	            </tr>
 	        </table>
-	        <input type="submit" value="확인" class="btnLogin">
+	        <input type="submit" value="찾기" class="btnLogin">
         </form>
         <!-- 에러 메시지 출력 -->
         <c:if test="${not empty errorMessage}">
             <script>alert('${errorMessage}');</script>
         </c:if>
+        
         <div>
             <h3>회원 로그인 안내</h3>
             <p>
