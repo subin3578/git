@@ -2,7 +2,6 @@ package com.farm.util;
 
 public class SQL{
 
-
 	// USER(김보경) //////////////////////////////////////////////////////////////////////
 	public static final String SELECT_FINDID = "SELECT * FROM `user` WHERE `name`=? AND `hp`=?";
 	public static final String SELECT_TERMS = "select * from terms";
@@ -70,37 +69,49 @@ public class SQL{
 
 
 	// PRODUCT (원기연) ////////////////////////////////////////////////////////////////////////
+		public static final String SELECT_PRODUCT = "select a.*, b.fno, b.product_id, b.oname, b.sname , b.rdate "
+			+ "from `product` as a "	
+			+ "join `file` as b on a.product_id = b.product_id "
+			+ "where a.product_id=?";
+	
 	public static final String INSERT_PRODUCT = "INSERT INTO product "
-		        + "(proname, category, price, points, discount, delivery_cost, stock, pro_img_list, pro_img_inf, pro_img_desc, etc) "
-		        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	
-	public static final String INSERT_FILE = "insert into file set"
-											+ "`oName`=?,"
-											+ "`sName`=?,"
-											+ "`rdate`=NOW()";
-	
-	public static final String SELECT_PRODUCT = "SELECT * FROM `product` WHERE product_id = ?";
+			+ "(proname, category, price, points, discount, delivery_cost, stock, pro_img_list, pro_img_inf, pro_img_desc, etc, rdate) "
+			+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
+		public static final String SELECT_PRODUCTS = "select * from `product`"
+												+ "order by product_id desc "
+												+ "limit ?, 5";
 
-	public static final String SELECT_PRODUCTS = "select * from `product`"
-											+ "order by product_id desc "
-											+ "limit ?, 5";
-	
-	public static final String SELECT_PRODUCTS2 = "select * from `product`";	
+	public static final String SELECT_PRODUCTS2 = "select * from `product`";
+
 	public static final String SELECT_MAX_PRODUCT_ID ="select MAX(`product_id`) from `product`";	
+	
 	public static final String DELETE_PRODUCT = "DELETE FROM `product` WHERE product_id = ?";
+
+	
 	public static final String SELECT_COUNT_TOTAL_PRO = "select count(*) from `product`";
+	
+	
+	public static final String INSERT_FILE = "insert into file set "
+			+ "product_id=?,"
+			+ "`oName`=?,"
+			+ "`sName`=?,"
+			+ "`rdate`=NOW()";
 	public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = ?";
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	// CART (김연화) /////////////////////////////////////////////////////////////////////
-	public static final String SELECT_CART = "SELECT b.category , b.proname, a.quantity, a.discount, a.`point`, a.price, a.prodId "
-			+ "from `cart` AS a "
-			+ "JOIN `product` AS b ON a.prodId = b.product_id "
-			+ "where `uid` =?";
-	
 	public static final String INSERT_CART = "INSERT INTO `cart` "
-			+ "(`prodId`,`uid`,`quantity`,`price`) "
-			+ "values (?,?,?,?)";
+			+ "(`prodId`,`uid`,`quantity`,`discount`,`point`,`price`) "
+			+ "values (?,?,?,?,?,?)";
+	public static final String SELECT_CART = "SELECT b.category , b.proname, b.pro_img_list , a.quantity, b.discount, b.`points`, a.price, a.prodId  "
+                                            			+ "from `cart` AS a "
+			                                            + "JOIN `product` AS b ON a.prodId = b.product_id "
+			                                            + "where `uid` =?";
+	
+	
+
+	public static final String DELETE_CART= "delete from `cart` where `cartno`=?";
+	public static final String SELECT_CART_NO_BY_PROD_ID ="SELECT cartNo FROM Cart WHERE prodId = ?";
 	public static final String DELETE_CART= "delete from `cart` where `cartNo`=?";
 	/////////////////////////////////////////////////////////////////////////////////////
 

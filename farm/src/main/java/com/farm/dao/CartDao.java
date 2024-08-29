@@ -22,7 +22,7 @@ public class CartDao extends DBHelper{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	
-	public void insertCart(CartDto dto) {
+public void insertCart(CartDto dto) {
 		
 		try {
 			conn = getConnection();
@@ -30,17 +30,18 @@ public class CartDao extends DBHelper{
 			psmt.setInt(1,dto.getProdId());
 			psmt.setString(2,dto.getUid());
 			psmt.setInt(3,dto.getQuantity());
-			psmt.setInt(4,dto.getPrice());
+			psmt.setString(4,dto.getDiscount());
+			psmt.setInt(5,dto.getPoint());
+			psmt.setInt(6,dto.getPrice());
 
+			
 			psmt.executeUpdate();
-			
-			closeAll();
-			
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+		} finally {
+			closeAll();
 		}
-		
 		
 	}
 	
@@ -61,10 +62,12 @@ public class CartDao extends DBHelper{
 				CartDto dto = new CartDto();
 				dto.setCategory(rs.getString(1));
 				dto.setProname(rs.getString(2));
-				dto.setQuantity(rs.getInt(3));
-				dto.setDiscount(rs.getString(4));
-				dto.setPoint(rs.getInt(5));
-				dto.setPrice(rs.getInt(6));
+				dto.setPro_img_list(rs.getString(3));
+				dto.setQuantity(rs.getInt(4));
+				dto.setDiscount(rs.getString(5));
+				dto.setPoint(rs.getInt(6));
+				dto.setPrice(rs.getInt(7));
+				dto.setProdId(rs.getInt(8));
 				
 				carts.add(dto);
 			}
@@ -84,15 +87,15 @@ public class CartDao extends DBHelper{
 		
 	}
 	
-	public int deleteCart(String cartNo){
+
+	public void deleteCart(int cartno){
 		
-		int result = 0;
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_CART);
-			psmt.setString(1, cartNo);
-			
-			result = psmt.executeUpdate();
+			psmt.setInt(1, cartno);
+			psmt.executeUpdate();
+
 			
 			
 		} catch (Exception e) {
@@ -100,8 +103,25 @@ public class CartDao extends DBHelper{
 		}finally {
 			closeAll();
 		}
-		return result;
+
 	}
+	 public int selectCartNoByProdId(int prodId) {
+	        int cartNo = -1;
+	        try {
+	            conn = getConnection();
+	            psmt = conn.prepareStatement(SQL.SELECT_CART_NO_BY_PROD_ID);
+	            psmt.setInt(1, prodId);
+	            rs = psmt.executeQuery();
+	            if (rs.next()) {
+	                cartNo = rs.getInt("cartNo");
+	            }
+	        } catch (Exception e) {
+	            logger.error(e.getMessage());
+	        } finally {
+	            closeAll();
+	        }
+	        return cartNo;
+	    }
 	
 	
 

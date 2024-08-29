@@ -99,17 +99,17 @@
                     	<a href="javascript:void(0);" class="select_del" onclick="deleteSelected()">선택삭제</a>
                         <a href="#" class="reg">상품등록</a>
                     </div>
-                    <div class="page_box">
-                     <c:if test="${pageGroup.start > 1}">
-							<a href="/farm/admin/product/list.do?pg=${pageGroup.start-1}" class="prev">이전</a>                       	        
-                     </c:if>
-                     <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
-                    	<a href="/farm/admin/product/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
-                    </c:forEach>
-                    <c:if test="${pageGroup.end < lastPageNum}">
-                    	<a href="/farm/admin/product/list.do?pg=${pageGroup.end+1}" class="next">다음</a>
-                    </c:if>
-                    </div>
+                   <div class="page_box">
+    <c:if test="${pageGroup.start > 1}">
+        <a href="/farm/admin/product/list.do?pg=${pageGroup.start-1}" class="prev">이전</a>
+    </c:if>
+    <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+        <a href="/farm/admin/product/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
+    </c:forEach>
+    <c:if test="${pageGroup.end < lastPageNum}">
+        <a href="/farm/admin/product/list.do?pg=${pageGroup.end+1}" class="next">다음</a>
+    </c:if>
+</div>
                 </article>
             </section>
         </main>
