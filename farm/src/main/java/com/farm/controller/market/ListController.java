@@ -27,7 +27,24 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		 String pg = req.getParameter("pg");
+		 int currentPage = service.getCurrentPage(pg);
+		 int total = service.selectCountTotal();
+		 int lastPageNum = service.getLastPageNum(total);
+		 PageGroupDto pageGroup = service.getCurrentPageGroup(currentPage, lastPageNum);
+		 int start = service.getStartNum(currentPage);
+		 int pageStartNum = service.getPageStartNum(total, currentPage);
+
+	
+		List<ProductDto> products = service.selectProducts(start);
 		
+		 req.setAttribute("products", products);
+		 req.setAttribute("lastPageNum", lastPageNum);
+		 req.setAttribute("pageGroup", pageGroup);
+		 req.setAttribute("pageStartNum", pageStartNum);
+		 req.setAttribute("currentPage", currentPage);
+		
+	 
 		
 		
 		List<ProductDto> products = service.selectProducts2();
@@ -41,5 +58,3 @@ public class ListController extends HttpServlet {
 
 	}
 }
-
-

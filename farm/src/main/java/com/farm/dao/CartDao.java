@@ -31,13 +31,18 @@ public void insertCart(CartDto dto) {
 			psmt.setString(2,dto.getUid());
 			psmt.setInt(3,dto.getQuantity());
 			psmt.setString(4,dto.getDiscount());
-			psmt.setInt(5,dto.getPrice());
+
+			psmt.setInt(5,dto.getPoint());
+			psmt.setInt(6,dto.getPrice());
+
 			
 			psmt.executeUpdate();
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-		}finally {
+
+		} finally {
+
 			closeAll();
 		}
 		
@@ -53,6 +58,7 @@ public CartDto selectCart(String cart) {
 		psmt = conn.prepareStatement(SQL.SELECT_CART);
 		psmt.setString(1, cart);
 		
+
 		
 		rs = psmt.executeQuery();
 		
@@ -66,6 +72,7 @@ public CartDto selectCart(String cart) {
 			dto.setDiscount(rs.getString(6));
 			dto.setPoint(rs.getInt(7));
 			dto.setPrice(rs.getInt(8));
+
 			
 		}
 		
@@ -116,15 +123,15 @@ public List<CartDto> selectCarts(String uid) {
 		
 	}
 	
-	public int deleteCart(String cartNo){
+
+	public void deleteCart(int cartno){
 		
-		int result = 0;
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_CART);
-			psmt.setString(1, cartNo);
-			
-			result = psmt.executeUpdate();
+			psmt.setInt(1, cartno);
+			psmt.executeUpdate();
+
 			
 			
 		} catch (Exception e) {
@@ -132,8 +139,25 @@ public List<CartDto> selectCarts(String uid) {
 		}finally {
 			closeAll();
 		}
-		return result;
+
 	}
+	 public int selectCartNoByProdId(int prodId) {
+	        int cartNo = -1;
+	        try {
+	            conn = getConnection();
+	            psmt = conn.prepareStatement(SQL.SELECT_CART_NO_BY_PROD_ID);
+	            psmt.setInt(1, prodId);
+	            rs = psmt.executeQuery();
+	            if (rs.next()) {
+	                cartNo = rs.getInt("cartNo");
+	            }
+	        } catch (Exception e) {
+	            logger.error(e.getMessage());
+	        } finally {
+	            closeAll();
+	        }
+	        return cartNo;
+	    }
 	
 	
 

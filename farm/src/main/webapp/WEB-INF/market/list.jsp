@@ -28,36 +28,51 @@
                        </div>
                     </div>
                 </nav>
-                <a href="#"><span class="highlight2">전체(10)</span>&nbsp;| 과일 | 야채 | 곡류</a>
-                <section class="cart">
-                    <ul class="carthead">
-                        <li><p class="image">이미지</p></li>
-                        <li><p class="kind">종류</p></li>
-                        <li><p class="Productname">상품명</p></li>
-                        <li><p class="discount">할인</p></li>
-                        <li><p class="point">포인트</p></li>
-                        <li><p class="price">판매가격</p></li>
-                    </ul>
-                    <c:forEach var="product" items="${products}">
-                    <a href="/farm/market/view.do?prodid=${product.prodid}">
-	                    <div class="cartbody">
-	                        <div class="cartbody2">
-	                            <img src="/farm/img/market_item1.jpg" class="image1" alt="">
-	                            <p class="kind1">${product.category}</p>
-	                            <p class="Productname1">${product.proname}</p>
-	                            <p class="discount1">${product.discount}</p>
-	                            <p class="point1">${product.points}</p>
-	                            <div class="price1">
-	                                <div><p class="price1_1">${product.price} 원</p></div>
-	                                <div>
-	                                    <p class="price1_2">${product.price} </p>
-	                                    <p>원</p>
-	                                </div>
-	                            </div>
-	                    </div>
-	                </a>
-	                </c:forEach>
-                </section>
+
+                <a href="#"><span class="highlight2">전체(5)</span>&nbsp;| 과일 | 야채 | 곡류</a>
+                <table>
+        <tbody>
+            <tr>
+              
+                <th>이미지</th>
+                <th>종류</th>
+                <th>상품명</th>
+                <th>할인</th>
+                <th>포인트</th>
+                <th>판매가격</th>
+            </tr>
+           <c:forEach var="product" items="${products}">
+                                <tr class="cartproduct">
+                                    <td>
+                                        <a href="/farm/market/view.do?prodid=${product.prodid}">
+                                            <img src="/farm/upload/${product.pro_img_list}" alt="${product.proname}">
+                                        </a>
+                                    </td>
+                                    <td>${product.category}</td>
+                                    <td>
+                                        <a href="/farm/market/view.do?prodid=${product.prodid}">
+                                            ${product.proname}
+                                        </a>
+                                    </td>
+                                    <td>${product.discount}</td>
+                                    <td>${product.points}</td>
+                                    <td>${product.price}원</td>
+                              </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+     <div class="page_box">
+    <c:if test="${pageGroup.start > 1}">
+        <a href="/farm/market/list.do?pg=${pageGroup.start-1}" class="prev">이전</a>
+    </c:if>
+    <c:forEach var="i" begin="${pageGroup.start}" end="${pageGroup.end}">
+        <a href="/farm/market/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
+    </c:forEach>
+    <c:if test="${pageGroup.end < lastPageNum}">
+        <a href="/farm/market/list.do?pg=${pageGroup.end+1}" class="next">다음</a>
+    </c:if>
+	</div>
+
                 
                
             </div>
@@ -73,6 +88,7 @@
                 </div>
               </aside>
             </article>
+        </div>
     </main>
   
       <%@ include file="/WEB-INF/_footer.jsp" %>

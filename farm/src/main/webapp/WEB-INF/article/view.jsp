@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>croptalk/grow.html</title>
+    <title>article/view.html</title>
 
     <style>
     
@@ -313,7 +313,7 @@
 
         .hello > article > nav .navtit1{
             position: absolute;
-            width: 131px;
+            width: auto;
             height: 24px;
             left: 0px;
             bottom: 5px;
@@ -484,8 +484,29 @@
     }
  
 </style>
+<!--  
+<script>
+window.onload = function() {
+    const btnDelete = document.getElementById('btnDelete');
+    
+    btnDelete.addEventListener('click', function() {
+        console.log('click!');
+        
+        const result = confirm('정말 삭제하시겠습니까?');
 
-  
+        if(result) {
+            alert('해당 게시물 삭제되었습니다.');
+            // 추가적인 alert
+            alert('삭제가 완료되었습니다.');
+            return true;
+        } else {
+            alert('삭제 처리가 실패했습니다.');
+            return false;
+        }
+    });
+}
+</script>
+  -->
 </head>
 <body>
     <div id = "wrapper">
@@ -498,22 +519,30 @@
     <main>
         <div class="hello">
             <article>
-                <nav>
-                    <img src="../img/sub_nav_tit_cate3_tit2.png" class="navtit1" alt="">
-                    <div class="smallhello">                
-                        <div class="smallhello2">
-                            <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
-                          HOME > 농작물이야기 >&nbsp;<span class="highlight">텃밭가꾸기</span>
-                       </div>
-                </nav>
+            <c:if test="${cate == 'crop'}">
+			    <%@ include file="/WEB-INF/article/crop_aside.jsp" %>
+			</c:if>
+			
+			<c:if test="${cate == 'event'}">
+			    <%@ include file="/WEB-INF/article/event_aside.jsp" %>
+			</c:if>
+			<c:if test="${cate == 'community'}">
+			    <%@ include file="/WEB-INF/article/community_aside.jsp" %>
+			</c:if>
+			
                 <section class="write">
                     <article>
                            <form action="/farm/article/write.do" method = "post" enctype = "multipart/form-data">
-                                <input type ="hidden" name ="writer" value="ghkdtnqls95">
+                                <input type ="hidden" name ="writer" value="${sessUser.uid}">
                                 <table>
                                     <tr>
                                         <td>제목</td>
                                         <td><input type="text" name="title" value="${articleDto.title}" readonly/></td>
+                                    </tr>
+                                    <tr>
+                                     <td>작성자</td>
+                                        <td><input type="text" name="nick" value="${articleDto.nick}" readonly/></td>
+                                    
                                     </tr>
                                     <tr>
                                         <td>내용</td>
@@ -524,10 +553,10 @@
                                 </table>
                                 <div>
       							 <c:if test="${sessUser.uid == articleDto.writer}">            
-                                    <a href="/farm/croptalk/growdelete.do?no=${articleDto.no}" class="btnDelete">삭제</a>
-                                    <a href="#" class="btnModify">수정</a>
+                                    <a href="/farm/article/delete.do?cate=${articleDto.cate}&type=${articleDto.type}&no=${articleDto.no}" id="btnDelete">삭제</a>
+                                    <a href="/farm/article/update.do?cate=${articleDto.cate}&type=${articleDto.type}&no=${articleDto.no}" class="btnModify">수정</a>
                                   </c:if>
-                                    <a href="/farm/croptalk/grow.do"class="btnList">목록</a>
+                                    <a href="/farm/article/list.do?cate=${articleDto.cate}&type=${articleDto.type}"class="btnList">목록</a>
                                 </div>
                             </form>
                     </article>
@@ -535,20 +564,7 @@
                
                 
             </div>
-            <aside>
-                <div id="asidesize">
-                    <div class="asidegate1"><img src="../img/sub_aside_cate3_tit.png" alt=""></div>
-                    <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
-                <ul class="asidelnb">
-                    <li>
-                        <li class="lnb1"><a href="#"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="#"><img id="lnb2" src="../img/sub_cate3_lnb2_ov.png" alt="cate_lnb2"></a></li>
-                        <li class="lnb3"><a href="#"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
-
-                    </li>
-                </ul>
-                </div>
-              </aside>
+           
             </article>
         </div>
 

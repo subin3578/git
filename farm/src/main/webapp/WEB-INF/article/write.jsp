@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,62 +152,62 @@
             top: 326px;
         }
         .write {
-    position: relative;
-    width: 720px;
-    margin: 130px auto;
-}
-
-.write > article > p {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.write table {
-    width: 100%;
-    border-top: 2px solid #111;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-top: 6px;
-}
-
-.write table th {
-    padding: 12px;
-    border-top: 1px solid #d1dee2;
-    border-bottom: 1px solid #d1dee2;
-    background: #e5ecef;
-    color: #383838;
-}
-.write table td {    
-    padding: 12px 6px;
-    border-top: 1px solid #e9e9e9;
-    border-bottom: 1px solid #e9e9e9;    
-}
-.write table td:nth-child(1) {
-    width: 100px;
-    background: #f5f8f9;
-    text-align: center;
-}
-.write table input {
-    width: 100%;
-    height: 24px;
-    border: 0;    
-}
-.write table textarea {
-    width: 100%;
-    height: 280px;
-    resize: none;    
-    border: 0;
-}
-.write form > div {
-    margin-top: 10px;
-    text-align: right;
-}
-        main > aside{
+		    position: relative;
+		    width: 720px;
+		    margin: 130px auto;
+		}
+		
+		.write > article > p {
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		}
+		
+		.write table {
+		    width: 100%;
+		    border-top: 2px solid #111;
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		    margin-top: 6px;
+		}
+		
+		.write table th {
+		    padding: 12px;
+		    border-top: 1px solid #d1dee2;
+		    border-bottom: 1px solid #d1dee2;
+		    background: #e5ecef;
+		    color: #383838;
+		}
+		.write table td {    
+		    padding: 12px 6px;
+		    border-top: 1px solid #e9e9e9;
+		    border-bottom: 1px solid #e9e9e9;    
+		}
+		.write table td:nth-child(1) {
+		    width: 100px;
+		    background: #f5f8f9;
+		    text-align: center;
+		}
+		.write table input {
+		    width: 100%;
+		    height: 24px;
+		    border: 0;    
+		}
+		.write table textarea {
+		    width: 100%;
+		    height: 280px;
+		    resize: none;    
+		    border: 0;
+		}
+		.write form > div {
+		    margin-top: 10px;
+		    text-align: right;
+		}
+       aside{
             position: absolute;
             width: 176px;
             height: 650px;
-            left: 0px;
+            left: -175px;
             top: 0px;
 
             background: url(.png);
@@ -313,7 +312,7 @@
 
         .hello > article > nav .navtit1{
             position: absolute;
-            width: 131px;
+            width: auto;
             height: 24px;
             left: 0px;
             bottom: 5px;
@@ -482,10 +481,39 @@
         align-items: center;
         color: #888888;
     }
- 
+
+    
+    	.btnCancel{
+        width : 53px; 
+        height: 34px; 
+        background-color: #f3fbda; 
+        margin-top : 10px;
+	    position: absolute;
+	    bottom: -50px;
+	    right: 85px;
+	    border: 1px solid #d7d7d7;
+	    text-align: center; 
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+        color : black;
+    }
+        .btnWrite {
+   		 width : 55px; 
+        height: 36px; 
+        background-color: #f3fbda; 
+        margin-top : 10px;
+	    position: absolute;
+	    bottom: -50px;
+	    right: 20px;
+	    border: 1px solid #d7d7d7;
+	    text-align: center; 
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+        color : black;
 </style>
 
-  
 </head>
 <body>
     <div id = "wrapper">
@@ -498,61 +526,46 @@
     <main>
         <div class="hello">
             <article>
-                <nav>
-                    <img src="../img/sub_nav_tit_cate3_tit3.png" class="navtit1" alt="">
-                    <div class="smallhello">                
-                        <div class="smallhello2">
-                            <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
-                          HOME > 농작물이야기 >&nbsp;<span class="highlight">귀농학교</span>
-                       </div>
-                </nav>
+                   <c:if test="${cate == 'crop'}">
+			    <%@ include file="/WEB-INF/article/crop_aside.jsp" %>
+			</c:if>
+			
+			<c:if test="${cate == 'event'}">
+			    <%@ include file="/WEB-INF/article/event_aside.jsp" %>
+			</c:if>
+			<c:if test="${cate == 'community'}">
+			    <%@ include file="/WEB-INF/article/community_aside.jsp" %>
+			</c:if>
+			
                 <section class="write">
                     <article>
-                           <form action="/farm/article/write.do" method = "post" enctype = "multipart/form-data">
-                                <input type ="hidden" name ="writer" value="ghkdtnqls95">
-                                <table>
-                                    <tr>
-                                        <td>제목</td>
-                                        <td><input type="text" name="title" value="${articleDto.title}" readonly/></td>
-                                    </tr>
-                                     <tr>
-                                    	<td>작성자</td>
-                                    	 <td><input type ="text" name ="nick" value="${articleDto.nick}" readonly></td>
-                                    <tr>
-                                    <tr>
-                                        <td>내용</td>
-                                        <td>
-                                            <textarea name="content" readonly>${articleDto.content}</textarea>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div>
-      							 <c:if test="${sessUser.uid == articleDto.writer}">            
-                                    <a href="/farm/croptalk/schooldelete.do?no=${articleDto.no}" class="btnDelete">삭제</a>
-                                    <a href="#" class="btnModify">수정</a>
-                                  </c:if>
-                                    <a href="/farm/croptalk/school.do"class="btnList">목록</a>
-                                </div>
-                            </form>
+                        <form action="/farm/article/write.do?cate=${cate}&type=${type}" method ="post">
+                        	<input type ="hidden" name ="writer" value="${sessUser.uid}">
+                        	<input type ="hidden" name ="type" value="${type}">
+                        	<input type ="hidden" name ="cate" value="${cate}">
+                        <table>
+                            <tr>
+                                <td>제목</td>
+                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                            </tr>
+                            <tr>
+                                <td>내용</td>
+                                <td>
+                                    <textarea name="content"></textarea>                                
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <a href="/farm/article/list.do?type=${type}" class="btnCancel">취소</a>
+                            <input type="submit"  class="btnWrite" value="작성완료">
+                        </div>
+                    </form>
                     </article>
                 </section>
                
                 
             </div>
-            <aside>
-                <div id="asidesize">
-                    <div class="asidegate1"><img src="../img/sub_aside_cate3_tit.png" alt=""></div>
-                    <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
-                <ul class="asidelnb">
-                    <li>
-                         <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2.png" alt="cate_lnb2"></a></li>
-                        <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3_ov.png" alt="cate_lnb2"></a></li>
-
-                    </li>
-                </ul>
-                </div>
-              </aside>
+            
             </article>
         </div>
 
@@ -581,3 +594,4 @@
   </div>
   </body>
   </html>
+  

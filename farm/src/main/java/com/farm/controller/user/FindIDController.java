@@ -57,5 +57,11 @@ public class FindIDController extends HttpServlet {
 			req.setAttribute("errorMessage", "일치하는 정보가 없습니다.");
 		}
 		
+		
+		// JSON 출력
+		
+		//resp.sendRedirect("/WEB-INF/user/findID.jsp");
+		
+		
 	}
 }

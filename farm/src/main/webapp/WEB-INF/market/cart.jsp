@@ -16,30 +16,45 @@
     <title>market/cart.html</title>
     <link rel="stylesheet" href="/farm/css/market/cart.css">
     <script>
-    
+
     function deleteSelected() {
+    	
+
         // 선택된 체크박스들 가져오기
         var checkboxes = document.querySelectorAll('input[name="prodid"]:checked');
         var ids = [];
         checkboxes.forEach(function(checkbox) {
             ids.push(checkbox.value);
         });
+
+
         if (ids.length > 0) {
             // IDs를 쿼리 문자열로 변환
-            var query = ids.join(',');
+            var query = ids.join(', ');
+
             // 삭제 요청을 서버로 전송
-            window.location.href = '/farm/admin/product/delete.do?ids=' + encodeURIComponent(query);
+            console.log("ids" + ids);
+            window.location.href = '/farm/market/cartdelete.do?ids=' + ids;
+
         } else {
             alert('삭제할 항목을 선택하세요.');
         }
     }
+
+
+
     function toggleCheckboxes(source) {
         var checkboxes = document.querySelectorAll('input[name="prodid"]');
         checkboxes.forEach(function(checkbox) {
             checkbox.checked = source.checked;
         });
     }
-    
+
+
+
+</script>
+
+
  
     function updateTotalQuantity() {
         const quantities = document.querySelectorAll('.quantity1');
@@ -167,6 +182,7 @@
                     </div>
                 </nav>
                 <p>장바구니 전체(10)</p>
+<!-- 연화
                 <table class="cart">
                     <tr class="carthead">
                         <th>
@@ -198,9 +214,58 @@
                      </tr>
                     </c:forEach>
                 </table>
+
                 <div class="button">
                     <button class="deleteselect"><p>선택삭제</p></button>
                 </div>
+-->
+              <form action="/farm/market/cart.do" method="post" enctype="multipart/form-data">
+    <table>
+        <tbody>
+            <tr>
+                <th><input type="checkbox" id="select-all" onclick="toggleCheckboxes(this)"></th>
+                <th>이미지</th>
+                <th>종류</th>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>할인</th>
+                <th>포인트</th>
+                <th>가격</th>
+                <th>소계</th>
+            </tr>
+            <c:forEach var="cart" items="${carts}">
+                <tr class="cartproduct">
+                    <td><input type="checkbox" name="prodid" value="${cart.prodId}"></td>
+                    <td><img src="/farm/upload/${cart.pro_img_list}" alt="${cart.proname}"></td>
+                    <td>${cart.category}</td>
+                    <td>${cart.proname}</td>
+                    <td>${cart.quantity}</td>
+                    <td>${cart.discount}</td>     
+                    <td>${cart.point}</td>     
+                    <td>${cart.price}원</td>
+                    <td>${cart.price}원</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</form>
+                   
+                   
+               <div class="button">
+                        <a href="#" onclick="deleteSelected()" class="deleteselect"><p>선택삭제</p></a>
+                    </div>
+
+-----------5
+
+                    </div>
+
+256
+
+
+
+257
+
+-----------
                 <div class="boarder">
                     <div class="table">
                         <p class="allcount">전체합계</p>
@@ -249,7 +314,9 @@
             </article>
         </div>
     </main>
+    
      <%@ include file="/WEB-INF/_footer.jsp" %>
+     
   </div>
   </body>
   </html>

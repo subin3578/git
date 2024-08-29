@@ -8,7 +8,11 @@ public class CartDto {
 		private String discount;
 		private int point;
 		private int price;
+		private String pro_img_list;
+		private String pro_img_inf;
+		private String pro_img_desc;
 		
+
 
 		//추가
 		private String category;
@@ -83,8 +87,11 @@ public class CartDto {
 		@Override
 		public String toString() {
 			return "CartDto [cartNo=" + cartNo + ", prodId=" + prodId + ", uid=" + uid + ", quantity=" + quantity
-					+ ", discount=" + discount + ", point=" + point + ", price=" + price + "]";
+					+ ", discount=" + discount + ", point=" + point + ", price=" + price + ", pro_img_list="
+					+ pro_img_list + ", pro_img_inf=" + pro_img_inf + ", pro_img_desc=" + pro_img_desc + ", category="
+					+ category + ", proname=" + proname + "]";
 		}
+		
 		
 		
 }
