@@ -31,6 +31,7 @@ public void insertCart(CartDto dto) {
 			psmt.setString(2,dto.getUid());
 			psmt.setInt(3,dto.getQuantity());
 			psmt.setString(4,dto.getDiscount());
+
 			psmt.setInt(5,dto.getPoint());
 			psmt.setInt(6,dto.getPrice());
 
@@ -39,50 +40,85 @@ public void insertCart(CartDto dto) {
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+
 		} finally {
+
 			closeAll();
 		}
 		
 	}
 	
-	public List<CartDto> selectCart(String uid) {
-		
-		List<CartDto> carts = new ArrayList<CartDto>();
-		
-		try {
-			
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_CART);
-			psmt.setString(1, uid);
-			
-			
-			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				CartDto dto = new CartDto();
-				dto.setCategory(rs.getString(1));
-				dto.setProname(rs.getString(2));
-				dto.setPro_img_list(rs.getString(3));
-				dto.setQuantity(rs.getInt(4));
-				dto.setDiscount(rs.getString(5));
-				dto.setPoint(rs.getInt(6));
-				dto.setPrice(rs.getInt(7));
-				dto.setProdId(rs.getInt(8));
-				
-				carts.add(dto);
-			}
-			
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}finally {
-			closeAll();
-		}
-		return carts;
-	}
+public CartDto selectCart(String cart) {
 	
-	public List<CartDto> selectCarts() {
-		return null;
+	CartDto dto = null;
+	
+	try {
+		
+		conn = getConnection();
+		psmt = conn.prepareStatement(SQL.SELECT_CART);
+		psmt.setString(1, cart);
+		
+
+		
+		rs = psmt.executeQuery();
+		
+		if(rs.next()) {
+			dto = new CartDto();
+			dto.setCartNo(rs.getInt(1));
+			dto.setProdId(rs.getInt(2));
+			dto.setCategory(rs.getString(3));
+			dto.setProname(rs.getString(4));
+			dto.setQuantity(rs.getInt(5));
+			dto.setDiscount(rs.getString(6));
+			dto.setPoint(rs.getInt(7));
+			dto.setPrice(rs.getInt(8));
+
+			
+		}
+		
+	} catch (Exception e) {
+		logger.error(e.getMessage());
+	}finally {
+		closeAll();
 	}
+	return dto;
+}
+
+public List<CartDto> selectCarts(String uid) {
+	
+	List<CartDto> carts = new ArrayList<CartDto>();
+	
+	try {
+		
+		conn = getConnection();
+		psmt = conn.prepareStatement(SQL.SELECT_CARTS);
+		psmt.setString(1, uid);
+		
+		
+		rs = psmt.executeQuery();
+		
+		while(rs.next()) {
+			CartDto dto = new CartDto();
+			dto.setCartNo(rs.getInt(1));
+			dto.setCategory(rs.getString(2));
+			dto.setProname(rs.getString(3));
+			dto.setQuantity(rs.getInt(4));
+			dto.setDiscount(rs.getString(5));
+			dto.setPoint(rs.getInt(6));
+			dto.setPrice(rs.getInt(7));
+			dto.setProdId(rs.getInt(8));
+			
+			carts.add(dto);
+		}
+		
+	} catch (Exception e) {
+		logger.error(e.getMessage());
+	}finally {
+		closeAll();
+	}
+	return carts;
+}
+	
 	public void updateCart(CartDto dto) {
 		
 	}

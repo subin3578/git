@@ -21,7 +21,32 @@ public class OrderDao extends DBHelper{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	
-	public void insertOrder() {
+	public void insertOrder( OrderDto dto ) {
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_CART);
+			psmt.setString(1, null);
+			psmt.setString(2, null);
+			psmt.setString(3, null);
+			psmt.setString(4, null);
+			psmt.setString(5, null);
+			psmt.setString(6, null);
+			psmt.setString(7, null);
+			psmt.setString(8, null);
+			psmt.setString(9, null);
+			psmt.setString(10, null);
+			psmt.setString(11, null);
+			psmt.setString(12, null);
+			
+			psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}finally {
+			closeAll();
+		}
+		
 		
 	}
 	
@@ -42,10 +67,9 @@ public class OrderDao extends DBHelper{
 				dto.setOrderNo(rs.getInt(1));
 				dto.setUid(rs.getString(2));
 				dto.setProdId(rs.getInt(3));
-				dto.setProdPrice(rs.getInt(4));
+				dto.setPrice(rs.getInt(4));
 				dto.setQuantity(rs.getInt(5));
-				dto.setDeliveryCost(rs.getInt(6));
-				dto.setProdTotal(rs.getInt(7));
+				dto.setDelivery(rs.getInt(6));
 				dto.setTotalAmount(rs.getInt(8));
 				dto.setUsedPoint(rs.getInt(9));
 				dto.setPayAmount(rs.getInt(10));

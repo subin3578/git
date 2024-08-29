@@ -29,12 +29,11 @@ public class CartController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 		String uid = req.getParameter("uid");
-		List<CartDto> carts = cartService.selectCart(uid);
+		List<CartDto> carts = cartService.selectCarts(uid);
 		
 		req.setAttribute("carts", carts);
-		logger.debug("carts : "+ carts.toString());
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/market/cart.jsp");
 		dispatcher.forward(req, resp);
@@ -47,14 +46,18 @@ public class CartController extends HttpServlet {
 		String prodId = req.getParameter("prodId");
 		String uid = req.getParameter("uid");
 		String quantity = req.getParameter("quantity");
+		String discount = req.getParameter("discount");
 		String price = req.getParameter("price");
 		
 		
 		CartDto dto = new CartDto();
 		dto.setProdId(prodId);
 		dto.setUid(uid);
+		dto.setDiscount(discount);
 		dto.setQuantity(quantity);
 		dto.setPrice(price);
+		
+		logger.debug("cart dopost : "+ dto.toString());
 		
 		cartService.insertCart(dto);
 		

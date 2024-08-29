@@ -27,7 +27,7 @@
             right: 470px;
             top: 145px;
 
-            background: url(.jpg);
+            
 
 
         }
@@ -38,7 +38,7 @@
             left: 10px;
             bottom: 10px;
                     
-            background: url(.png);
+            
 
         }
 
@@ -58,7 +58,7 @@
             left: 0px;
             top: 0px;
 
-            background: url(.png);
+            
 
         }
 
@@ -69,7 +69,7 @@
             left: 470px;
             top: 340px;
 
-            background: url(.png);
+            
             
         }
         
@@ -80,7 +80,7 @@
             left: 16px;
             top: 16px;
 
-            background: url(.png);
+            
 
 
         }
@@ -99,7 +99,7 @@
             left: 0px;
             top: 81px;
 
-            background: url('img/sub_aside_bg_lnb.png');
+            background: url('/farm/img/sub_aside_bg_lnb.png');
 
         }
 
@@ -110,7 +110,7 @@
             top: 26px;
             bottom: 178px;
 
-            background: url(.png);
+            
 
 
         }
@@ -121,7 +121,7 @@
             top: 61px;
             bottom: 143px;
 
-            background: url(.png);
+            
 
 
         }
@@ -132,7 +132,7 @@
             top: 96px;
             bottom: 108px;
 
-            background: url(.png);
+            
 
         }
 
@@ -164,7 +164,7 @@
             left: 0px;
             bottom: 5px;
 
-            background: url(.png);
+            
 
         }
         .hello > article > nav .smallhello{
@@ -249,8 +249,8 @@
             color: #111111;
             white-space: nowrap;
 
+}
 
-        }
       
         
         
@@ -341,8 +341,10 @@
             left: 76.19px;
 
 
+
 		}
 		 th:nth-child(3){ 
+
 
             position: absolute;
             width: 76.19px;

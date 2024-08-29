@@ -21,13 +21,13 @@ public enum CartService {
 		 dao.insertCart(dto);
 	}
 	
-	public List<CartDto> selectCart(String uid) {
-		return dao.selectCart(uid);
+	public CartDto selectCart(String cart) {
+		return dao.selectCart(cart);
+	}
+	public List<CartDto> selectCarts(String uid) {
+		return dao.selectCarts(uid);
 	}
 	
-	public List<CartDto> selectCarts() {
-		return null;
-	}
 	public void updateCart(CartDto dto) {
 		
 	}

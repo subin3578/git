@@ -66,27 +66,73 @@
 
         document.querySelector('.bdquantity1_2').textContent = totalQuantity;
     }
-    
-    function subTotalPrice() {
+
+    function TotalPrice() {
     	const quantities = document.querySelectorAll('.quantity1'); // 모든 수량 요소 가져오기
         const prices = document.querySelectorAll('.price1'); // 모든 가격 요소 가져오기
-        let totalSubtotalPrice = 0;
+        let totalPrice = 0;
 
+        
         quantities.forEach(function(quantity, index) {
             const price = prices[index].textContent.replace(/,/g, ''); // 해당하는 가격 요소 가져오기
             const quantityValue = parseInt(quantity.textContent, 10);
             const priceValue = parseInt(price, 10);
 
-            totalSubtotalPrice += priceValue * quantityValue; // 모든 항목의 소계를 더함
+            totalPrice += priceValue * quantityValue; // 모든 항목의 소계를 더함
         });
         
-        document.querySelector('.subtotal1_1').textContent = totalSubtotalPrice.toLocaleString() + "원";
+        document.querySelector('.bdprice1_2').innerText =  totalPrice;
+        
+        const finalPrice = totalPrice + 3000;
+        document.querySelector('.bdallcount1_2').innerText = finalPrice.toLocaleString();
     }
 
-    window.onload = function() {
-        updateTotalQuantity();
-        subTotalPrice();
+
+
+
+    	window.onload = function() {
+    		updateTotalQuantity();
+    	    TotalPrice();
         
+
+            const btnOrder = document.getElementById('btnOrder');
+            
+            btnOrder.onclick = function(){
+            
+            	
+            	const checkboxes = document.querySelectorAll('input[name=cartNo]:checked');
+                const values = Array.from(checkboxes).map(checkbox => encodeURIComponent(checkbox.value));
+                console.log(values);
+                
+                if (values.length === 0) {
+                    alert('주문할 항목을 선택하세요.');
+                    return;
+                }
+                
+                // 쿼리 문자열을 생성
+                const queryString = values.map(value => `cart=\${value}`).join('&');
+                console.log(queryString);
+                
+                
+                // GET 요청을 보내기 위한 URL 생성
+                const url = `/farm/market/order.do?\${queryString};
+                console.log(url);
+            	
+                //        	        	
+            	fetch(url)
+            		.then(resp => resp.json())
+            		.then(data => {
+            			console.log(data);
+            			
+            		})
+            		.catch(err => {
+            			console.log(err);
+            		});
+                
+            	window.location.href = url;
+            }
+            
+            
         const deleteselect = document.getElementsByClassName('deleteselect')[0];
         
         deleteselect.addEventListener('click', function(e){
@@ -110,6 +156,8 @@
 					console.log(err);
 				});
         });
+        
+        
     };
     </script>
 </head>
@@ -134,6 +182,43 @@
                     </div>
                 </nav>
                 <p>장바구니 전체(10)</p>
+<!-- 연화
+                <table class="cart">
+                    <tr class="carthead">
+                        <th>
+                            <input type="checkbox" id="selectAll" onclick="toggleCheckboxes(this)">
+                        </th>
+                        <th><p class="image">이미지</p></th>
+                        <th><p class="kind">종류</p></th>
+                        <th><p class="Productname">상품명</p></th>
+                        <th><p class="quantity">수량</p></th>
+                        <th><p class="discount">할인</p></th>
+                        <th><p class="point">포인트</p></th>
+                        <th><p class="price">가격</p></th>
+                        <th><p class="subtotal">소계</p></th>
+                    </tr>
+                    <tr class="cartbody1">
+                        <p>장바구니에 상품이 없습니다</p>
+                    </tr>
+                    <c:forEach var="cart" items="${carts}">
+                     <tr class="cartbody2">
+                         <td><input type="checkbox" id="select1" name="cartNo" value="${cart.cartNo}"></td>
+                         <td><img src="../img/market_item1.jpg" class="image1" alt="apple"></td>
+                         <td><p class="kind1">${cart.category}</p></td>
+                         <td><p class="Productname1">${cart.proname}</p></td>
+                         <td><p class="quantity1">${cart.quantity}</p></td>
+                         <td><p class="discount1">${cart.discount}</p></td>
+                         <td><p class="point1">${cart.point}</p></td>
+                         <td><p class="price1">${cart.price}</p></td>                         
+                         <td><p class="subtotal1_1">3,600원</p></td>
+                     </tr>
+                    </c:forEach>
+                </table>
+
+                <div class="button">
+                    <button class="deleteselect"><p>선택삭제</p></button>
+                </div>
+-->
               <form action="/farm/market/cart.do" method="post" enctype="multipart/form-data">
     <table>
         <tbody>
@@ -169,6 +254,18 @@
                <div class="button">
                         <a href="#" onclick="deleteSelected()" class="deleteselect"><p>선택삭제</p></a>
                     </div>
+
+-----------5
+
+                    </div>
+
+256
+
+
+
+257
+
+-----------
                 <div class="boarder">
                     <div class="table">
                         <p class="allcount">전체합계</p>
@@ -198,7 +295,7 @@
                         </div>
                     </div>
                     <div class="button2">
-                        <button class="btnorder"><p>주문하기</p></button>
+                        <button class="btnorder" id="btnOrder"><p>주문하기</p></button>
                     </div>
                 </div>
                

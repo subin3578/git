@@ -12,28 +12,6 @@ public class CartDto {
 		private String pro_img_inf;
 		private String pro_img_desc;
 		
-		
-		// 추가
-		public String getPro_img_list() {
-			return pro_img_list;
-		}
-		public void setPro_img_list(String pro_img_list) {
-			this.pro_img_list = pro_img_list;
-		}
-		
-		public String getPro_img_inf() {
-			return pro_img_inf;
-		}
-		public void setPro_img_inf(String pro_img_inf) {
-			this.pro_img_inf = pro_img_inf;
-		}
-		public String getPro_img_desc() {
-			return pro_img_desc;
-		}
-		public void setPro_img_desc(String pro_img_desc) {
-			this.pro_img_desc = pro_img_desc;
-		}
-		
 
 
 		//추가

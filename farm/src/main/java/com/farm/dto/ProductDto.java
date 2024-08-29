@@ -177,4 +177,6 @@ public class ProductDto {
             return defaultValue;
         }
     }
+
+	
 }

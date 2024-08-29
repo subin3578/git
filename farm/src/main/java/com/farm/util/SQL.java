@@ -55,12 +55,7 @@ public class SQL{
 											+ "JOIN `user` AS b ON a.writer = b.uid "
 											+ "WHERE `no`=?";
 
-	public static final String SELECT_ARTICLES= "SELECT a.*, b.nick  from `article` AS a "
-											+ "JOIN `user` AS b ON a.writer = b.uid "
-											+ "where a.type = ? " 
-											+ "ORDER BY `no` DESC "
-											+ "LIMIT ?, 10";
-	public static final String UPDATE_ARTICLE = "update article set `title`=?, `content`=? where `no`=?";
+
 	public static final String DELETE_ARTICLE= "delete from `article` where `no`=?";
 	public static final String SELECT_COUNT_TOTAL= "SELECT COUNT(*) FROM `article`"
 													+" where `type` = ?";
@@ -99,20 +94,36 @@ public class SQL{
 	public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = ?";
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	// CART (김연화) /////////////////////////////////////////////////////////////////////
+	// CART (연화) /////////////////////////////////////////////////////////////////////
 	public static final String INSERT_CART = "INSERT INTO `cart` "
 			+ "(`prodId`,`uid`,`quantity`,`discount`,`point`,`price`) "
 			+ "values (?,?,?,?,?,?)";
-	public static final String SELECT_CART = "SELECT b.category , b.proname, b.pro_img_list , a.quantity, b.discount, b.`points`, a.price, a.prodId  "
-                                            			+ "from `cart` AS a "
-			                                            + "JOIN `product` AS b ON a.prodId = b.product_id "
-			                                            + "where `uid` =?";
+
+	public static final String SELECT_CART_NO_BY_PROD_ID ="SELECT cartNo FROM Cart WHERE prodId = ?";
+
+	public static final String SELECT_CARTS = "SELECT a.cartNo, b.category , b.proname, a.quantity, b.discount, a.point, a.price, a.prodId "
+			+ "from `cart` AS a "
+			+ "JOIN `product` AS b ON a.prodId = b.product_id "
+			+ "where `uid` =?";
 	
+	public static final String SELECT_CART = "SELECT a.cartNo, a.prodId, b.category , b.proname, a.quantity, b.discount, a.`point`, a.price "
+			+ "from `cart` AS a JOIN `product` AS b ON a.prodId = b.product_id where `cartNo` =?";
+
+	public static final String DELETE_CART= "delete from `cart` where `cartNo`=?";
+
+	
+	//order
+	public static final String SELECT_ORDERS = "select * from `order`";
+	public static final String INSERT_ORDER = "INSERT INTO `order` (`uid`,`usedPoint`,`payment`,`payAmount`,`payStatus`,`orderDate`,`recipient`,`recipientHp`,`zip`,`addr1`,`addr2`,`etc`) "
+			+ "VALUE (?,?,?,?,?,now(),?,?,?,?,?,?)";
 	
 
-	public static final String DELETE_CART= "delete from `cart` where `cartno`=?";
-	public static final String SELECT_CART_NO_BY_PROD_ID ="SELECT cartNo FROM Cart WHERE prodId = ?";
-	public static final String DELETE_CART= "delete from `cart` where `cartNo`=?";
+	public static final String SELECT_ARTICLES= "SELECT a.*, b.nick  from `article` AS a "
+											+ "JOIN `user` AS b ON a.writer = b.uid "
+											+ "where a.type = ? " 
+											+ "ORDER BY `no` DESC "
+											+ "LIMIT ?, 10";
+	public static final String UPDATE_ARTICLE = "update article set `title`=?, `content`=? where `no`=?";
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	// ORDER (김소진) //////////////////////////////////////////////////////////////////////
