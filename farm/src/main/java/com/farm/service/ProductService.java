@@ -42,18 +42,17 @@ public enum ProductService {
 		
 		// 현재 페이지 그룹 구하기 
 		public PageGroupDto getCurrentPageGroup(int currentPage, int lastPageNum) {
-			
-			int currentPageGroup = (int) Math.ceil(currentPage / 5.0);
-			int pageGroupStart = (currentPageGroup - 1) * 5 + 1;
-			int pageGroupEnd = currentPageGroup * 5;
-			
-			if(pageGroupEnd > lastPageNum){
-				pageGroupEnd = lastPageNum;
-			}
-			
-			return new PageGroupDto(pageGroupStart, pageGroupEnd);
+		    int currentPageGroup = (int) Math.ceil(currentPage / 5.0);
+		    int pageGroupStart = (currentPageGroup - 1) * 5 + 1;
+		    int pageGroupEnd = currentPageGroup * 5;
+		    
+		    if (pageGroupEnd > lastPageNum) {
+		        pageGroupEnd = lastPageNum;
+		    }
+		    
+		    return new PageGroupDto(pageGroupStart, pageGroupEnd);
 		}
-		
+
 		// 페이지 시작번호
 		public int getPageStartNum(int total, int currentPage) {
 			int start = (currentPage - 1) * 5;
@@ -68,12 +67,15 @@ public enum ProductService {
 		return dao.selectCountTotal();
 	}
 	
-	public ProductDto selectProduct(int prodid) {
+	public ProductDto selectProduct(String prodid) {
 		return dao.selectProduct(prodid);
 	}
 	
 	public List<ProductDto> selectProducts(int start) {
 		return dao.selectProducts(start);
+	}
+	public List<ProductDto> selectProducts2() {
+		return dao.selectProducts2();
 	}
 	public void updateProduct(ProductDto dto) {
 		

@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.farm.dto.CartDto;
+import com.farm.dto.FileDto;
 import com.farm.service.CartService;
+import com.farm.service.FileService;
 import com.farm.service.ProductService;
 
 import jakarta.servlet.RequestDispatcher;
@@ -23,6 +25,7 @@ public class CartController extends HttpServlet {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CartService cartService = CartService.INSTANCE;
+	private FileService fileService = FileService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,6 +49,7 @@ public class CartController extends HttpServlet {
 		String quantity = req.getParameter("quantity");
 		String price = req.getParameter("price");
 		
+		
 		CartDto dto = new CartDto();
 		dto.setProdId(prodId);
 		dto.setUid(uid);
@@ -58,5 +62,3 @@ public class CartController extends HttpServlet {
 	
 	}
 }
-
-
