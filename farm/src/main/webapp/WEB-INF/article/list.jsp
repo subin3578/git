@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri ="jakarta.tags.core"%>
+    
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>croptalk/story.html</title>
+    <title>croptalk/grow.html</title>
 
     <style>
     
@@ -27,6 +31,98 @@
 
         }
 
+        /***********/
+        /* header */
+        header{
+            width: 980px;
+            height: 150px;
+            margin : 0 auto;
+        }
+
+        /*top line*/
+        header .htop{
+            position: absolute;
+            width: 980px;
+            height: 14px;
+            top: 1px;
+            background-repeat: repeat;
+            height: 10px;
+            background-image: url('../img/head_top_line.png')
+        }
+        
+        /*logospace 는 로고, 사이드로고, 로그인| 담고있음*/
+        .logospace {
+            width : 980px;
+            height : 80px;
+            position : relative;
+        } 
+
+        .logospace > p{
+            position : absolute;
+            height: 14px;
+            right : 0;
+            left: 787.45px;
+            top: 15px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            display: flex;
+            align-items: center;
+            color: #111111;
+        }
+        .logospace > p{
+            position: absolute;
+            width: 237.15px;
+        }
+
+        .headlog {
+            position : absolute;
+            left : 40%;
+            top : 15px;
+        }
+        .headlog2 {
+            position : absolute;
+            right : 0px;
+            top : 45px;
+        }
+
+        /**nav**/
+        header nav {
+            width : 100%;
+            height : 50px;
+            position :relative;
+        }
+        .navfont> li a {
+            font-size :15px;
+            font-weight: bolder;
+        }
+       header nav > ul {
+            width :100%;
+            height : 50px;
+            display: inline-block;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        
+       header nav > ul > li {
+        margin-left : 5px;
+        float : left;
+        min-width : 190px;
+        height: 30px;
+        margin-top :5px;
+        border-top: 5px solid rgb(145, 142, 142);
+        /*안의 글자 a들을 중앙으로 배치하는 방법*/
+        position : flex;
+        text-align: center;
+        }
+        /*장보기 뱃지*/
+        .badge {
+            position : absolute;
+            margin-top :-10px;
+            margin-left  : 310px;
+        }
 
         .subtopbg1{
             position: absolute;
@@ -165,17 +261,18 @@
             border-bottom: 1px solid #C2C2C2;
 
         }
+
         .hello > article > nav .navtit1{
             position: absolute;
-            width: 131px;
-            height: 25px;
+            width: auto;
+            height: 24px;
             left: 0px;
             bottom: 5px;
-                    
+
             background: url(.png);
 
-
         }
+
         .hello > article > nav .smallhello{
             position: absolute;
             height: 17px;
@@ -187,32 +284,14 @@
         }
        
 
-        .hello > article > nav .smallhello .smallhello2{
-            position: absolute;
-            height: 14px;
-            height: 14px;
-            left: -27px;
-            top: 1px;
 
-            font-family: Arial, Helvetica, sans-serif; /* 폰트 패밀리 */
-            font-style: normal; /* 폰트 스타일 */
-            font-weight: 400; /* 폰트 굵기 */
-            font-size: 12px;
-            line-height: 15px;
-            display: flex;
-            align-items: center;
-
-            color: #8C8C8C;
-
-
-
-        }
         .hello > article > nav .smallhello .smallhello2 > div{
             position: relative;
             right: 3px;
             bottom: 2px;
 
         }
+
         .hello > article > nav .smallhello .smallhello2 .highlight{
             position: relative;
             bottom: 1.5px;
@@ -220,6 +299,7 @@
             color: #91BA15;
             
         }
+
         .hello > article > div .boards{
             position: absolute;
             width: 247.22px;
@@ -238,37 +318,8 @@
                     
             color: #000000;
                     
-
         }
-
-
-
-
-
-        /***********/
-        /* footer */
-        footer {
-            box-sizing: border-box;
-            position: absolute;
-            margin : 0 auto;
-            width : 980px;
-            height: 130px;
-            top: 1010px;
-            left: 470px;
-            right: 470px;
-            background-color: #F8F9FA; /* 배경색 추가 */
-            
-            overflow :hidden
-        }/* Footer */
-
-
-        footer > div {
-            float :right;
-            width :100%;
-            height : 120px;
-            
-        }
-    #listcontainer{
+        #listcontainer{
             width : 100%;
             height: 500px;
             position : absolute;
@@ -306,22 +357,38 @@
         background-color: white;
         cursor: pointer;
     }
-        .btnWrite{
+    
+		.list > .paging {
+		    padding: 20px;
+		    text-align: center;            
+		}
+		.list > .paging > a {
+		    padding: 8px;
+		    background: #f2f2f2;
+		    border: 1px solid #d7d7d7;            
+		}
+		
+		.list > .paging > .current {
+		    border: 1px solid #6d6d6d;
+		    background: #888;
+		    color: #fff;
+		}
+	.btnWrite{
         width : 54px; 
         height: 35px; 
         background-color: #f3fbda; 
         border : 1px solid 91BA15;
-        float: right;
         margin-top : 10px;
-
+	    position: absolute;
+	    bottom: -20px;
+	    right: 0;
+	    border: 1px solid #d7d7d7;
+	    text-align: center; 
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
         color : black;
     }
-        /*************************************************************************************************/
-        /*************************************************************************************************/
-        /********************************************** main  ********************************************/
-        /*************************************************************************************************/
-        /*************************************************************************************************/
-        
 
 </style>
 
@@ -329,7 +396,7 @@
 </head>
 <body>
     <div id = "wrapper">
-	<%@ include file="/WEB-INF/_header.jsp" %>
+    <%@ include file="/WEB-INF/_header.jsp" %>
     <div class="subtopbg1">
         <img src="../img/sub_top_bg.jpg" alt="subtopbg1">
         <div class="subtoptit1"><img src="../img/sub_top_tit3.png" alt="subtoptit1"></div>
@@ -338,16 +405,18 @@
     <main>
         <div class="hello">
             <article>
-                <nav>
-                    <img src="../img/sub_nav_tit_cate3_tit1.png" class="navtit1" alt="">
-                    <div class="smallhello">                
-                        <div class="smallhello2">
-                            <div><img src="/img/sub_page_nav_ico.gif" alt=""></div> 
-                          HOME > 농작물이야기 >&nbsp;<span class="highlight">농작물이야기</span>
-                    </div>
-                </nav>
-          
-   <div id="listcontainer">
+             <c:if test="${cate == 'crop'}">
+			    <%@ include file="/WEB-INF/article/crop_aside.jsp" %>
+			</c:if>
+			
+			<c:if test="${cate == 'event'}">
+			    <%@ include file="/WEB-INF/article/event_aside.jsp" %>
+			</c:if>
+			<c:if test="${cate == 'community'}">
+			    <%@ include file="/WEB-INF/article/community_aside.jsp" %>
+			</c:if>
+			
+                <div id="listcontainer">
                         <section class="list">
                             <article>
                                 <table border= "0">
@@ -358,47 +427,45 @@
                                         <th>날짜</th>
                                         <th>조회</th>
                                     </tr>
-                                <c:forEach var="article" items="${articles}">
-                                    <tr>
-                                        <!-- 여기 순서번호 수정 해야함 -->
-                                        <td>1</td>
-                                        <td>제 텃밭을 소개합니다.</td>
-                                        <td>황소</td>
-                                        <td>2024/08/26</td>
-                                        <td>0</td>
-                                    </tr>
-                                </c:forEach>
+				    				<c:forEach var="article" items="${articles}">
+				                        <tr>
+				                        	<!-- 여기 순서번호 수정 해야함 -->
+				                            <td>${pageStartNum}</td>
+				                            <td><a href="/farm/article/view.do?cate=${article.cate}&type=${article.type}&no=${article.no}">${article.title}</a></td>
+				                            <td>${article.nick}</td>
+				                            <td>${article.rdate}</td>
+				                            <td>${article.hit}</td>
+
+				                        </tr>
+				                         <c:set var="pageStartNum" value="${pageStartNum-1}"/>
+				                    </c:forEach>
                                 </table>
                             </article>
-                            
+                            <div class="paging">
+							    <c:if test="${pageGroup.start > 1}">
+							        <a href="/farm/article/list.do?pg=${pageGroup.start-1}" class="prev">이전</a>
+							    </c:if>
+							    <c:set var="endPage" value="${pageGroup.end > lastPageNum ? lastPageNum : pageGroup.end}" />
+							    <c:forEach var="i" begin="${pageGroup.start}" end="${endPage}">
+							        <a href="/farm/article/list.do?pg=${i}" class="num ${currentPage == i ? 'current':'off'}">${i}</a>
+							    </c:forEach>
+							    <c:if test="${endPage < lastPageNum}">
+							        <a href="/farm/article/list.do?pg=${endPage+1}" class="next">다음</a>
+							    </c:if>
+							</div>
                             <!-- 글쓰기 버튼 -->
-                            <button type = "button" class = "btnWrite">글쓰기</button>
+ 							 <a href="/farm/article/write.do?cate=${cate}&type=${type}" class="btnWrite">글쓰기</a>
+ 							
                         </section>
                    
-                </div>
-                
-            </div>
-            <aside>
-                <div id="asidesize">
-                    <div class="asidegate1"><img src="../img/sub_aside_cate3_tit.png" alt=""></div>
-                    <div class="asidebgline"><img src="../img/sub_aside_bg_line.png" alt=""></div>
-                <ul class="asidelnb">
-                    <li>
-                          <li class="lnb1"><a href="story.do"><img id="lnb1" src="../img/sub_cate3_lnb1_ov.png" alt="cate_lnb1"></a></li>
-                        <li class="lnb2"><a href="grow.do"><img id="lnb2" src="../img/sub_cate3_lnb2.png" alt="cate_lnb2"></a></li>
-                        <li class="lnb3"><a href="school.do"><img id="lnb2" src="../img/sub_cate3_lnb3.png" alt="cate_lnb2"></a></li>
-
-                    </li>
-                </ul>
-                </div>
-              </aside>
+                </div> <!-- listcontainer -->
+            </div> <!-- hello -->
+            
+            
             </article>
         </div>
-
     </main>
-  
-   	<%@ include file="/WEB-INF/_footer.jsp" %>
-
+     <%@ include file="/WEB-INF/_footer.jsp" %>
   </div>
   </body>
   </html>

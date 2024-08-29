@@ -1,4 +1,4 @@
-package com.farm.controller.croptalk;
+package com.farm.controller.article;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/croptalk/growdelete.do")
-public class GrowDeleteController extends HttpServlet {
+@WebServlet("/article/delete.do")
+public class ArticleDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	 private ArticleService service = ArticleService.INSTANCE;
@@ -19,11 +19,14 @@ public class GrowDeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String cate = req.getParameter("cate");
+		String type = req.getParameter("type");
 		String no = req.getParameter("no");
+		
 		
 		service.deleteArticle(no);
 		
-		resp.sendRedirect("/farm/croptalk/grow.do");
+		resp.sendRedirect("/farm/article/list.do?cate="+cate+"&type="+type);
 	}
 	
 }
