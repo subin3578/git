@@ -3,7 +3,7 @@ package com.farm.controller.article;
 import java.io.IOException;
 import java.util.List;
 
-import com.farm.dao.PageGroupDto;
+import com.farm.dto.PageGroupDto;
 import com.farm.dto.ArticleDto;
 import com.farm.service.ArticleService;
 
