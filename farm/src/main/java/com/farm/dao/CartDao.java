@@ -22,7 +22,7 @@ public class CartDao extends DBHelper{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	
-	public void insertCart(CartDto dto) {
+public void insertCart(CartDto dto) {
 		
 		try {
 			conn = getConnection();
@@ -30,56 +30,88 @@ public class CartDao extends DBHelper{
 			psmt.setInt(1,dto.getProdId());
 			psmt.setString(2,dto.getUid());
 			psmt.setInt(3,dto.getQuantity());
-			psmt.setInt(4,dto.getPrice());
-
+			psmt.setString(4,dto.getDiscount());
+			psmt.setInt(5,dto.getPrice());
+			
 			psmt.executeUpdate();
-			
-			closeAll();
-			
-			
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
-		
-		
-	}
-	
-	public List<CartDto> selectCart(String uid) {
-		
-		List<CartDto> carts = new ArrayList<CartDto>();
-		
-		try {
-			
-			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_CART);
-			psmt.setString(1, uid);
-			
-			
-			rs = psmt.executeQuery();
-			
-			while(rs.next()) {
-				CartDto dto = new CartDto();
-				dto.setCategory(rs.getString(1));
-				dto.setProname(rs.getString(2));
-				dto.setQuantity(rs.getInt(3));
-				dto.setDiscount(rs.getString(4));
-				dto.setPoint(rs.getInt(5));
-				dto.setPrice(rs.getInt(6));
-				
-				carts.add(dto);
-			}
 			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}finally {
 			closeAll();
 		}
-		return carts;
+		
 	}
 	
-	public List<CartDto> selectCarts() {
-		return null;
+public CartDto selectCart(String cart) {
+	
+	CartDto dto = null;
+	
+	try {
+		
+		conn = getConnection();
+		psmt = conn.prepareStatement(SQL.SELECT_CART);
+		psmt.setString(1, cart);
+		
+		
+		rs = psmt.executeQuery();
+		
+		if(rs.next()) {
+			dto = new CartDto();
+			dto.setCartNo(rs.getInt(1));
+			dto.setProdId(rs.getInt(2));
+			dto.setCategory(rs.getString(3));
+			dto.setProname(rs.getString(4));
+			dto.setQuantity(rs.getInt(5));
+			dto.setDiscount(rs.getString(6));
+			dto.setPoint(rs.getInt(7));
+			dto.setPrice(rs.getInt(8));
+			
+		}
+		
+	} catch (Exception e) {
+		logger.error(e.getMessage());
+	}finally {
+		closeAll();
 	}
+	return dto;
+}
+
+public List<CartDto> selectCarts(String uid) {
+	
+	List<CartDto> carts = new ArrayList<CartDto>();
+	
+	try {
+		
+		conn = getConnection();
+		psmt = conn.prepareStatement(SQL.SELECT_CARTS);
+		psmt.setString(1, uid);
+		
+		
+		rs = psmt.executeQuery();
+		
+		while(rs.next()) {
+			CartDto dto = new CartDto();
+			dto.setCartNo(rs.getInt(1));
+			dto.setCategory(rs.getString(2));
+			dto.setProname(rs.getString(3));
+			dto.setQuantity(rs.getInt(4));
+			dto.setDiscount(rs.getString(5));
+			dto.setPoint(rs.getInt(6));
+			dto.setPrice(rs.getInt(7));
+			dto.setProdId(rs.getInt(8));
+			
+			carts.add(dto);
+		}
+		
+	} catch (Exception e) {
+		logger.error(e.getMessage());
+	}finally {
+		closeAll();
+	}
+	return carts;
+}
+	
 	public void updateCart(CartDto dto) {
 		
 	}

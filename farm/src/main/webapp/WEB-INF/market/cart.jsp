@@ -51,27 +51,73 @@
 
         document.querySelector('.bdquantity1_2').textContent = totalQuantity;
     }
-    
-    function subTotalPrice() {
+
+    function TotalPrice() {
     	const quantities = document.querySelectorAll('.quantity1'); // 모든 수량 요소 가져오기
         const prices = document.querySelectorAll('.price1'); // 모든 가격 요소 가져오기
-        let totalSubtotalPrice = 0;
+        let totalPrice = 0;
 
+        
         quantities.forEach(function(quantity, index) {
             const price = prices[index].textContent.replace(/,/g, ''); // 해당하는 가격 요소 가져오기
             const quantityValue = parseInt(quantity.textContent, 10);
             const priceValue = parseInt(price, 10);
 
-            totalSubtotalPrice += priceValue * quantityValue; // 모든 항목의 소계를 더함
+            totalPrice += priceValue * quantityValue; // 모든 항목의 소계를 더함
         });
         
-        document.querySelector('.subtotal1_1').textContent = totalSubtotalPrice.toLocaleString() + "원";
+        document.querySelector('.bdprice1_2').innerText =  totalPrice;
+        
+        const finalPrice = totalPrice + 3000;
+        document.querySelector('.bdallcount1_2').innerText = finalPrice.toLocaleString();
     }
 
-    window.onload = function() {
-        updateTotalQuantity();
-        subTotalPrice();
+
+
+
+    	window.onload = function() {
+    		updateTotalQuantity();
+    	    TotalPrice();
         
+
+            const btnOrder = document.getElementById('btnOrder');
+            
+            btnOrder.onclick = function(){
+            
+            	
+            	const checkboxes = document.querySelectorAll('input[name=cartNo]:checked');
+                const values = Array.from(checkboxes).map(checkbox => encodeURIComponent(checkbox.value));
+                console.log(values);
+                
+                if (values.length === 0) {
+                    alert('주문할 항목을 선택하세요.');
+                    return;
+                }
+                
+                // 쿼리 문자열을 생성
+                const queryString = values.map(value => `cart=\${value}`).join('&');
+                console.log(queryString);
+                
+                
+                // GET 요청을 보내기 위한 URL 생성
+                const url = `/farm/market/order.do?\${queryString};
+                console.log(url);
+            	
+                //        	        	
+            	fetch(url)
+            		.then(resp => resp.json())
+            		.then(data => {
+            			console.log(data);
+            			
+            		})
+            		.catch(err => {
+            			console.log(err);
+            		});
+                
+            	window.location.href = url;
+            }
+            
+            
         const deleteselect = document.getElementsByClassName('deleteselect')[0];
         
         deleteselect.addEventListener('click', function(e){
@@ -95,6 +141,8 @@
 					console.log(err);
 				});
         });
+        
+        
     };
     </script>
 </head>
@@ -138,14 +186,14 @@
                     </tr>
                     <c:forEach var="cart" items="${carts}">
                      <tr class="cartbody2">
-                         <td><input type="checkbox" id="select1"></td>
+                         <td><input type="checkbox" id="select1" name="cartNo" value="${cart.cartNo}"></td>
                          <td><img src="../img/market_item1.jpg" class="image1" alt="apple"></td>
                          <td><p class="kind1">${cart.category}</p></td>
                          <td><p class="Productname1">${cart.proname}</p></td>
                          <td><p class="quantity1">${cart.quantity}</p></td>
                          <td><p class="discount1">${cart.discount}</p></td>
                          <td><p class="point1">${cart.point}</p></td>
-                         <td><p class="price1">${cart.price}</p></td>
+                         <td><p class="price1">${cart.price}</p></td>                         
                          <td><p class="subtotal1_1">3,600원</p></td>
                      </tr>
                     </c:forEach>
@@ -182,7 +230,7 @@
                         </div>
                     </div>
                     <div class="button2">
-                        <button class="btnorder"><p>주문하기</p></button>
+                        <button class="btnorder" id="btnOrder"><p>주문하기</p></button>
                     </div>
                 </div>
                

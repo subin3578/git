@@ -69,19 +69,26 @@ public static final String DELETE_FILE = "DELETE FROM `file` WHERE product_id = 
 
 	//cart
 	
-	public static final String SELECT_CART = "SELECT b.category , b.proname, a.quantity, a.discount, a.`point`, a.price "
+	public static final String SELECT_CARTS = "SELECT a.cartNo, b.category , b.proname, a.quantity, b.discount, a.point, a.price, a.prodId "
 			+ "from `cart` AS a "
 			+ "JOIN `product` AS b ON a.prodId = b.product_id "
 			+ "where `uid` =?";
 	
+	public static final String SELECT_CART = "SELECT a.cartNo, a.prodId, b.category , b.proname, a.quantity, b.discount, a.`point`, a.price "
+			+ "from `cart` AS a JOIN `product` AS b ON a.prodId = b.product_id where `cartNo` =?";
+	
 	public static final String INSERT_CART = "INSERT INTO `cart` "
-			+ "(`prodId`,`uid`,`quantity`,`price`) "
-			+ "values (?,?,?,?)";
+			+ "(`prodId`,`uid`,`quantity`,`discount`,`price`) "
+			+ "values (?,?,?,?,?)";
+	
 	public static final String DELETE_CART= "delete from `cart` where `cartNo`=?";
 
 	
 	//order
 	public static final String SELECT_ORDERS = "select * from `order`";
+	public static final String INSERT_ORDER = "INSERT INTO `order` (`uid`,`usedPoint`,`payment`,`payAmount`,`payStatus`,`orderDate`,`recipient`,`recipientHp`,`zip`,`addr1`,`addr2`,`etc`) "
+			+ "VALUE (?,?,?,?,?,now(),?,?,?,?,?,?)";
+	
 
 	public static final String DELETE_ARTICLE= "delete from `article` where `no`=?";
 	public static final String SELECT_COUNT_TOTAL= "SELECT COUNT(*) FROM `article`"

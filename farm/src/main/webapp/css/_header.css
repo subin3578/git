@@ -16,7 +16,7 @@
             top: 1px;
             background-repeat: repeat;
             height: 10px;
-            background-image: url('./image/head_top_line.png')
+            background-image: url('/farm/image/head_top_line.png')
         }
         header .top {
             position : relative;

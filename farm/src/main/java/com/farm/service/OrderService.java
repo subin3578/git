@@ -16,8 +16,8 @@ public enum OrderService {
 	
 	private OrderDao orderDao = OrderDao.getInstance();
 
-	public void insertOrder() {
-		
+	public void insertOrder(List<OrderDto> orders) {
+		orderDao.insertOrder(orders);
 	}
 	
 	public OrderDto selectOrder() {

@@ -9,6 +9,7 @@ public class CartDto {
 		private int point;
 		private int price;
 		
+
 		//추가
 		private String category;
 		private String proname;

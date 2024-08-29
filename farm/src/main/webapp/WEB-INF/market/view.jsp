@@ -28,13 +28,14 @@
 	    	const uid = "${sessionScope.sessUser.uid}"; 
 	    	const quantity = document.getElementById('quantity').value;
 	    	const price = ${product.price};
-	    	
+	    	const discount = ${product.discount};
 	    	console.log("uid "+uid);
 	    	
 	    	
 	    	const formData = new FormData();
 	        formData.append("prodId", prodId); 
 	        formData.append("uid", uid);
+	        formData.append("discount", discount);
 	        formData.append("quantity", quantity);
 	        formData.append("price", price);
 	      

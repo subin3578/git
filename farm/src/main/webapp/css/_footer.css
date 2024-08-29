@@ -24,7 +24,7 @@
         width: 980px;
         background-repeat: repeat;
         height: 10px;
-        background: url('./img/footer_top_line.png');
+        background: url('/farm/img/footer_top_line.png');
       }
       /*info3개 들음*/
       #Paragraph {
