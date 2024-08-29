@@ -1,10 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>user/term.html</title>
+    <title>user/findID.html</title>
 
     <style>
     
@@ -44,7 +45,7 @@
             top: 1px;
             background-repeat: repeat;
             height: 10px;
-            background-image: url('../img/head_top_line.png')
+            background-image: url('/farm/head_top_line.png')
         }
         
         /*logospace 는 로고, 사이드로고, 로그인| 담고있음*/
@@ -145,60 +146,72 @@
         }
 
         main {
-            position: absolute;
+             position: absolute;
             width: 980px;
             height: 663px;
             left: 470px;
             right: 470px;
             top: 142px;
 
-
         }
 
-        .terms {
-    width: 600px;
-    height: auto;            
-    margin: 30px auto;
-}
-.terms > table {
-    width: 100%;
-    height: auto;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-top: 2px solid #111;
-}
-.terms > table > caption {
-    text-align: left;
-    font-weight: bold;
-    padding: 10px 0;
-    box-sizing: border-box;
-}
-.terms > table tr {}
-.terms > table td {
-    padding: 6px;
-    border: 1px solid #e9e9e9;
-    box-sizing: border-box;
-}
-.terms > table td > textarea {
-    width: 100%;
-    height: 200px;
-    resize: none;
-    background: #f7f7f7;
-    border: 1px solid #e4eaec;
-    padding: 2px;
-    box-sizing: border-box;
-}
-.terms > table td > label {float: right;}
-.terms > table td > label > input[type=checkbox] {}
-.terms > table p {
-    float: right;
-}
-
-.terms > div {
-    float: right;
-    margin-top: 10px;
-}
-
+		.login {
+		    position: relative;
+		    width: 360px;
+		    height: auto;
+		    border: 1px solid #cfded8;
+		    box-sizing: border-box;
+		    margin: 220px auto;
+		}
+		
+		.login > form {
+		    
+		}
+		.login table {
+		    margin-left: 52px;
+		    margin-top: 30px;
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		}
+		.login table tr {}
+		.login table tr > td {}
+		.login table img {width: 20px;}
+		.login table input {
+		    width: 162px;
+		    height: 22px;
+		    margin-left: 6px;
+		    margin-bottom: 4px;
+		    border: 1px solid #e4eaec;
+		    background-color: #f7f7f7;
+		}
+		
+		.login .btnLogin {
+		    position: absolute;
+		    right: 50px;
+		    top: 30px;
+		    width: 60px;
+		    height: 52px;
+		    background-color: #fdfdfd;
+		    border: 1px solid #bebebe;
+		}
+		
+		.login > div {
+		    width: 100%;
+		    height: 104px;
+		    background: #f5f6fa;
+		    border-top: 1px solid #cfded8;
+		    margin-top: 20px;
+		    padding: 20px;
+		    box-sizing: border-box;
+		}
+		
+		.login > div > p {
+		    margin: 10px 0;
+		}
+		
+		.login > div > a {
+		    float: right;
+		}
 
 
         /***********/
@@ -206,7 +219,7 @@
         footer {
          /* Footer */
 
-        box-sizing: border-box;
+         box-sizing: border-box;
                 
         position: absolute;
         height: 120px;
@@ -230,7 +243,7 @@
         width: 980px;
         background-repeat: repeat;
         height: 10px;
-        background: url('../img/footer_top_line.png');
+        background: url('/farm/footer_top_line.png');
       }
       /*info3개 들음*/
       #Paragraph {
@@ -288,24 +301,42 @@
         align-items: center;
         color: #888888;
     }
-</style>
+	</style>
 
 	<script>
-		window.onload = function() {
+	
+	window.onload = function() {
+		
+		const btnLogin = document.getElementsByClassName('btnLogin')[0];
+		const btnFindID = document.getElementsByClassName('btnFindID')[0];
+		//const errorMessage = '${errorMessage}';
+		
+		
+		btnLogin.addEventListener('click', function(e) {
+			e.preventDefault();
+			//alert('dsfdasf');
 			
-			const chk1 = document.getElementsByClassName('chk1')[0];
-			const chk2 = document.getElementsByClassName('chk2')[0];
-			const btnNext = document.getElementsByClassName('btnNext')[0];
+			fetch('', {
+				method: 'POST',
+				body: formData
+				})
+				.then(resp => resp.json())
+				.then(data => {
+					console.log(data);
+					
+					uid문서객체.value = data.result;
+					
+				})
+				.catch(err => {
+					console.log(err);
+				});
 			
-			btnNext.addEventListener('click', function(e) {
-				if(!chk1.checked || !chk2.checked){
-					alert("모든 약관에 동의하셔야 합니다.");
-					e.preventDefault();
-				}
-			})
-		}
+		});
+
+	}
+	
 	</script>
-  
+
 </head>
 <body>
     <div id = "wrapper">
@@ -316,8 +347,8 @@
                
             </div>
             <div class ="logospace">
-                <a href="#" class="logo"> <img src="../img/logo.png" alt="logo" class = "headlog"></a>
-                <a href="#" class="sale"><img src="../img/head_txt_img.png" alt="htxt" class = "headlog2"></a>
+                <a href="#" class="logo"> <img src="/farm/img/logo.png" alt="logo" class = "headlog"></a>
+                <a href="#" class="sale"><img src="/farm/img/head_txt_img.png" alt="htxt" class = "headlog2"></a>
                 <p>
                     <a href="#">HOME | </a>
                     <a href="#">로그인 | </a>
@@ -329,7 +360,7 @@
         <div>
             <nav>
                 <ul class = "navfont">
-            <div><img src="../img/head_menu_badge.png" class = "badge"></div>          
+            <div><img src="/farm/img/head_menu_badge.png" class = "badge"></div>          
                  
                     <li><a href="#">팜스토리소개</a></li>
                     <li><a href="#">장보기</a></li>
@@ -342,41 +373,45 @@
     </header>
    
     <main>
-        <section class="terms">
-            <table>
-                <caption>사이트 이용약관</caption>
-                <tr>
-                    <td>
-                        <textarea readonly>${termsDto.terms}</textarea>
-                        <p>
-                            <label><input type="checkbox" name="chk1" class="chk1"/>동의합니다.</label>
-                        </p>
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <caption>개인정보 취급방침</caption>
-                <tr>
-                    <td>
-                        <textarea readonly>${termsDto.privacy}</textarea>
-                        <p>
-                            <label><input type="checkbox" name="chk2" class="chk2"/>동의합니다.</label>
-                        </p>
-                    </td>
-                </tr>
-            </table>
-            <div>
-                <a href="/farm/user/login.do" class="btnCancel">취소</a>
-                <a href="/farm/user/register.do" class="btnNext">다음</a>
-            </div>
-        </section>
-
+        <section class="login">
+        <form action="/farm/user/findID.do" method="post">
+	        <table border="0">
+	            <tr>
+	                <td></td>
+	                <td><input type="text" name="name" placeholder="이름 입력"></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td><input type="text" name="hp" placeholder="휴대폰 입력"></td>
+	            </tr>
+	            <tr>
+	                <td></td>
+	                <td><input type="text" name="uid" class="btnFindID"></td>
+	            </tr>
+	        </table>
+	        <input type="submit" value="찾기" class="btnLogin">
+        </form>
+        <!-- 에러 메시지 출력 -->
+        <c:if test="${not empty errorMessage}">
+            <script>alert('${errorMessage}');</script>
+        </c:if>
+        
+        <div>
+            <h3>회원 로그인 안내</h3>
+            <p>
+                아직 회원이 아니시면 회원으로 가입하세요.
+            </p>
+            <a href="/farm/user/terms.do">회원가입</a>
+            <a href="#">비밀번호 찾기 |&nbsp;</a>
+            <a href="/farm/user/findID.do">아이디 찾기 |&nbsp;</a>
+        </div>
+    </section>
     </main>
   
       <footer>
           <div>
               <div class="fline"></div>
-              <img src="../img/footer_logo.png" class="logo" alt="farmstoryfootlogo">
+              <img src="/farm/img/footer_logo.png" class="logo" alt="farmstoryfootlogo">
               <div id="Paragraph">
                   <p class="info1">
                       (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-부산진구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호

@@ -46,6 +46,13 @@ public class ListController extends HttpServlet {
 		
 	 
 		
+		
+		List<ProductDto> products = service.selectProducts2();
+		
+		logger.debug("listcontroller : "+products.toString());
+		req.setAttribute("products", products);
+	 
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/market/list.jsp");
 		dispatcher.forward(req, resp);
 

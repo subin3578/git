@@ -87,6 +87,7 @@ public void insertCart(CartDto dto) {
 		
 	}
 	
+
 	public void deleteCart(int cartno){
 		
 		try {
@@ -94,6 +95,7 @@ public void insertCart(CartDto dto) {
 			psmt = conn.prepareStatement(SQL.DELETE_CART);
 			psmt.setInt(1, cartno);
 			psmt.executeUpdate();
+
 			
 			
 		} catch (Exception e) {
@@ -101,6 +103,7 @@ public void insertCart(CartDto dto) {
 		}finally {
 			closeAll();
 		}
+
 	}
 	 public int selectCartNoByProdId(int prodId) {
 	        int cartNo = -1;
@@ -119,6 +122,7 @@ public void insertCart(CartDto dto) {
 	        }
 	        return cartNo;
 	    }
+	
 	
 
 }

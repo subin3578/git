@@ -28,6 +28,7 @@
                        </div>
                     </div>
                 </nav>
+
                 <a href="#"><span class="highlight2">전체(5)</span>&nbsp;| 과일 | 야채 | 곡류</a>
                 <table>
         <tbody>
@@ -71,6 +72,7 @@
         <a href="/farm/market/list.do?pg=${pageGroup.end+1}" class="next">다음</a>
     </c:if>
 	</div>
+
                 
                
             </div>

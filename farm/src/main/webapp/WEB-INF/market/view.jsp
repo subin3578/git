@@ -1,13 +1,5 @@
-<%@page import="com.farm.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<% 
-    UserDto sessUser = (UserDto) session.getAttribute("sessUser"); 
-    if (sessUser == null) {
-        response.sendRedirect("/farm/user/login.do");
-        return;
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +24,7 @@
 		cart.onclick = function(e){
 	    	
 	    	
-	    	const prodId = ${product.product_id};
+	    	const prodId = ${product.prodid};
 	    	const uid = "${sessionScope.sessUser.uid}"; 
 	    	const quantity = document.getElementById('quantity').value;
 	    	const price = ${product.price};
@@ -106,7 +98,7 @@
                                         </tr>
                                         <tr>
                                             <th>상품코드</th>
-                                            <td class="prodId">${product.product_id}</td>
+                                            <td class="prodId">${product.prodid}</td>
                                         </tr>
                                         <tr>
                                             <th>배송비</th>

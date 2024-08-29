@@ -72,7 +72,10 @@ public enum ProductService {
 	}
 	
 	public List<ProductDto> selectProducts(int start) {
-		return dao.selectProducts(start);
+		return dao.selectProducts(start );
+	}
+	public List<ProductDto> selectProducts2() {
+		return dao.selectProducts2();
 	}
 	public List<ProductDto> selectProducts2() {
 		return dao.selectProducts2();

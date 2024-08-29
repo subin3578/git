@@ -31,8 +31,10 @@ public enum CartService {
 	public void updateCart(CartDto dto) {
 		
 	}
+
 	public void deleteCart(int cartno){
 		dao.deleteCart(cartno);
+
 	}
 	public int getCartNoByProdId(int prodId) {
         return dao.selectCartNoByProdId(prodId);

@@ -73,6 +73,7 @@ public class ProductDao extends DBHelper{
 	        closeAll();
 	    }
 	    return total;
+
 	}
 	
 	public ProductDto selectProduct(String prodid) {
@@ -126,8 +127,7 @@ public class ProductDao extends DBHelper{
 	    List<ProductDto> products = new ArrayList<>();
 	    try {
 	        conn = getConnection();
-	        psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
-	        psmt.setInt(1, start); // offset 값 설정
+	        psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS2);
 	        
 	        rs = psmt.executeQuery();
 	        
