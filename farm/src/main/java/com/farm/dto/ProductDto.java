@@ -18,6 +18,8 @@ public class ProductDto {
     private String etc;
     private String rdate;
 
+    
+    
     private List<FileDto> files;
     
     
@@ -154,12 +156,14 @@ public class ProductDto {
     
 
 
+	
+
 	@Override
 	public String toString() {
 		return "ProductDto [proname=" + proname + ", prodid=" + prodid + ", category=" + category + ", price=" + price
 				+ ", points=" + points + ", discount=" + discount + ", delivery_cost=" + delivery_cost + ", stock="
 				+ stock + ", pro_img_list=" + pro_img_list + ", pro_img_inf=" + pro_img_inf + ", pro_img_desc="
-				+ pro_img_desc + ", etc=" + etc + ", rdate=" + rdate + ", files=" + files + "]";
+				+ pro_img_desc + ", etc=" + etc + ", rdate=" + rdate + "]";
 	}
 
 	// 숫자 변환과 null 체크를 위한 메서드

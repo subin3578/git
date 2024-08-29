@@ -18,7 +18,7 @@ public enum CartService {
 	private CartDao dao = CartDao.getInstance();
 
 	public void insertCart(CartDto dto) {
-		dao.insertCart(dto);
+		 dao.insertCart(dto);
 	}
 	
 	public List<CartDto> selectCart(String uid) {
@@ -31,9 +31,13 @@ public enum CartService {
 	public void updateCart(CartDto dto) {
 		
 	}
-	public int deleteCart(String cartNo){
-		return dao.deleteCart(cartNo);
+
+	public void deleteCart(int cartno){
+		dao.deleteCart(cartno);
+
 	}
-	
+	public int getCartNoByProdId(int prodId) {
+        return dao.selectCartNoByProdId(prodId);
+    }
 	
 }

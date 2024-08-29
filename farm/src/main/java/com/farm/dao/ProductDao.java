@@ -59,20 +59,21 @@ public class ProductDao extends DBHelper{
     }
 	
 	public int selectCountTotal() {
-		int total = 0;
-		try {
-			conn = getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_COUNT_TOTAL);
-			if(rs.next()) {
-				total = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}finally {
-			closeAll();
-		}
-		return total;
+	    int total = 0;
+	    try {
+	        conn = getConnection();
+	        stmt = conn.createStatement();
+	        rs = stmt.executeQuery(SQL.SELECT_COUNT_TOTAL_PRO);
+	        if (rs.next()) {
+	            total = rs.getInt(1);
+	        }
+	    } catch (Exception e) {
+	        logger.error(e.getMessage());
+	    } finally {
+	        closeAll();
+	    }
+	    return total;
+
 	}
 	
 	public ProductDto selectProduct(String prodid) {
