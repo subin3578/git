@@ -38,9 +38,9 @@
                  
                     <li><a href="/farm/introduction/introduction.do">팜스토리소개</a></li>
                     <li><a href="/farm/market/list.do">장보기</a></li>
-                    <li><a href="/farm/croptalk/story.do">농작물이야기</a></li>
-                    <li><a href="/farm/event/event.do">이벤트</a></li>
-                    <li><a href="/farm/community/notice.do">커뮤니티</a></li>
+                    <li><a href="/farm/article/list.do?cate=crop&type=1">농작물이야기</a></li>
+                    <li><a href="/farm/article/list.do?cate=event&type=4">이벤트</a></li>
+                    <li><a href="/farm/article/list.do?cate=community&type=5">커뮤니티</a></li>
                 </ul>
             </nav>
         </div>
